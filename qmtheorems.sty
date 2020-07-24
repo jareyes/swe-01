@@ -1,0 +1,85 @@
+\ProvidesPackage{styles/qmtheorems}
+
+\let\openbox\relax
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{tikz}
+\usepackage[framemethod=TikZ]{mdframed}
+
+\mdfsetup{skipabove=\topskip, skipbelow=0pt}
+\mdfdefinestyle{mdfqm}{
+  skipabove=\topskip,
+  skipbelow=\topskip, % Does not work :(
+  rightmargin=0pt,
+  leftmargin=0pt,
+  innertopmargin=7pt,
+  innerbottommargin=3pt,
+  innerrightmargin=5pt,
+  innerleftmargin=5pt,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  leftline=false,
+  %linewidth=1pt,
+  %roundcorner=0pt,
+  %font={},
+  %frametitlefont={},
+  frametitlerule=true,
+  %linecolor=black,
+  %backgroundcolor=LightBlue,
+  %fontcolor=black,
+  %frametitlebackgroundcolor=LightBlue,
+}
+
+\declaretheoremstyle[
+  %spaceabove=.5\thm@preskip,
+  %spacebelow=.5\thm@postskip,
+  headfont=\normalfont\bfseries,%\scshape,
+  %notefont=\normalfont, notebraces={ (}{)},
+  %bodyfont=\normalfont\itshape,
+  %headformat={\NAME\space\NUMBER\space\NOTE},
+  headpunct={.},
+  postheadspace={.5em plus .1em minus .1em},
+%prefoothook={\hfill\qedsymbol}
+]{qmquestion}
+
+\declaretheoremstyle[
+  %spaceabove=.5\thm@preskip,
+  %spacebelow=.5\thm@postskip,
+  %headfont=\normalfont\bfseries,
+  %notefont=\normalfont, notebraces={ (}{)},
+  %bodyfont=\normalfont,
+  %headformat={\NAME\space\NUMBER\space\NOTE},
+  headpunct={},
+  postheadspace={.5em plus .1em minus .1em},
+  %prefoothook={\hfill\qedsymbol}
+  %refname={theorem,theorems},
+  %Refname={Theorem,Theorems},
+]{qmexercise}
+
+\theoremstyle{qmquestion}
+\declaretheorem[
+  name=Question,
+  refname={question,questions},
+  Refname={Question,Questions},
+  numberwithin=section,
+  mdframed={
+    style=mdfqm,
+    % backgroundcolor=ProcessBlue!45!white,
+    frametitlebackgroundcolor=Goldenrod!45!white,
+  },
+]{question}
+
+\theoremstyle{qmexercise}
+\declaretheorem[
+  name=Exercise,
+  refname={exercise,exercises},
+  Refname={Exercise,Exercises},
+  numberwithin=section,
+  mdframed={
+    style=mdfqm,
+    backgroundcolor=Dandelion!45!white,
+    frametitlebackgroundcolor=Orchid!45!white,
+  },
+]{exercise}

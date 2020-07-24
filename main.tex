@@ -1,0 +1,114 @@
+\documentclass[
+  fontsize=10pt,
+  twoside=true,
+  numbers=noenddot,
+  overfullrule=false,
+]{kaobook}
+
+\usepackage[english]{babel}
+\usepackage[english=american]{csquotes}
+
+\usepackage{kaobiblio}
+\addbibresource{main.bib}
+
+\usepackage{mdftheorems}
+\usepackage{qmtheorems}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+% To set the width of a tikz picture
+\usepackage{environ}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+  \def\tikz@width{#1}%
+  \def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+  \BODY
+  \end{lrbox}%
+  \pgfmathparse{#1/\wd\measure@tikzpicture}%
+  \edef\tikzscale{\pgfmathresult}%
+  \BODY
+}
+\makeatother
+
+% Reset sidenote counter at chapters
+\counterwithin*{sidenote}{chapter}
+
+\begin{document}
+
+\titlehead{A Full Course in Software Engireering}
+
+\title[]{Becoming an Engineer}
+\subtitle{From Soup to Nuts: Level 1}
+
+\author[]{Joshua Reyes}
+
+\date{\small\today}
+
+\publishers{Lee Street Publishing}
+
+\frontmatter
+% copyright page
+\makeatletter
+\uppertitleback{\@titlehead} % Header
+
+\lowertitleback{
+	\textbf{Disclaimer}\\
+	You can edit this page to suit your needs. For instance, here we have a no copyright statement, a colophon and some other information. This page is based on the corresponding page of Ken Arroyo Ohori's thesis, with minimal changes.
+
+	\medskip
+
+	\textbf{No copyright}\\
+	\cczero\ This book is released into the public domain using the CC0 code. To the extent possible under law, I waive all copyright and related or neighbouring rights to this work.
+
+	To view a copy of the CC0 code, visit: \\\url{http://creativecommons.org/publicdomain/zero/1.0/}
+
+	\medskip
+
+	\textbf{Colophon} \\
+	This document was typeset with the help of \href{https://sourceforge.net/projects/koma-script/}{\KOMAScript} and \href{https://www.latex-project.org/}{\LaTeX} using the \href{https://github.com/fmarotta/kaobook/}{kaobook} class.
+
+	The source code of this book is available at:\\\url{https://github.com/jareyes/qm-companion}
+
+	(You are welcome to contribute!)
+
+	\medskip
+
+	\textbf{Publisher} \\
+	First printed in April 2020 by \@publishers
+}
+\makeatother
+
+% Dedication page
+\dedication{``A clever person solves a problem. A wise person avoids it.'' --- Almost certainly not Albert Einstein
+\vskip 15pt
+For everyone trying to keep afloat.
+}
+
+\KOMAoptions{twoside=semi}
+\maketitle
+\KOMAoptions{twoside=true}
+
+% Preface
+\input{chapters/preface.tex}
+% Table of conents
+\etocstandarddisplaystyle % "toc display" as if etoc was not loaded
+\etocstandardlines % "toc lines as if etoc was not loaded
+\tableofcontents
+
+\mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
+\setchapterstyle{kao} % Choose the default chapter heading style
+\input{chapters/introduction.tex}
+\input{chapters/things.tex}
+
+\pagelayout{wide} % No margins
+\addpart{Solutions to Problems}
+\pagelayout{margin} % Restore margins
+
+\backmatter
+% The bibliography needs to be compiled with biber using your LaTeX editor, or on the command line with 'biber main' from the template directory
+\defbibnote{bibnote}{Here are the references in citation order.\par\bigskip} % Prepend this text to the bibliography
+\printbibliography[heading=bibintoc, title=Bibliography, prenote=bibnote] % Add the bibliography heading to the ToC, set the title of the bibliography and output the bibliography note
+
+
+\end{document}
