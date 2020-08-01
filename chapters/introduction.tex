@@ -1,21 +1,27 @@
 \setchapterpreamble[u]{\margintoc}
 \chapter{Introduction}
 
-Computer science is ths study of what we can compute. It tries to answer questions like, are there unavoidable limits on the programs we can write? (The answer is yes.) And are there unavoidable limits on how slow some programs have to run? (The answer again is yes.) Software engineering is concerned not with whether we can build something, but how can we do it cheaply? Software engineering is concerned with how much will something cost, how fast can we make it run, and can if we squeeze it into less space---and most importantly, can we ship it on time.
+Computer science is ths study of what we can compute. Computer scientists try to answer questions like, are there unavoidable limits on the programs we can write? (The answer is \emph{yes}. Some programs are impossible to write no matter what.) And are there unavoidable limits on how slow some programs have to run? (The answer again is yes. We'll see an example of a performance limit later on.) Software engineering is concerned not with whether it is possible to build something---they take the fact that their project can be built for granted---but rather how can the project be built \emph{cheaply}. Software engineers are concerned with how much the project costs, how much time the software takes to run, how much memory it consumes---and, most importantly, whether the whole thing can be shipped to the customer on schedule.
 
-Sucessful programmers need to know a mix of tricks from computer science and software engineering. And in general, the two fields benefit and grow from one another. Engineering comes up with a new, unsolved problem, and in the process of solving it, new computer science is made. Researchers to improve the techniques and those improvements make it back to the engineers, who then tackle new problems. And so the cycle goes back and forth. (In reality, everyone is doing both at the same time. But the story is cleaner this way.)
+Sucessful programmers need to use a mix of tricks from computer science and software engineering. Generally the two fields grow from one another. Engineers sometiems stumble onto a new, unsolved problem during the course of working on their projects. In the process of completing the project, new computer science is made. Researchers cook up new algorithms to solve outstanding problems in the field. In the process they invent new programming techniques. Those new techniques make it back to the engineers, who then apply them in new projects. And so the cycle goes on and on. What computer scientists and software engineers do aren't that different. They approach similar problems with different perspectives. To be a sucessful programmer, you will sometimes want to think like a computer scientist and sometimes like a software engineer. Fortunately, both perspectives come from the same underlying idea of computation, which can be drawn very neatly in a diagram---the \emph{fundamental diagram}.
 
 \section{The Fundamental Diagram}
-Before we dive into the nitty gritty of writing programs, we should start with the singular idea at the core of it all. There is one diagram that sums up almost all of computer science and software engineering. It's so ubiquitous that it's called \textbf{Fundamental Diagram of Programming}.\sidenote{Okay, maybe only \emph{I} call it that. But everyone should. It's that important}
+The \textbf{Fundamental Diagram} is at the heart of everything software engineers and computer scientists do.\sidenote{Full disclaimer: I might be the only person who calls this the Fundamental Diagram. But everyone should. Like reading, it is fundamental.} As a programmer, you'll get to know this picture very well. It shows up in just about every concept you'll ever encounter---from the very big, to the obnoxiously small.
 
 \begin{figure}[h]
   \input{figures/introduction/fundamental-diagram.tex}
-  \caption{The fundamental diagram of programming in all its glory. It's a lot simpler than you expected, isn't it?}
+  \caption{\label{fig:intro-fundemental-diagram} The fundamental diagram of programming in all its glory. It describes just about everything a programmer could possibly do.}
 \end{figure}
 
-Computer science and software engineering are, at their core, about transforming inputs into outputs. Ingredients into pastries.
+Fortunately, the diagram doesn't have many parts. There are just three: the inputs, the outputs, and the transformer. The transformer takes in \emph{inputs} and \emph{transforms} them into \emph{outputs}.
 
 Example. Input: photo you took with your phone. Box: digital filters. Output: social media-worthy photograph.
+
+\begin{marginfigure}
+  \input{figures/introduction/example-ice-cream.tex}
+  \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and Ice Cream by Landan Lloyd from the Noun Project.}
+\end{marginfigure}
+
 
 Example. Input: 1 cup of whole milk, 2 cups of heavy cream, 1/2 tsp of Kosher salt, 2/3 cup of granulated sugar. Box: Ice cream maker. Output: Sweet cream ice cream.
 
