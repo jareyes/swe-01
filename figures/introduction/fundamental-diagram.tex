@@ -1,12 +1,12 @@
 \begin{scaletikzpicturetowidth}{\textwidth}
   \begin{tikzpicture}[scale=\tikzscale, node distance=3cm, color=cyan, font=\sffamily\small]
 
-    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (a) {Transformer};
-    \node (b) [left of=a] {Inputs};
-    \node (c) [right of=a] {Outputs};
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (transformer) {Transformer};
+    \node (inputs) [left of=transformer] {Inputs};
+    \node (outputs) [right of=transformer] {Outputs};
 
-    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (b) -- (a);
-    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (a) -- (c);
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (inputs) -- (transformer);
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (transformer) -- (outputs);
 
   \end{tikzpicture}
 \end{scaletikzpicturetowidth}
