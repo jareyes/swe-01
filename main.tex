@@ -32,6 +32,23 @@
 }
 \makeatother
 
+% Be able to suppress line numbers in listings
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\suppresslinenumbers{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+
+\newcommand*\reactivatelinenumbers{%
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \advance\c@lstnumber\@ne\relax}%
+}
+\makeatother
+
 % Reset sidenote counter at chapters
 \counterwithin*{sidenote}{chapter}
 

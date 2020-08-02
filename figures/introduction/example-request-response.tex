@@ -1,0 +1,16 @@
+\begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=\tikzscale, node distance=3cm, color=cyan, font=\sffamily\small]
+
+    \node (inputs) {Request};
+    \node[minimum size=2em, inner sep=1em] (question) [below=0em of inputs] {\texttt{www.dafk.com/what}};
+
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (transformer) [right of=inputs] {Server};
+    \node (server) [below=0em of transformer] {\texttt{www.dafk.com}};
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (inputs) -- (transformer);
+
+    \node[minimum size=2em, inner sep=1em] (outputs) [right of=transformer] {Answer};
+    \node (answer) [below=0em of outputs] {\texttt{what}};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (transformer) -- (outputs);
+
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}

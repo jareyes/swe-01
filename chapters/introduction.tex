@@ -15,7 +15,52 @@ The \textbf{Fundamental Diagram} is at the heart of everything software engineer
 
 Fortunately, the diagram doesn't have many parts. There are just three: the inputs, the outputs, and the transformer. The transformer takes in \emph{inputs} and \emph{transforms} them into \emph{outputs}. That's it. As a programmer, you will write software that turns specific inputs into particular outputs to accomplsh a given task. If that description sounds vague, that's because it is. Let's look at a few examples to see the Fundamental Diagram in action to get a better idea of what's going on.
 
+\paragraph{Example (Question and Answer)} A lot of human interaction follows the input-transformer-output pattern. Questions and answers can be modeled by the fundamental diagram pretty easily. For example, ``What's your favorite color?''\sidenote{The answer is orange. Well, it is if I am the transformer being asked. You might come up with a different but correct answer. Different transformers can give different answers to the same question.} But what is the transformer in this case? The transformer is the person who gives the answer to the question; she listens to a question asked by somebody else, processes what it means, and then produces an answer. For historical reasons---think ancient Greek history---sometimes the role of the transformer in a Q\&A session is called an \emph{oracle}.
+
+\begin{figure}[h]
+  \input{figures/introduction/example-question-answer.tex}
+  \caption{\label{fig:intro-example-question-answer} Fundamental diagram for a question, oracle, and answer.}
+\end{figure}
+
+\paragraph{Example (Request and Response)}The same can be said of slightly different kind of speech act called a \emph{request}. People make requests all the time. ``Can you close the door, please?'' ``May I have the lobster sandwich and a raspberry lime rickey?'' ``That'll be \$49.99, please.'' Each of these statements intend to turn simple words into actions that produce some physical effect---producing closed door, a lobster sandwich and a raspberry lime rickey, or money totaling \$49.99.
+
+\begin{question}
+  Identify the inputs, outputs, and transformers for the requests above.
+\end{question}
+
+\begin{question}
+  Draw the fundamental diagrams for each of the requests above.
+\end{question}
+
+On the web, requests are ubiquitous. When you open a web browser and type in the address of a web page, the web browser makes a formal request to the machine located at that address. \sidenote{In the same way individual people have street addresses---like Sirius Black, who resided at 12 Grimmauld Place, London---computers have internet addresses, too. These computers are called \emph{web servers}. Like the computer which resides at the address \texttt{www.dafk.net}.\vskip 5pt Individual web pages reside on web servers. For example, the webapge \texttt{what} resides on the computer with the address ```www.darfk.net```. Its full address is \texttt{www.darfk.net/what}.} The terminology for the actors in a web request comes from the restaurant industry. At restaurants, clients make requests to people called servers, who fulfill their clients' requests (usually with the help of many other people who are not client-facing).
+
+This pattern of request and response is exactly how the world wide web works. The piece of software that initiates the request is called the \emph{client}. Because this is the software that human users can see, people sometimes say client technology is \emph{front end} technology. The software that receives, processes, and sends back a response to the client is called the \emph{server}. The server is not something that human users interact with directly. We don't get to see what the server is doing, only the response that it produced. This is a lot like how clients at a restaurant don't get to interact with the kitchen directly. Instead they get to experience the finished product---but they don't get know how the sausage is made, so to speak. Because the server's work to transform a request into a full web page response is opaque to the user, we say that servers a \emph{back end} technology.
+
+\begin{figure}[h]
+  \input{figures/introduction/example-request-response.tex}
+  \caption{\label{fig:intro-example-request-response} Fundamental diagram for a request, server, and response.}
+\end{figure}
+
+The client-server architecture, like the fundamental diagram, is deceptively simple and yet it powers the whole of the internet.\sidenote{Software engineers call the organization of data flows an \emph{architecture}. In this case, the flow of information is the request from the client to the server and the response from server to client.} Web programming is a specialized collection of technologies, many of which we'll encounter in this series. When you're bushwacking the jargon and buzzwords of the web technology jungle, stop and remember Figure \ref{fig:intro-example-request-response}: just two arrows and a box in the middle. Almost all of the latest and greatest technologies are just fancy ways to request some piece of data from a server. Always keep this picture in mind.
+
 \paragraph{Example (Ice Cream)} Recipes are hands-down the tastiest kinds of transformers. Recipes explain how to transform ingredients into prepared dishes. Here's one I like because it's quick, easy, and the result is something near and dear to my heart: ice cream.
+
+\suppresslinenumbers
+\begin{lstlisting}[caption={Ice cream transformer},escapeinside=$$]
+$\textbf{Inputs:}$ 1 c. whole milk
+        2 c. heavy cream
+        2/3 c. sugar
+        1/2 tsp. Kosher salt
+$\reactivatelinenumbers$
+Place the milk, heavy cream, sugar, and salt in a bowl.
+Mix until the sugar has completely dissolved.
+Pour the ice cream base into an ice cream maker.
+Run the machine until the base mixture firms up.
+Transfer the cold cream into a sealed container.
+Chill the container in a freezer overnight.$\suppresslinenumbers$
+
+$\textbf{Output:}$ Sweet cream ice cream
+\end{lstlisting}
 
 \begin{marginfigure}
   \input{figures/introduction/example-ice-cream.tex}
@@ -23,21 +68,6 @@ Fortunately, the diagram doesn't have many parts. There are just three: the inpu
   \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice cream by Landan Lloyd from the Noun Project.}
 \end{marginfigure}
 
-\textsf{Inputs} 1 cup of whole milk, 2 cups of heavy cream, 1/2 tsp of Kosher salt, 2/3 cup of granulated sugar.
-
-\textsf{Output} Sweet cream ice cream.
-
-\textsf{Transformer}
-Ice cream maker. Output: Sweet cream ice cream.
-
-\begin{lstlisting}[caption={Caption of a listing.}]
-Place the milk, heavy cream, sugar, and salt in a bowl.
-Mix until the sugar has completely dissolved.
-Pour the ice cream base into an ice cream maker.
-Run the machine until the base mixture firms up.
-Transfer the soft ice cream into a sealed container.
-Chill the container in a freezer overnight.
-\end{lstlisting}
 
 Example. Input: photo you took with your phone. Box: digital filters. Output: social media-worthy photograph.
 
