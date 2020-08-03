@@ -1,0 +1,26 @@
+\begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=\tikzscale, color=cyan, node distance=3cm, font=\sffamily\small]
+
+    % liquid base transformer
+    \node (ingredients) {Ingredients};
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (mixer) [right of=ingredients] {Combine};
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (ingredients) -- (mixer);
+
+    \node (base) [right of=mixer] {Liquid Base};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.25em] (mixer) -- (base);
+
+    % cold cream transformer
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (maker) [below=1cm of base] {Soft Freeze};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (base) -- (maker);
+
+    \node (cold cream) [right of=maker] {Cold Cream};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (maker) -- (cold cream);
+
+    % ice cream transformer
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (freezer) [below=1cm of cold cream] {Hard Freeze};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (cold cream) -- (freezer);
+
+    \node (ice cream) [right of=freezer] {Ice cream};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (freezer) -- (ice cream);
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}

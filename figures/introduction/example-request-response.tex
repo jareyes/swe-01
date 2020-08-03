@@ -9,7 +9,7 @@
     \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (inputs) -- (transformer);
 
     \node[minimum size=2em, inner sep=1em] (outputs) [right of=transformer] {Answer};
-    \node (answer) [below=0em of outputs] {\texttt{what}};
+    \node (answer) [below=0em of outputs] {Contents of \texttt{what}};
     \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (transformer) -- (outputs);
 
   \end{tikzpicture}

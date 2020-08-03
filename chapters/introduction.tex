@@ -32,7 +32,7 @@ Fortunately, the diagram doesn't have many parts. There are just three: the inpu
   Draw the fundamental diagrams for each of the requests above.
 \end{question}
 
-On the web, requests are ubiquitous. When you open a web browser and type in the address of a web page, the web browser makes a formal request to the machine located at that address. \sidenote{In the same way individual people have street addresses---like Sirius Black, who resided at 12 Grimmauld Place, London---computers have internet addresses, too. These computers are called \emph{web servers}. Like the computer which resides at the address \texttt{www.dafk.net}.\vskip 5pt Individual web pages reside on web servers. For example, the webapge \texttt{what} resides on the computer with the address ```www.darfk.net```. Its full address is \texttt{www.darfk.net/what}.} The terminology for the actors in a web request comes from the restaurant industry. At restaurants, clients make requests to people called servers, who fulfill their clients' requests (usually with the help of many other people who are not client-facing).
+On the web, requests are ubiquitous. When you open a web browser and type in the address of a web page, the web browser makes a formal request to the machine located at that address. \sidenote{In the same way individual people have street addresses---like Sirius Black, who resided at 12 Grimmauld Place, London---computers have internet addresses, too. These computers are called \emph{web servers}. Like the computer which resides at the address \texttt{www.dafk.net}.\vskip 5pt Individual web pages reside on web servers. For example, the webapge \texttt{what} resides on the computer with the address \texttt{www.darfk.net}. Its full address is \texttt{www.darfk.net/what}.} The terminology for the actors in a web request comes from the restaurant industry. At restaurants, clients make requests to people called servers, who fulfill their clients' requests (usually with the help of many other people who are not client-facing).
 
 This pattern of request and response is exactly how the world wide web works. The piece of software that initiates the request is called the \emph{client}. Because this is the software that human users can see, people sometimes say client technology is \emph{front end} technology. The software that receives, processes, and sends back a response to the client is called the \emph{server}. The server is not something that human users interact with directly. We don't get to see what the server is doing, only the response that it produced. This is a lot like how clients at a restaurant don't get to interact with the kitchen directly. Instead they get to experience the finished product---but they don't get know how the sausage is made, so to speak. Because the server's work to transform a request into a full web page response is opaque to the user, we say that servers a \emph{back end} technology.
 
@@ -43,14 +43,25 @@ This pattern of request and response is exactly how the world wide web works. Th
 
 The client-server architecture, like the fundamental diagram, is deceptively simple and yet it powers the whole of the internet.\sidenote{Software engineers call the organization of data flows an \emph{architecture}. In this case, the flow of information is the request from the client to the server and the response from server to client.} Web programming is a specialized collection of technologies, many of which we'll encounter in this series. When you're bushwacking the jargon and buzzwords of the web technology jungle, stop and remember Figure \ref{fig:intro-example-request-response}: just two arrows and a box in the middle. Almost all of the latest and greatest technologies are just fancy ways to request some piece of data from a server. Always keep this picture in mind.
 
-\paragraph{Example (Ice Cream)} Recipes are hands-down the tastiest kinds of transformers. Recipes explain how to transform ingredients into prepared dishes. Here's one I like because it's quick, easy, and the result is something near and dear to my heart: ice cream.
+\paragraph{Example (Making Ice Cream)} Recipes are hands-down the tastiest kinds of transformers.Recipes explain how to transform ingredients into prepared dishes. Here's one I like because it's quick, easy, and the result is something near and dear to my heart: ice cream.
+
+\begin{marginfigure}
+  \input{figures/introduction/example-ice-cream.tex}
+  \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice cream by Landan Lloyd from the Noun Project.}
+\end{marginfigure}
+
+Up until now, each transformer we've described takes exactly one input and produces a single output. Here is our first example of a transformer that takes multiple inputs to produce its output. It is not uncommon for a transformer to take multiple inputs. There are very few recipes that require just a single ingredient. So, too, programs often need to use combine multiple inputs to generate a desired output.
+
+Let's look at the process to transform a few ingredients into ice cream in some detail. Below is a kind of step-by-step list of instructions that transform the input ingredients milk, cream, sugar, and salt, into ice cream. Each step goes on its own line. As a general rule, steps should be kept as simple as possible. Complex steps should be broken up into multiple, simpler steps. This strategy makes it easier for the person preparing the recipe to understand and execute. The programs we write to transform inputs into outputs will have a very similar character.
 
 \suppresslinenumbers
-\begin{lstlisting}[caption={Ice cream transformer},escapeinside=$$]
+\begin{lstlisting}[caption={\label{listing:intro-ice-cream} Ice cream transformer}, escapeinside=$$, firstnumber=0]
 $\textbf{Inputs:}$ 1 c. whole milk
         2 c. heavy cream
         2/3 c. sugar
         1/2 tsp. Kosher salt
+
+$\textbf{Output:}$ Sweet cream ice cream
 $\reactivatelinenumbers$
 Place the milk, heavy cream, sugar, and salt in a bowl.
 Mix until the sugar has completely dissolved.
@@ -58,60 +69,61 @@ Pour the ice cream base into an ice cream maker.
 Run the machine until the base mixture firms up.
 Transfer the cold cream into a sealed container.
 Chill the container in a freezer overnight.$\suppresslinenumbers$
-
-$\textbf{Output:}$ Sweet cream ice cream
 \end{lstlisting}
 
-\begin{marginfigure}
-  \input{figures/introduction/example-ice-cream.tex}
-  % \input{figures/introduction/fundamental-diagram.tex}
-  \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice cream by Landan Lloyd from the Noun Project.}
-\end{marginfigure}
+Did you notice that our great big ice cream transformer is made up of three smaller input-output transformers? The first one decribed on lines 1--2. It turns the input ingredients into a liquid base mixture. The next one on lines 3--4 takes as input the base mixture and outputs a cold cream. While cold cream is delicious, it melts extremely rapidly. And so the recipe finishes with the transformer on lines 5--6, which takes as input the cold cream and freezes it until to produce bona fide ice cream.
 
+\begin{figure*}[h]
+  \input{figures/introduction/example-ice-cream-pipeline.tex}
+  \caption{\label{fig:intro-example-ice-cream-pipeline} The steps inside transformers are often simpler transformers. The transfromation that produces ice cream from ingredients is made up of three successive transformers. The output of one transformer is the input to the next transformer.}
+\end{figure*}
 
-Example. Input: photo you took with your phone. Box: digital filters. Output: social media-worthy photograph.
+Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, ``One transformer's output is another transformer's input.'' And that is the real power of the fundamental diagram. You can chain copies of it together to produce more and more complicated flows of inputs and outputs. In this case, we chained together three transformers in the simplest way possible, in a line, one after the other. The \emph{pipeline} pattern is very common in software architecture. In fact, many of the applications in ``big data'' reduce to pipeline of transformers, just like the ice cream pipeline above. When we work with command line tools, we will meet the pipe operator that feeds the output of one program as the input to another.\sidenote{The pipe operator notated by the symbol `\texttt{|}`. It's that shift character on the backslash key. Now go lay some pipe!} It acts like a pipe for the information to flow through. Hence the name \emph{pipe}.
 
-Example. Input: a day of the week. Box: Weekly calendar. Output: The things I have to do that day.
+\begin{question}
+  In the style of Listing \ref{listing:intro-ice-cream}, write the inputs, outputs, and steps to create a grilled cheese sandwich.
+\end{question}
 
-Example. Input: the address of a website. Box: A web browser. Output: The web page at that address.
+\begin{question}
+  Draw a fundamental diagram for your grilled cheese listing.
+\end{question}
 
-Example. Input: A form that says, "Do you like me? Yes, no, or maybe". Box: My secret crush. Output: Jubilation or heartbreak
+\begin{question}
+  Come up with three more examples that can be modeled by the fundamental diagram.
+\end{question}
 
-Example. Input: Contestants on a game show. Box: The celebrity panel of judges. Output: The winner.
-
-Example. Input: Keywords. Box: A search engine. Output: Search results related to your keywords.
-
-This is the same as a question and answer. Request and reponse. Order and delivery. It shows up over and over and over again. Get ready to see it throughout this book. Whenever you get lost in a program---and everyone does; I do multiple times a day---stop and ask yourself, ``What inputs have I received? What outputs am I supposed to make from them?'' Start there and work your way from one to the other, forwards or backwards.
-
-Exercise. Come up with an example that the Fundamental Diagram of Computer Science models. Draw and label your diagram.
-Exercise. Now come up with another.
-Exercise. And one more.
-
-
-Programming can feel complicated. And a lot of times it is. But underneath all the bells and buzzwords of programming, there are really only four things you can do:
-
-\begin{enumerate}
-  \item Store information somewhere and use it later.
-  \item Conditionally do something.
-  \item Repeat things.
-  \item Organize the machinery of (1), (2), and (3) into reusable chunks.
-\end{enumerate}
-
-If you can master those four things, you will have mastered software engineering.
-
-\section{Storing information}
-Storing information is at the heart of software. Data is king. You see it everywhere, from advertisers to political campaigns, scientific experiments, and your email. In programming, we have to decide \textit{what} data to keep around and \textit{how} to store it.
-
-You have come across many different data storage mechanisms. Data can be saved to files on disk, stored in a database, on your computer, on another computer that you access via the internet, or on external hard drive. In programs we have other choices that we'll learn about soon.
-
-The power of data does not come solely from storing it. Buried treasure isn't valuable until you dig it up and use it. So, too, with data. To be useful, we need to be able to retrieve and employ the data we have stored to complete a task. Many technologies have been created simply to make finding the data you're looking for fast and efficient. This is the purview of databases and key-value stores. But also of variables, objects, and data structures.
-
-The actual mechanism you use to store and retrieve your data isn't especially important right now. All that you should remember is that in programming you can jot down some important information and use it again later.
-
-\section{Conditional execution}
-\section{Repeating}
-\section{Organization}
-
-How you structure an email is different from how you structure a novel. Good writing is tailored to the task at hand. There are two consumers of your code: the compiler, which turns it into instructions the computer can execute. But more importantly, PEOPLE---including future you! Programs are human-readable, not machine readable. Remember, the compiler is a translator; it translates the human-readable code that a \emph{human} wrote into something a human \emph{cannot} read. (Unless you're my friend EJ or my coworker Jay.) Good programming has the same hallmarks as good writing does, because that's what it is: it's a kind of writing. That's why we call them programming \emph{languages}. When you write code, you should strive to be clear. That means structuring your code in a way that shows intent: using convenient data structures and other abstractions. Encapsulating. Using simple control structures instead of fancy ones. Be explicit (no globals or other captured scope). Principle of least surprise. Make it look like someone else wrote the code: copy the style and conveniention, even if it's not your own. Cognitive load is real. Context switching is real. Keep the styles the same.
-
-Style is a holy war. Nothing is perfect. Always trade-offs. Often it's a matter of taste and who the fuck cares. (Where to place the brackets.)
+%
+% \paragraph{Example (Compilers and Interpreters)}
+%
+% This is the same as a question and answer. Request and reponse. Order and delivery. It shows up over and over and over again. Get ready to see it throughout this book. Whenever you get lost in a program---and everyone does; I do multiple times a day---stop and ask yourself, ``What inputs have I received? What outputs am I supposed to make from them?'' Start there and work your way from one to the other, forwards or backwards.
+%
+%
+%
+% \section{Programming}
+% Programming can feel complicated. And a lot of times it is. But underneath all the bells and buzzwords of programming, there are really only four things you can do:
+%
+% \begin{enumerate}
+%   \item Store information somewhere and use it later.
+%   \item Conditionally do something.
+%   \item Repeat things.
+%   \item Organize the machinery of (1), (2), and (3) into reusable chunks.
+% \end{enumerate}
+%
+% If you can master those four things, you will have mastered software engineering.
+%
+% \section{Storing information}
+% Storing information is at the heart of software. Data is king. You see it everywhere, from advertisers to political campaigns, scientific experiments, and your email. In programming, we have to decide \textit{what} data to keep around and \textit{how} to store it.
+%
+% You have come across many different data storage mechanisms. Data can be saved to files on disk, stored in a database, on your computer, on another computer that you access via the internet, or on external hard drive. In programs we have other choices that we'll learn about soon.
+%
+% The power of data does not come solely from storing it. Buried treasure isn't valuable until you dig it up and use it. So, too, with data. To be useful, we need to be able to retrieve and employ the data we have stored to complete a task. Many technologies have been created simply to make finding the data you're looking for fast and efficient. This is the purview of databases and key-value stores. But also of variables, objects, and data structures.
+%
+% The actual mechanism you use to store and retrieve your data isn't especially important right now. All that you should remember is that in programming you can jot down some important information and use it again later.
+%
+% \section{Conditional execution}
+% \section{Repeating}
+% \section{Organization}
+%
+% How you structure an email is different from how you structure a novel. Good writing is tailored to the task at hand. There are two consumers of your code: the compiler, which turns it into instructions the computer can execute. But more importantly, PEOPLE---including future you! Programs are human-readable, not machine readable. Remember, the compiler is a translator; it translates the human-readable code that a \emph{human} wrote into something a human \emph{cannot} read. (Unless you're my friend EJ or my coworker Jay.) Good programming has the same hallmarks as good writing does, because that's what it is: it's a kind of writing. That's why we call them programming \emph{languages}. When you write code, you should strive to be clear. That means structuring your code in a way that shows intent: using convenient data structures and other abstractions. Encapsulating. Using simple control structures instead of fancy ones. Be explicit (no globals or other captured scope). Principle of least surprise. Make it look like someone else wrote the code: copy the style and conveniention, even if it's not your own. Cognitive load is real. Context switching is real. Keep the styles the same.
+%
+% Style is a holy war. Nothing is perfect. Always trade-offs. Often it's a matter of taste and who the fuck cares. (Where to place the brackets.)
