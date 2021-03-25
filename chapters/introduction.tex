@@ -68,7 +68,7 @@ Mix until the sugar has completely dissolved.
 Pour the ice cream base into an ice cream maker.
 Run the machine until the base mixture firms up.
 Transfer the cold cream into a sealed container.
-Chill the container in a freezer overnight.$\suppresslinenumbers$
+Chill the container in a freezer overnight.
 \end{lstlisting}
 
 Did you notice that our great big ice cream transformer is made up of three smaller input-output transformers? The first one decribed on lines 1--2. It turns the input ingredients into a liquid base mixture. The next one on lines 3--4 takes as input the base mixture and outputs a cold cream. While cold cream is delicious, it melts extremely rapidly. And so the recipe finishes with the transformer on lines 5--6, which takes as input the cold cream and freezes it until to produce bona fide ice cream.
@@ -95,9 +95,28 @@ Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, `
 
 \paragraph{Example (Compilers)} One of the most important transformer in programming is type of program called a \emph{compiler}. Compilers translate programs from one language into another---specifically, from a \emph{source language} that humans can read, write, and understand to a \emph{target language} that computers can interpret and execute.
 
+\begin{figure}[h]
+  \input{figures/introduction/example-compiler.tex}
+  \caption{\label{fig:intro-example-compiler} Fundamental diagram for source code compilation into machine-readable bytecode.}
+\end{figure}
 
-Grace Hopper.
-Fran Allen: https://www.ibm.com/blogs/research/2020/08/remembering-frances-allen/
+It may seem surprising that the code you write is \emph{not} for the computer but for people---like yourself! The source code that you write needs to be converted into machine-friendly instructions that can be executed by hardware. Compilers make programming accessible to people who do not hold PhDs in mathematics, and they are one of the great achievements in the history of computing. Without compilers we would need to know absolutely everything about the hardware your program runs on---how its memory is structured, how many registers it has---and to manually keep track of and manipulate the location of your data in memory. You can program in a \emph{low level language} like Assembly if you want to get cozy with the bare metal. Since there are so many more things to keep track, low-level language programs tend to be very long and hard to follow. By comparison, \emph{high level languages} cannot be executed by the machine directly and require an extra compilation step that generates the low-level code for you. Generally, this extra step is worth it. Programs written in high level languages are shorter and easier to follow than their low level counterparts.
+
+As an example, compare two implementations of the classic program \textsf{Hello, World}. The first one is written in NodeJS, a high level language.
+
+\begin{lstlisting}[caption={\label{listing:intro-hello-world-nodejs} Hello, World! in NodeJS.}, escapeinside=$$, firstnumber=1]
+// hello.js
+"use strict";
+
+console.log("Hello, World!");
+\end{lstlisting}
+
+The second implementation is written in Assembly, a low level language that mimics the architecture of the hardware that the program runs on.
+
+Be very thankful that you have a friendly compiler that can translate your directions into machine-readable instructions.
+
+% Grace Hopper.
+% Fran Allen: https://www.ibm.com/blogs/research/2020/08/remembering-frances-allen/
 
 % This is the same as a question and answer. Request and reponse. Order and delivery. It shows up over and over and over again. Get ready to see it throughout this book. Whenever you get lost in a program---and everyone does; I do multiple times a day---stop and ask yourself, ``What inputs have I received? What outputs am I supposed to make from them?'' Start there and work your way from one to the other, forwards or backwards.
 %
