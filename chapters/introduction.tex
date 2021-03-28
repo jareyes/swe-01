@@ -92,6 +92,42 @@ Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, `
   Come up with three more examples that can be modeled by the fundamental diagram.
 \end{question}
 
+\section{Four Friends of Programming}
+
+There are lots of things to learn about engineering. New technologies are built every single day. And it is difficult to keep up. The shear number of things to know can be overwhelming. But fear not! There actually aren't that many different things you can do with a programming language. In fact, there are only four.\marginnote{The fact that there are only four things you can do is something of a theoretical marvel. It is related to \emph{Church-Turing thesis} and lies as the heart of the foundations of computing. Lucky for us, it means we need to learn only four concepts. Actually the fourth one, organization and reuse, is merely a convenience for us humans.} Any new technology or technique you run across is a cousin to one or more of the four friends you will make in this chapter. The four things you can do in a programming language are:
+
+\begin{enumerate}
+  \item \textbf{Store data and retrieve it later to use.}
+  Your friend for the pillar of data storage and retrieval is a \emph{variable}. Other instances of this pillar include files, databases, networked resources, and web pages on the Internet. At their heart, however, they're all about stashing some information somewhere and fetching it later.
+
+  \item \textbf{Conditionally do something.}
+  Your friend for the pillar of conditional execution is the \textsf{if} statement. Other examples of this pillar include associative arrays, pattern matching, and \textsf{switch} statements. These technologies exist to add decision-making into programs. Conditional elements put the ``sometimes'' into programs that would otherwise be ``always'' based on context and circumstance.
+
+  \item \textbf{Repeat things.}
+  The ability to repeat things quickly is what makes computers so useful. Your friend for the pillar of repetition is the \textsf{for}~loop. Other examples of this pillar include \textsf{while}~loops and \textsf{do-while}~loops, recursion, and coroutines. At their core, however, the whole point is to repeat something.
+
+  \item \textbf{Organize 1--3 into reusable pieces.}
+  This last pillar isn't technically required, but it perhaps the most useful.\marginnote{See, for example, the controversy about whether or not to put curly braces on their own line or not: https://en.wikipedia.org/wiki/Indentation\_style.} It's all about organizing our programs into pieces that are easy for people to read, understand, expand, troubleshoot, and fix. This pillar could also be called \emph{style}. Your friend from this pillar is \emph{function}. Other members of the pillar include libraries, modules, closures, classes, and design patterns\marginnote{People write full books on programming style and they almost always disagree on what ``best'' practices are.}. Since style is often a matter of taste, this pillar is the most contentious and is the basis of many religious wars.
+\end{enumerate}
+
+That's it! Master the four pillars of programming and you can confidently tackle any project. That is not to say that these four skills are easy to master. Mastery is hard work. But when you find yourself learning something new, ask yourself, ``Which of my four friends is this new friend most like?'' Or if you are stuck implementing a solution and aren't sure what to do, ask yourself, ``Which of my four friends could help me most right now?''
+
+\subsection{Data Types}
+Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations that you can apply to those values. Each piece of information in a program has three parts:
+
+\begin{itemize}
+  \item Name
+  \item Data Type
+  \item Value
+\end{itemize}
+
+Since each value in a program belongs to a data type---data types are how we represent information, after all---type and value are always associated with a piece of data. Names, however, are optional. When an element of a data type is associated with a name, we call it a \emph{variable}. A variable is a data type value that has a name. An element of a data type that does not have a name is called a \emph{literal value}. The diffrence between a variable and a literal value is that you can use the name of a variable to reference it later. Literal values, however, need to be used immediately and cannot be referened later in your program---because they don't have a name to call them later!
+
+NodeJS has a handful of built-in data types. The most familiar one will be the \texttt{Number} data type. You won't be surprised to learn that the \texttt{Number} data type is used to represent numerical values in NodeJS.
+
+
+
+
 %
 % \paragraph{Example (Compilers and Interpreters)}
 %
