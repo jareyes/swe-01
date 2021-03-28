@@ -113,7 +113,7 @@ There are lots of things to learn about engineering. New technologies are built 
 That's it! Master the four pillars of programming and you can confidently tackle any project. That is not to say that these four skills are easy to master. Mastery is hard work. But when you find yourself learning something new, ask yourself, ``Which of my four friends is this new friend most like?'' Or if you are stuck implementing a solution and aren't sure what to do, ask yourself, ``Which of my four friends could help me most right now?''
 
 \subsection{Data Types}
-Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations that you can apply to those values. Each piece of information in a program has three parts:
+Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
 
 \begin{itemize}
   \item Name
@@ -123,11 +123,44 @@ Before we can talk about storing and using information, we need to talk about ho
 
 Since each value in a program belongs to a data type---data types are how we represent information, after all---type and value are always associated with a piece of data. Names, however, are optional. When an element of a data type is associated with a name, we call it a \emph{variable}. A variable is a data type value that has a name. An element of a data type that does not have a name is called a \emph{literal value}. The diffrence between a variable and a literal value is that you can use the name of a variable to reference it later. Literal values, however, need to be used immediately and cannot be referened later in your program---because they don't have a name to call them later!
 
-NodeJS has a handful of built-in data types. The most familiar one will be the \texttt{Number} data type. You won't be surprised to learn that the \texttt{Number} data type is used to represent numerical values in NodeJS.
+NodeJS has a handful of built-in data types. The most familiar one will be the \textsf{Number} data type. You won't be surprised to learn that the \textsf{Number} data type is used to represent numerical values in NodeJS.
 
+Since \textsf{Number} is a data type, we need to know two things:
+\begin{enumerate}
+  \item What are the \emph{values} of \textsf{Number}?
+  \item What are the \emph{operators} that act on values of \textsf{Number}?
+\end{enumerate}
 
+The reason we're staring with the \textsf{Number} data type is because the values of \textsf{Number} can be expressed in NodeJS in roughly the same way you'd write them anywhere else: by typing digits of the number you want to use. Node can handle positive and negative values, as well as values with fractional parts using decimal notations. For example, let's type a few literal \textsf{Number} values into the NodeJS interpreter and see how it responds:
 
+\suppresslinenumbers
+\begin{lstlisting}
+> 144
+144
+> -8
+-8
+> 0.1
+0.1
+> -0.2
+\end{lstlisting}
+\reactivatelinenumbers
 
+The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Number} value 144. Remember that each piece of information in a program has three parts: a name, a type, and a value. Let's draw a box diagram for the symbol \texttt{144}.
+
+\begin{table}[h!]
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+    \hline
+    --- & \textsf{Number} & 144\\
+    \hline
+  \end{tabular}
+  \caption{Box diagram for the literal value \texttt{144}}
+\end{table}
+
+The \emph{symbol} \texttt{144} looks like the number 144 you've used outside of programs, but it is not! NodeJS turns the symbol \texttt{144} into a \textsf{Number} value under the hood that behaves like the like number 144. It was \emph{programmed} that way. And the program works so well that is easy to forget that it exists and is doing work at all. Sometimes, however, the fact that we are not working with numbers does show through. This fact is evident when working with numbers with fractional parts.
+
+Before we get to how \textsf{Number} values do not behave identically to numerical values you're used to, it's worth mentioning three special \textsf{Number} values that exist in NodeJS. They are identified by the symbols \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN}. The first two represent and represent positive and negative infinity, respectively. Third, \texttt{NaN}, usually pronounced "nan", represents a special value that is \emph{not a number}. \texttt{NaN} appears when programs try to combine numerical values with non-numerical values. We'll encounter \texttt{NaN} later on, but for now it's good simply to know that \texttit{NaN} exists.
 %
 % \paragraph{Example (Compilers and Interpreters)}
 %
