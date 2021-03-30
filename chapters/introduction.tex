@@ -112,6 +112,8 @@ There are lots of things to learn about engineering. New technologies are built 
 
 That's it! Master the four pillars of programming and you can confidently tackle any project. That is not to say that these four skills are easy to master. Mastery is hard work. But when you find yourself learning something new, ask yourself, ``Which of my four friends is this new friend most like?'' Or if you are stuck implementing a solution and aren't sure what to do, ask yourself, ``Which of my four friends could help me most right now?''
 
+\textbf{TODO: Add questions about the four pillars/abilities.}
+
 \subsection{Data Types}
 Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
 
@@ -140,7 +142,7 @@ You always can---and often should!---write a box diagram for data in your progra
   \hline
   \textsc{Name} & \textsc{Type} & \textsc{Value}\\
   \hline
-  --- & \textsf{Number} & $-8$\\
+  --- & \textsf{Number} & \texttt{-8}\\
   \hline
 \end{tabular}
 
@@ -148,7 +150,7 @@ You always can---and often should!---write a box diagram for data in your progra
   \hline
   \textsc{Name} & \textsc{Type} & \textsc{Value}\\
   \hline
-  --- & \textsf{Number} & $0.1$\\
+  --- & \textsf{Number} & \texttt{0.1}\\
   \hline
 \end{tabular}
 
@@ -156,7 +158,7 @@ You always can---and often should!---write a box diagram for data in your progra
   \hline
   \textsc{Name} & \textsc{Type} & \textsc{Value}\\
   \hline
-  --- & \textsf{Number} & $-0.2$\\
+  --- & \textsf{Number} & \texttt{-0.2}\\
   \hline
 \end{tabular}
 }
@@ -173,6 +175,7 @@ You always can---and often should!---write a box diagram for data in your progra
 \end{lstlisting}
 \reactivatelinenumbers
 
+
 The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Number} value 144. Remember that each piece of information in a program has three parts: a name, a type, and a value. Let's draw a box diagram for the symbol \texttt{144}.
 
 \begin{table}[h!]
@@ -180,7 +183,7 @@ The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Numbe
     \hline
     \textsc{Name} & \textsc{Type} & \textsc{Value}\\
     \hline
-    --- & \textsf{Number} & $144$\\
+    --- & \textsf{Number} & \texttt{144}\\
     \hline
   \end{tabular}
   \caption{Box diagram for the literal value \texttt{144}}
@@ -217,8 +220,76 @@ The symbol \texttt{144} looks like the number 144 you've used outside of program
 
 Before we get to how \textsf{Number} values do not behave identically to numerical values you're used to, it's worth mentioning three special \textsf{Number} values that exist in NodeJS. They are identified by the symbols \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN}. The first two represent and represent positive and negative infinity, respectively. Third, \texttt{NaN}, usually pronounced ``nan'', represents a special value that is \emph{not a number}. \texttt{NaN} appears when programs try to combine numerical values with non-numerical values. We'll encounter \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN} later on, but for now it's good enough simply to know that they exist.
 
+\begin{question}
+  Is \texttt{-0.2} a variable or a literal value? How do you know?
+\end{question}
+
+\begin{question}
+  Is \texttt{NaN} a variable or a literal value? How do you know?
+\end{question}
+
+\begin{question}
+  Draw the box diagrams for \texttt{100}, \texttt{3.14159}, \texttt{-64}, and \texttt{0}.
+\end{question}
+
 Numbers would be useless if all we could do was type them on after another. The reason numbers show up so often, in computing and in life, is because they can be combined, substracted, compared, exponentiated, square-rooted, and a million other things. Numbers are useful because of the operators that transform input numbers into output values. That idea is so important, it bears repeating:
 
 \begin{quotation}
   Values are not useful on their own. Transformations\marginnote{You might even say that transformations are fundamentally important.} that relate values to each other are what make them useful.
 \end{quotation}
+
+NodeJS has a handful of built-in operators that transform \textsf{Number} values into other \textsf{Number} values that you are probably familiar with. Arithmetic operators like addition (\texttt{+}) and subtraction (\texttt{-}) follow a syntax that is commonly used outside of programming. The arithmetic operators are special in JavaScript in that they use infix notation---you place the operator in between its inputs. For example, to add the \textsf{Number} values \texttt{4} and \texttt{5} you type:
+
+\suppresslinenumbers
+\begin{lstlisting}
+> 4 + 5
+9
+\end{lstlisting}
+
+Other arthmetic expressions work more or less as you would expect, except that multiplication is denoted by an asterisk (\texttt{*}) and exponentiation is denoted by a double asterisk (\texttt{**}). The remainder operator (\texttt{\%}) is an old favorite among programmers. It calculates the remainder when one whole number has been divided by another. In the example below \texttt{4 \% 5} evaluates to \texttt{4} because 5 goes into 4 zero times and leaves 4 left over.
+
+\begin{table}
+  \begin{tabular}{lccc}
+    Operation & Operator & Example & Evaluation\\
+    \hline
+    Addition & \texttt{+} & \texttt{3 + 12.5} & \texttt{15.5}\\
+    Subtraction & \texttt{-} & \texttt{-7.2 - 3} & \texttt{-10.2}\\
+    Multiplication & \texttt{*} & \texttt{144 * 0} & \texttt{0}\\
+    Division & \texttt{/} & \texttt{12 / 4} & \texttt{3}\\
+    Exponentiation & \texttt{**} & \texttt{3 ** 4} & \texttt{81}\\
+    Remainder & \texttt{\%} & \texttt{21 \% 10} & \texttt{1}\\
+  \end{tabular}
+  \caption{The arithmetic operators}
+\end{table}
+
+\begin{lstlisting}
+> 4 - 5
+-1
+> 4 * 5
+20
+> 4 / 5
+0.8
+> 4 ** 5
+1024
+> 4 % 5
+4
+> 6 % 5
+1
+\end{lstlisting}
+
+\begin{figure}
+  \textbf{TODO: Fundamental diagram for addition}
+\end{figure}
+\begin{question}
+  Why does \texttt{6 \% 5} evaluate to \texttt{1}?
+\end{question}
+
+\begin{question}
+  Use the Node interpreter to find the following values:
+  \begin{enumerate}
+    \item The sum of counting numbers 1 to 10
+    \item $13^{16}$
+    \item One-tenth of 0.2
+    \item The remainder when 143 has been divided by 3
+  \end{enumerate}
+\end{question}
