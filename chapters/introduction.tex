@@ -92,38 +92,208 @@ Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, `
   Come up with three more examples that can be modeled by the fundamental diagram.
 \end{question}
 
-%
-% \paragraph{Example (Compilers and Interpreters)}
-%
-% This is the same as a question and answer. Request and reponse. Order and delivery. It shows up over and over and over again. Get ready to see it throughout this book. Whenever you get lost in a program---and everyone does; I do multiple times a day---stop and ask yourself, ``What inputs have I received? What outputs am I supposed to make from them?'' Start there and work your way from one to the other, forwards or backwards.
-%
-%
-%
-% \section{Programming}
-% Programming can feel complicated. And a lot of times it is. But underneath all the bells and buzzwords of programming, there are really only four things you can do:
-%
-% \begin{enumerate}
-%   \item Store information somewhere and use it later.
-%   \item Conditionally do something.
-%   \item Repeat things.
-%   \item Organize the machinery of (1), (2), and (3) into reusable chunks.
-% \end{enumerate}
-%
-% If you can master those four things, you will have mastered software engineering.
-%
-% \section{Storing information}
-% Storing information is at the heart of software. Data is king. You see it everywhere, from advertisers to political campaigns, scientific experiments, and your email. In programming, we have to decide \textit{what} data to keep around and \textit{how} to store it.
-%
-% You have come across many different data storage mechanisms. Data can be saved to files on disk, stored in a database, on your computer, on another computer that you access via the internet, or on external hard drive. In programs we have other choices that we'll learn about soon.
-%
-% The power of data does not come solely from storing it. Buried treasure isn't valuable until you dig it up and use it. So, too, with data. To be useful, we need to be able to retrieve and employ the data we have stored to complete a task. Many technologies have been created simply to make finding the data you're looking for fast and efficient. This is the purview of databases and key-value stores. But also of variables, objects, and data structures.
-%
-% The actual mechanism you use to store and retrieve your data isn't especially important right now. All that you should remember is that in programming you can jot down some important information and use it again later.
-%
-% \section{Conditional execution}
-% \section{Repeating}
-% \section{Organization}
-%
-% How you structure an email is different from how you structure a novel. Good writing is tailored to the task at hand. There are two consumers of your code: the compiler, which turns it into instructions the computer can execute. But more importantly, PEOPLE---including future you! Programs are human-readable, not machine readable. Remember, the compiler is a translator; it translates the human-readable code that a \emph{human} wrote into something a human \emph{cannot} read. (Unless you're my friend EJ or my coworker Jay.) Good programming has the same hallmarks as good writing does, because that's what it is: it's a kind of writing. That's why we call them programming \emph{languages}. When you write code, you should strive to be clear. That means structuring your code in a way that shows intent: using convenient data structures and other abstractions. Encapsulating. Using simple control structures instead of fancy ones. Be explicit (no globals or other captured scope). Principle of least surprise. Make it look like someone else wrote the code: copy the style and conveniention, even if it's not your own. Cognitive load is real. Context switching is real. Keep the styles the same.
-%
-% Style is a holy war. Nothing is perfect. Always trade-offs. Often it's a matter of taste and who the fuck cares. (Where to place the brackets.)
+\section{Four Friends of Programming}
+
+There are lots of things to learn about engineering. New technologies are built every single day. And it is difficult to keep up. The shear number of things to know can be overwhelming. But fear not! There actually aren't that many different things you can do with a programming language. In fact, there are only four.\marginnote{The fact that there are only four things you can do is something of a theoretical marvel. It is related to \emph{Church-Turing thesis} and lies as the heart of the foundations of computing. Lucky for us, it means we need to learn only four concepts. Actually the fourth one, organization and reuse, is merely a convenience for us humans.} Any new technology or technique you run across is a cousin to one or more of the four friends you will make in this chapter. The four things you can do in a programming language are:
+
+\begin{enumerate}
+  \item \textbf{Store data and retrieve it later to use.}
+  Your friend for the pillar of data storage and retrieval is a \emph{variable}. Other instances of this pillar include files, databases, networked resources, and web pages on the Internet. At their heart, however, they're all about stashing some information somewhere and fetching it later.
+
+  \item \textbf{Conditionally do something.}
+  Your friend for the pillar of conditional execution is the \textsf{if} statement. Other examples of this pillar include associative arrays, pattern matching, and \textsf{switch} statements. These technologies exist to add decision-making into programs. Conditional elements put the ``sometimes'' into programs that would otherwise be ``always'' based on context and circumstance.
+
+  \item \textbf{Repeat things.}
+  The ability to repeat things quickly is what makes computers so useful. Your friend for the pillar of repetition is the \textsf{for}~loop. Other examples of this pillar include \textsf{while}~loops and \textsf{do-while}~loops, recursion, and coroutines. At their core, however, the whole point is to repeat something.
+
+  \item \textbf{Organize 1--3 into individual pieces.}
+  This last pillar isn't technically required, but it perhaps the most useful.\marginnote{See, for example, the controversy about whether or not to put curly braces on their own line or not: https://en.wikipedia.org/wiki/Indentation\_style.} It's all about organizing our programs into pieces that are easy for people to read, understand, expand, troubleshoot, and fix. This pillar could also be called \emph{programming style}. Your friend from this pillar is \emph{function}. Other members of the pillar include libraries, modules, closures, classes, and design patterns\marginnote{People write full books on programming style and they almost always disagree on what ``best'' practices are.}. Since style is often a matter of taste, this pillar is the most contentious and is the basis of many religious wars.
+\end{enumerate}
+
+That's it! Master the four pillars of programming and you can confidently tackle any project. That is not to say that these four skills are easy to master. Mastery is hard work. But when you find yourself learning something new, ask yourself, ``Which of my four friends is this new friend most like?'' Or if you are stuck implementing a solution and aren't sure what to do, ask yourself, ``Which of my four friends could help me most right now?''
+
+\textbf{TODO: Add questions about the four pillars/abilities.}
+
+\subsection{Data Types}
+Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
+
+\begin{itemize}
+  \item Name
+  \item Data Type
+  \item Value
+\end{itemize}
+
+Since each value in a program belongs to a data type---data types are how we represent information, after all---type and value are always associated with a piece of data. Names, however, are optional. When an element of a data type is associated with a name, we call it a \emph{variable}. A variable is a data type value that has a name. An element of a data type that does not have a name is called a \emph{literal value}. The diffrence between a variable and a literal value is that you can use the name of a variable to reference it later. Literal values, however, need to be used immediately and cannot be referened later in your program---because they don't have a name to call them later!
+
+NodeJS has a handful of built-in data types. The most familiar one will be the \textsf{Number} data type. You won't be surprised to learn that the \textsf{Number} data type is used to represent numerical values in NodeJS.
+
+Since \textsf{Number} is a data type, we need to know two things:
+\begin{enumerate}
+  \item What are the \emph{values} of \textsf{Number}?
+  \item What are the \emph{operators} that act on values of \textsf{Number}?
+\end{enumerate}
+
+The reason we're staring with the \textsf{Number} data type is because the values of \textsf{Number} can be expressed in NodeJS in roughly the same way you'd write them anywhere else: by typing digits of the number you want to use. Node can handle positive and negative values, as well as values with fractional parts using decimal notations. For example, let's type a few literal \textsf{Number} values into the NodeJS interpreter and see how it responds:
+
+\marginnote{
+You always can---and often should!---write a box diagram for data in your programs. Here are box diagrams for the other \textsf{Number} values we typed into the interpreter.
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{-8}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{0.1}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{-0.2}\\
+  \hline
+\end{tabular}
+}
+
+\suppresslinenumbers
+\begin{lstlisting}
+> 144
+144
+> -8
+-8
+> 0.1
+0.1
+> -0.2
+\end{lstlisting}
+\reactivatelinenumbers
+
+
+The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Number} value 144. Remember that each piece of information in a program has three parts: a name, a type, and a value. Let's draw a box diagram for the symbol \texttt{144}.
+
+\begin{table}[h!]
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+    \hline
+    --- & \textsf{Number} & \texttt{144}\\
+    \hline
+  \end{tabular}
+  \caption{Box diagram for the literal value \texttt{144}}
+\end{table}
+
+The symbol \texttt{144} looks like the number 144 you've used outside of programs, but it is not! NodeJS turns the symbol \texttt{144} into a \textsf{Number} value under the hood that behaves like the like number 144. It was \emph{programmed} that way. And the program works so well that is easy to forget that it exists and is doing work at all. Sometimes, however, the fact that we are working with programs that simulate numbers and not working with numbers themselves does show through. This fact is especially evident when working with numbers with fractional parts.
+
+\marginnote{There is nothing special about the box diagrams for the special \textsf{Number} values. They have a type and value, just like any other piece of data.
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{Infinity\phantom{-}}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{-Infinity}\\
+  \hline
+\end{tabular}
+
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{\phantom{inf}NaN\phantom{ity}}\\
+  \hline
+\end{tabular}
+}
+
+Before we get to how \textsf{Number} values do not behave identically to numerical values you're used to, it's worth mentioning three special \textsf{Number} values that exist in NodeJS. They are identified by the symbols \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN}. The first two represent and represent positive and negative infinity, respectively. Third, \texttt{NaN}, usually pronounced ``nan'', represents a special value that is \emph{not a number}. \texttt{NaN} appears when programs try to combine numerical values with non-numerical values. We'll encounter \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN} later on, but for now it's good enough simply to know that they exist.
+
+\begin{question}
+  Is \texttt{-0.2} a variable or a literal value? How do you know?
+\end{question}
+
+\begin{question}
+  Is \texttt{NaN} a variable or a literal value? How do you know?
+\end{question}
+
+\begin{question}
+  Draw the box diagrams for \texttt{100}, \texttt{3.14159}, \texttt{-64}, and \texttt{0}.
+\end{question}
+
+Numbers would be useless if all we could do was type them on after another. The reason numbers show up so often, in computing and in life, is because they can be combined, substracted, compared, exponentiated, square-rooted, and a million other things. Numbers are useful because of the operators that transform input numbers into output values. That idea is so important, it bears repeating:
+
+\begin{quotation}
+  Values are not useful on their own. Transformations\marginnote{You might even say that transformations are fundamentally important.} that relate values to each other are what make them useful.
+\end{quotation}
+
+NodeJS has a handful of built-in operators that transform \textsf{Number} values into other \textsf{Number} values that you are probably familiar with. Arithmetic operators like addition (\texttt{+}) and subtraction (\texttt{-}) follow a syntax that is commonly used outside of programming. The arithmetic operators are special in JavaScript in that they use infix notation---you place the operator in between its inputs. For example, to add the \textsf{Number} values \texttt{4} and \texttt{5} you type:
+
+\suppresslinenumbers
+\begin{lstlisting}
+> 4 + 5
+9
+\end{lstlisting}
+
+Other arthmetic expressions work more or less as you would expect, except that multiplication is denoted by an asterisk (\texttt{*}) and exponentiation is denoted by a double asterisk (\texttt{**}). The remainder operator (\texttt{\%}) is an old favorite among programmers. It calculates the remainder when one whole number has been divided by another. In the example below \texttt{4 \% 5} evaluates to \texttt{4} because 5 goes into 4 zero times and leaves 4 left over.
+
+\begin{table}
+  \begin{tabular}{lccc}
+    Operation & Operator & Example & Evaluation\\
+    \hline
+    Addition & \texttt{+} & \texttt{3 + 12.5} & \texttt{15.5}\\
+    Subtraction & \texttt{-} & \texttt{-7.2 - 3} & \texttt{-10.2}\\
+    Multiplication & \texttt{*} & \texttt{144 * 0} & \texttt{0}\\
+    Division & \texttt{/} & \texttt{12 / 4} & \texttt{3}\\
+    Exponentiation & \texttt{**} & \texttt{3 ** 4} & \texttt{81}\\
+    Remainder & \texttt{\%} & \texttt{21 \% 10} & \texttt{1}\\
+  \end{tabular}
+  \caption{The arithmetic operators}
+\end{table}
+
+\begin{lstlisting}
+> 4 - 5
+-1
+> 4 * 5
+20
+> 4 / 5
+0.8
+> 4 ** 5
+1024
+> 4 % 5
+4
+> 6 % 5
+1
+\end{lstlisting}
+
+\begin{figure}
+  \textbf{TODO: Fundamental diagram for addition}
+\end{figure}
+\begin{question}
+  Why does \texttt{6 \% 5} evaluate to \texttt{1}?
+\end{question}
+
+\begin{question}
+  Use the Node interpreter to find the following values:
+  \begin{enumerate}
+    \item The sum of counting numbers 1 to 10
+    \item $13^{16}$
+    \item One-tenth of 0.2
+    \item The remainder when 143 has been divided by 3
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  Draw the fundamental diagram for subtraction.
+\end{question}
