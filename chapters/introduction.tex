@@ -153,6 +153,16 @@ That's it! Master the four pillars of programming and you can confidently tackle
 
 \textbf{TODO: Add questions about the four pillars/abilities.}
 
+\textbf{TODO: Remark that programming languages are programs.} Compilers and interpreters are programs themselves, and therefore need to be programmed in a programming language.
+
+If ther are only four things you can do in any programming language, why are there so many? You need to be able to do 1--3 in any general programming language. How do you do that and how you organize the code is all up to 4. Programming languages fall into certain ways of organizing your thoughts---these styles of thinking and orgaization are called paradigms. Most languages will be multi-paradigm.
+
+Examples Imperative: C, Algol, Fortan, NodeJS. Declarative: SQL, Metafont, Prolog. Object based: Java.  Stack-based: PostScript, Forth. Functional: Haskell. Erlang. List-based: LISP, Scheme. Array-based: Matlab, Julia, Numpy. Multi-paradigm: Python, Swift.\marginnote{There are as many paradigms as there are ways of thinking. APL is insane-o. Here is a program that finds prime numbers in APL. \texttt{PRIMES : (\textasciitilde R$\in$R$\circ$.$\times$R)/R$\leftarrow$1$\downarrow$$\iota$R}}
+
+Languages make some tasks easier, but at the cost of making other harder. Bob Marley, ``Truth is everybody is going to hurt you: you just gotta find the ones worth suffering for.'' Everything is a trade-off in design, including programming language design. You can technically create a mobile app in Julia, but it would be very, very, very hard. You can implement scientific computing in NodeJS, but it would be very, very hard. Choose a good tool for the task at hand.
+
+Remember that programming languages are implemented by their compiler---the compiler converts text files into machine executable code. But the compiler is just a program, so it has to be written in a programming language. There is source code for the compiler that a compiler compiles. The standard implementation of Python is written in C, but Jython is Python implemented in Java.
+
 \subsection{Data Types}
 Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
 
