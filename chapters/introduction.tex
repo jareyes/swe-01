@@ -346,3 +346,62 @@ Other arthmetic expressions work more or less as you would expect, except that m
 \begin{question}
   Draw the fundamental diagram for subtraction.
 \end{question}
+
+Remember that we said \texttt{144} is not the number 144, but just a program that simulates the number 144? What did we mean by that? It's easiest to understand that even data types as central computing as numeric values are just programmatic models of the real thing when our experience in the real world doesn't match the model. What should you get when you multiply \texttt{0.1} by \texttt{0.2}? Compare that with that you actually get.
+
+\begin{lstlisting}
+> 0.1 * 0.2
+0.020000000000000004
+\end{lstlisting}
+
+Look at that! There is a 4 where there shouldn't be. That errant 4 is an artifact of the representation NodeJS uses under the hood to implement numeric values.
+
+Before you start hating on NodeJS, think about the task at hand. How many numbers are there? An \emph{infinite} number of them.\marginnote{Worse than just infinite. The real numbers, which include pathological numbers like $\pi$ and $e$, are \textit{uncountably infinite}. That's a larger infinity than the number of counting numbers or fractions.} How much memory does your computer have? I'm willing to bet it's less than infinite. Off the bat, that should make you wonder whether its possible to implement numeric values with infinite precision.
+
+\marginnote{\emph{Never}, \textbf{ever}, \textbf{\emph{ever}} use floating point numbers to represent money. If you do, the IRS will come knocking on your door to explain all the money you invented and lost.} Instead, NodeJS uses a scheme called \textit{floating point arithmetic} represent numeric values. That choice is a compromise between having numeric values that act like numbers most of the time, within a tolerance that is acceptable for most applications, and still fitting in memory and being fast. Most programming languages use floating point arithmetic to implement numeric values under the hood. If you work on financial applications, you should not use floating point values. And if you end up doing scientific computing, you'll want to learn about errors that occur because we cannot implement infinitely precise numbers. That field of study is called \emph{numerical analysis}.
+
+Now that we have a \textsf{Number} data type, complete with values and operators to play with, let's try to break it! In school, teachers often say you can't divide by zero. Let's see what happens when we try in NodeJS.
+
+\begin{lstlisting}
+> 8 / 0
+Infinity
+> -9 / 0
+-Infinity
+\end{lstlisting}
+
+In JavaScript, you \emph{can} divide by zero. Division by zero is defined in this simulation of number. Depending on whether you divide a positive number or a negative number by zero, you get the \textsf{Number} value \texttt{Infinity} or \texttt{-Infinity}. Both are perfectly good \textsf{Number} values and work more-or-less the same as any other \textsf{Number} value. Note that an expression that evaluates to \texttt{Infinity} (or any other \textsf{Number} value) is \emph{not} an error. In other languages, division by zero would cause an error.
+
+\begin{lstlisting}[caption={Try this at home, kids! A stack trace caused by a \texttt{ZeroDivisionError} in a Python interpreter.}]
+>>> 8 / 0
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: integer division or modulo by zero
+\end{lstlisting}
+
+In some programming languages, like Python, division by zero is totally verboten and will cause your program to crash. Even an expression that evaluates to the not-a-number \textsf{Number} value \texttt{NaN} is \emph{not} an error. Since \texttt{NaN} is a value, it can be the legitimate result of a calculation. The fact that division by zero is legal and evaluates to \texttt{Infinity} is neither right nor wrong, but an implemenation choice that the folks who designed NodeJS decided on. They could have gone the same route as Python by forbiding division by zero entirely, but they didn't. And that is not objectively better or worse. It just means the rules in NodeJS are different than in Python, and that's okay.
+
+\begin{question}
+  Draw the fundamental diagram for the expression \texttt{-9 / 0}.
+\end{question}
+
+\begin{question}
+  What do the following expression evaluate to?
+  \begin{enumerate}
+    \item \texttt{Infinity + 8}
+    \item \texttt{8 - Infinity}
+    \item \texttt{-Infinity / 12}
+    \item \texttt{Infinity / Infinity}
+  \end{enumerate}
+\end{question}
+
+\begin{question}
+  In plain English, what do the expressions \texttt{5 \% Infinity} and \texttt{Infinity \% 5} mean?
+\end{question}
+
+\begin{question}
+  What do the expressions \texttt{5 \% Infinity} and \texttt{Infinity \% 5} evaluate to? Why are they different? Do you agree with the programming language designers choice of values for the results of each expression?
+\end{question}
+
+\begin{question}
+  Draw the fundamental diagram for the expression \texttt{Infinity \% 5}.
+\end{question}
