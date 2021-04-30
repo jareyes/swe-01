@@ -435,10 +435,73 @@ Here is a description of what we're going to do:
 Inputs: n, the square of the number we're trying to calculates
         guess, our current guess for sqrt(n)
 
-1. If guess and n / guess are sufficiently close to each other
-   Return the current value of guess
+1a. If guess and n / guess are sufficiently close to each other
+1b.   Stop and return the current value of guess
 2. Otherwise update guess with the average of guess and n / guess.
 3. Go to Step 1
 \end{lstlisting}
 
-Before we try execute our algorithm, let's try to understand it a little bit. There are three steps, and they exhibit most of our programming friends!
+Before we try execute our algorithm, let's try to understand it a little bit. There are three steps, and at each step is one of your four friends! The entire algorithm describes a transformer of two inputs---the number we'd like to square root \texttt{n}, and a guess of the square root of \texttt{n}---and produces one output---an approximation to the square root of \texttt{n}. Since the algorithm describes a transformer, it has a fundamental diagram.
+
+\begin{center}
+\textbf{fundamental diagram of Netwon's method}
+\end{center}
+
+\begin{question}
+  Which of your four friends is in step 1? Explain your answer. (\textit{Hint:} There may be more than one friend hanging out per step.)
+\end{question}
+
+\begin{question}
+  Which of your four friends is in step 2? Explain your answer.
+\end{question}
+
+\begin{question}
+  Which of your four friends is in step 3? Explain your answer.
+\end{question}
+
+\begin{question}
+  Which line describes the output of the transformer? Explain your answer.
+\end{question}
+
+Newton's method works by successively honing in on the square root of the input number \texttt{n}. At each step, the true square root is between the current \texttt{guess} and the value \texttt{n / guess}. So we check to see if those two values are close enough to each other. If they are within our tolerance, we stop. The current guess is good enough for our approximation. If they are not, we continue to update \texttt{guess} to get a value that is closer to the square root, making a sequence of progressively better guesses as we go along.
+
+As it is described, Newton's method requires only numeric values and arithmetic operators. That means we can already implement the algorithm! Let's try to calculate $\sqrt{2}$ to three decimal places. We'll start with an initial guess of 1, though you could start with any guess you like\sidenote{The closer your initial guess is to the actual square root, the faster the Newton's method converges.}.
+
+You can (and \emph{should}) type the following into a JavaScript or Node interpreter to follow along. Each line beginning with \texttt{>} is a line that you type. Then Node will evaluate your instructions and display the evaluation on the next line. There are special lines that begin with \texttt{//}. These lines contain \emph{comments}. Comments are used widely in programming to help out human readers---machines blissfully ignore them. Comments describe tricky bits of code; remind ourselves why we did something that at first glance looks counterintuitive or wrong; or leave a note explaining how you were feeling at the moment you wrote the code. Comments are the unsung heroes of programming, and you should write lots and lots of comments in your own code. We'll talk about them more as we go on. In this example, comments annotate exactly which step of Newton's method we're calculating and keeping track of the values involved in the algorithm.
+
+\begin{lstlisting}[caption={Calculating $\sqrt{2}$ to three decimal places using Newton's Method}]
+> // Initial guess: 1
+> 1
+1
+> // Step 1a. Check if the current guess is close enough.
+> 1 - 2/1
+0.5
+> // 0.5 is not close enough. Keep going.
+> // Step 2. Update the current guess.
+> (1 + 2/1)/2
+1.5
+> // The new guess is 1.5.
+> 1.5 - 2/1.5
+> // Step 3, go back to Step 1.
+> // Step 1a. Check if the current guess is close enough.
+0.16666666666666674
+> // 0.1666666674 is not close enough. Keep going.
+> // Step 2. Update the current guess.
+> (1.5 + 2/1.5)/2
+1.4166666666666665
+> // The new guess is 1.4166666666666665.
+> // Step 1a. Check if the current guess is close enough.
+> 1.4166666666666665 - 2/1.4166666666666665
+0.004901960784313486
+> // 0.004901960784313486 is 2 decimal places correct. But we want three. Keep going.
+> // Step 2. Update the current guess.
+> (1.4166666666666665 + 2/1.4166666666666665)/2
+> // The new guess is 1.4142156862745097
+> // Step 3, go back to Step 1.
+> // Step 1a. Check if the current guess is close enough.
+> 1.4142156862745097 - 2/1.4142156862745097
+> 0.0000042477996395895445
+> // Step 3, go to Step 1 again.
+> // Check: 0.0000042477996395895445 tells us we are correct to 5 decimal places. Stop! Our current guess is good enough. Return the current guess 1.4142156862745097. That value is our output.
+
+\end{lstlisting}
