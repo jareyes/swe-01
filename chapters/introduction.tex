@@ -358,7 +358,7 @@ Look at that! There is a 4 where there shouldn't be. That errant 4 is an artifac
 
 Before you start hating on NodeJS, think about the task at hand. How many numbers are there? An \emph{infinite} number of them.\marginnote{Worse than just infinite. The real numbers, which include pathological numbers like $\pi$ and $e$, are \textit{uncountably infinite}. That's a larger infinity than the number of counting numbers or fractions.} How much memory does your computer have? I'm willing to bet it's less than infinite. Off the bat, that should make you wonder whether its possible to implement numeric values with infinite precision.
 
-\marginnote{\emph{Never}, \textbf{ever}, \textbf{\emph{ever}} use floating point numbers to represent money. If you do, the IRS will come knocking on your door to explain all the money you invented and lost.} Instead, NodeJS uses a scheme called \textit{floating point arithmetic} represent numeric values. That choice is a compromise between having numeric values that act like numbers most of the time, within a tolerance that is acceptable for most applications, and still fitting in memory and being fast. Most programming languages use floating point arithmetic to implement numeric values under the hood. If you work on financial applications, you should not use floating point values. And if you end up doing scientific computing, you'll want to learn about errors that occur because we cannot implement infinitely precise numbers. That field of study is called \emph{numerical analysis}.
+Instead, NodeJS uses a scheme called \textit{floating point arithmetic} represent numeric values. \marginnote{Never, \emph{ever}, EVER use floating point numbers to represent money. If you do, the IRS will come knocking on your door to explain all the money you invented and lost.} That choice is a compromise between having numeric values that act like numbers most of the time, within a tolerance that is acceptable for most applications, and still fitting in memory and being fast. Most programming languages use floating point arithmetic to implement numeric values under the hood. If you work on financial applications, you should not use floating point values. And if you end up doing scientific computing, you'll want to learn about errors that occur because we cannot implement infinitely precise numbers. That field of study is called \emph{numerical analysis}.
 
 Now that we have a \textsf{Number} data type, complete with values and operators to play with, let's try to break it! In school, teachers often say you can't divide by zero. Let's see what happens when we try in NodeJS.
 
@@ -424,3 +424,21 @@ An \emph{algorithm} is a step-by-step description of how to do something. An alg
 \begin{question}
   List three more things you know how to do and describe step-by-step instructions to teach someone else how to do one of them.
 \end{question}
+
+A recipe for a cake is not the same thing as a cake. \marginnote{Let's say it all together: \textsf{Algorithm~$\neq$~Solution}.} Just as a recipe is a procedure to produce cake, an algorithm is a procedure for turning inputs into outputs that solve a task. We will use an algorithm to turn a guess for the square root of 2 into a numeric approximation of the square root of two. \marginnote{Why are we only approximating $\sqrt{2}$? Because $\sqrt{2}$ is an irrational number. That means its decimal representation 1.41421356237\dots goes on forever without repeating. We'd run out of memory before we got all of the digits down. So we have to settle for an approximation that suits our tolerances. As an aside, only 15 digits of $\pi$ are good enough for NASA to plan interplanetary navigation for Voyager 1, which is currently about 12.5 billion miles away!} Keep in mind that the method we describe is not the square of two itself. In fact, the method is general enough to calculae the square root of any number, not just of two!
+
+The method we will use is called Newton's method. And while we won't discuss why Netwon's method works here, it is worth noting that to execute an algorithm you don't need to understand how the algorithm was concocted in the first place. That's the point of algorithms! They are so well specified, that even cold, unthinking pieces of electrified rocks can run them. In your career as a programmer, sometimes you will need to come up with an algorithm of your own to solve a problem. Other times, you will need to implement an algorithm that someone else came up with. It is good and necessary to be able to do both. For now, let's implement an algorithm that's between 300 and 4000 years old\sidenote{The Babylonian method for computing square roots is a special case of Netwon's method.}.
+
+Here is a description of what we're going to do:
+
+\begin{lstlisting}[caption={Newton's method for calculating square roots}]
+Inputs: n, the square of the number we're trying to calculates
+        guess, our current guess for sqrt(n)
+
+1. If guess and n / guess are sufficiently close to each other
+   Return the current value of guess
+2. Otherwise update guess with the average of guess and n / guess.
+3. Go to Step 1
+\end{lstlisting}
+
+Before we try execute our algorithm, let's try to understand it a little bit. There are three steps, and they exhibit most of our programming friends!
