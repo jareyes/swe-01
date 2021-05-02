@@ -413,6 +413,12 @@ Now that we have the \textsf{Number} data type, we have numeric \emph{values} an
 
 An \emph{algorithm} is a step-by-step description of how to do something. An algorithm is not a solution to a problem. It is a procedure for coming up with a solution given inputs. In other words, an algorithm describes a method for transforming inputs into outputs. You know how to do many things in real life---you can tie your shoes, shuffle cards, wash the dishes, make scrambled eggs, and install an app on your phone. In each task you follow a method. You already know lots of algorithms!\sidenote{You are just like the Mr.~Jourdain, in Moli\`ere's \textit{Le Bourgeois Gentilhomme}, who learns that he has been speaking prose his whole life without knowing it. You, too, have been implementing algorithms all your life!}
 
+\begin{figure}[h]
+  \input{figures/introduction/algorithm-fundamental-diagram.tex}
+  \caption{\label{fig:intro-algorithm-fundemental-diagram} An algorithm provides the process to turn inputs into outputs. An implementation of the algorithm is the program that you run on actual inputs to produce particular outputs.}
+\end{figure}
+
+
 \begin{question}
   In plain English, describe an algorithm for making a peanut butter and jelly sandwich. (If you aren't fond of peanut and jelly, substitute a sandwich you prefer better.) Number each step in your description.
 \end{question}
@@ -427,7 +433,7 @@ An \emph{algorithm} is a step-by-step description of how to do something. An alg
 
 [\textbf{TODO:} mention that computer used to be the job title of a person! How would you calculate the square root of a number? How do computers do it now? An algorithm. It has to be programmed. Calculating a square root is a program.]
 
-A recipe for a cake is not the same thing as a cake. \marginnote{Let's say it all together: \textsf{Algorithm~$\neq$~Solution}.} Just as a recipe is a procedure to produce cake, an algorithm is a procedure for turning inputs into outputs that solve a task. We will use an algorithm to turn a guess for the square root of 2 into a numeric approximation of the square root of two. \marginnote{Why are we only approximating $\sqrt{2}$? Because $\sqrt{2}$ is an irrational number. That means its decimal representation 1.41421356237\dots goes on forever without repeating. We'd run out of memory before we got all of the digits down. So we have to settle for an approximation that suits our tolerances. As an aside, only 15 digits of $\pi$ are good enough for NASA to plan interplanetary navigation for Voyager 1, which is currently about 12.5 billion miles away!} Keep in mind that the method we describe is not the square of two itself. In fact, the method is general enough to calculae the square root of any number, not just of two!
+A recipe for a cake is not the same thing as a cake. \marginnote{Let's say it all together: \textsf{Algorithm~$\neq$~Solution}.} Just as a recipe is a procedure to produce cake, an algorithm is a procedure for turning inputs into outputs that solve a task. We will use an algorithm to turn a guess for the square root of 2 into a numeric approximation of the square root of two. \marginnote{Why are we only approximating $\sqrt{2}$? Because $\sqrt{2}$ is an irrational number. That means its decimal representation 1.41421356237\dots goes on forever without repeating. We'd run out of memory before we got all of the digits down. So we have to settle for an approximation that suits our tolerances. As an aside, only 15 digits of $\pi$ are good enough for NASA to plan interplanetary navigation for Voyager 1, which is currently about 12.5 billion miles away!} Keep in mind that the method we describe is not the square of two itself. In fact, the method is general enough to calculate the square root of any number, not just of two!
 
 The method we will use is called Newton's method. And while we won't discuss why Netwon's method works here, it is worth noting that to execute an algorithm you don't need to understand how the algorithm was concocted in the first place. That's the point of algorithms! They are so well specified, that even cold, unthinking pieces of electrified rocks can run them. In your career as a programmer, sometimes you will need to come up with an algorithm of your own to solve a problem. Other times, you will need to implement an algorithm that someone else came up with. It is good and necessary to be able to do both. For now, let's implement an algorithm that's between 300 and 4000 years old\sidenote{The Babylonian method for computing square roots is a special case of Netwon's method.}.
 
@@ -472,39 +478,43 @@ As it is described, Newton's method requires only numeric values and arithmetic 
 You can (and \emph{should}) type the following into a JavaScript or Node interpreter to follow along. Each line beginning with \texttt{>} is a line that you type. Then Node will evaluate your instructions and display the evaluation on the next line. There are special lines that begin with \texttt{//}. These lines contain \emph{comments}. Comments are used widely in programming to help out human readers---machines blissfully ignore them. Comments describe tricky bits of code; remind ourselves why we did something that at first glance looks counterintuitive or wrong; or leave a note explaining how you were feeling at the moment you wrote the code. Comments are the unsung heroes of programming, and you should write lots and lots of comments in your own code. We'll talk about them more as we go on. In this example, comments annotate exactly which step of Newton's method we're calculating and keeping track of the values involved in the algorithm.
 
 \begin{lstlisting}[caption={\label{listing:intro-newton}Calculating $\sqrt{2}$ to three decimal places using Newton's Method}, escapeinside=$$]
-> $\color{gray}// Initial guess: 1$
+> $\color{gray}// \textbf{Initial guess:} 1$
 > 1
 1
-> $\color{gray}// Step 1a. Check if the current guess is close enough.$
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1 - 2/1
 0.5
 > $\color{gray}// 0.5 is not close enough. Keep going.$
-> $\color{gray}// Step 2. Update the current guess.$
+> $\color{gray}// \textbf{Step 2.} Update the current guess.$
 > (1 + 2/1)/2
 1.5
 > $\color{gray}// The new guess is 1.5.$
-> $\color{gray}// Step 3, go back to Step 1.$
-> $\color{gray}// Step 1a. Check if the current guess is close enough.$
+> $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1.5 - 2/1.5
 0.16666666666666674
 > $\color{gray}// 0.16666666666666674 is not close enough. Keep going$
-> $\color{gray}// Step 2. Update the current guess.$
+> $\color{gray}// \textbf{Step 2.} Update the current guess.$
 > (1.5 + 2/1.5)/2
 1.4166666666666665
 > $\color{gray}// The new guess is 1.4166666666666665.$
-> $\color{gray}// Step 1a. Check if the current guess is close enough.$
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1.4166666666666665 - 2/1.4166666666666665
 0.004901960784313486
-> $\color{gray}// 0.004901960784313486 is 2 decimal places correct. But we want three. Keep going.$
-> $\color{gray}// Step 2. Update the current guess.$
+> $\color{gray}// 0.004901960784313486 is 2 decimal places correct.$
+> $\color{gray}// But we want three. Keep going.$
+> $\color{gray}// \textbf{Step 2.} Update the current guess.$
 > (1.4166666666666665 + 2/1.4166666666666665)/2
 > $\color{gray}// The new guess is 1.4142156862745097$
-> $\color{gray}// Step 3, go back to Step 1.$
-> $\color{gray}// Step 1a. Check if the current guess is close enough.$
+> $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1.4142156862745097 - 2/1.4142156862745097
 > 0.0000042477996395895445
-> $\color{gray}// Step 3, go to Step 1 again.$
-> $\color{gray}// Check: 0.0000042477996395895445 tells us we are correct to 5 decimal places. Stop! Our current guess is good enough. Return the current guess {\color{cyan}1.4142156862745097}. That value is our output.$
+> $\color{gray}// \textbf{Step 3.} go to Step 1 again.$
+> $\color{gray}// \textbf{Step 1a.} Check: 0.0000042477996395895445 tells us we$
+> $\color{gray}// are correct to 5 decimal places, which is good enough.$
+> $\color{gray}// \textbf{Step 1b.} Stop! Return the current guess \textbf{1.4142156862745097}.$
+> $\color{gray}// That value is our output.$
 \end{lstlisting}
 
 \begin{question}
@@ -520,9 +530,9 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 \end{question}
 
 \begin{question}
-  Use Newton's method to calculate $\sqrt{4}$ to three decimal places. How many iterations of the loop did you execute in your calculation?
+  Use Newton's method to calculate $\sqrt{4}$ to three decimal places three times using 1, 2, and 100 as initial guesses. How many iterations of the loop did you execute in your calculation for each different initial guess?
 \end{question}
 
 \begin{question}
-  Use Newton's method to calculate $\sqrt{5}$ to three decimal places. How many iterations of the loop did you execute in your calculation?
+  Use Newton's method to calculate $\sqrt{5}$ to three decimal places. How will you choose your initial guess? How many iterations of the loop did you execute in your calculation?
 \end{question}
