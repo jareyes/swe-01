@@ -1,0 +1,18 @@
+\begin{scaletikzpicturetowidth}{\linewidth}
+  \begin{tikzpicture}[scale=\tikzscale, node distance=3cm, color=cyan, font=\sffamily\small]
+
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (implementation) {Implementation};
+    \node (inputs) [left of=implementation] {Squared number, Initial guess};
+    \node (outputs) [right of=implementation] {Approximate square root};
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (algorithm) [above of=implementation]{Newton's Method};
+    \node (problem) [above of=algorithm] {Calculate square root};
+
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (inputs) -- (implementation);
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (implementation) -- (outputs);
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (problem) -- (algorithm);
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (algorithm) -- (implementation);
+
+
+
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}

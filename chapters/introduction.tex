@@ -413,7 +413,9 @@ Now that we have the \textsf{Number} data type, we have numeric \emph{values} an
 
 An \emph{algorithm} is a step-by-step description of how to do something. An algorithm is not a solution to a problem. It is a procedure for coming up with a solution given inputs. In other words, an algorithm describes a method for transforming inputs into outputs. You know how to do many things in real life---you can tie your shoes, shuffle cards, wash the dishes, make scrambled eggs, and install an app on your phone. In each task you follow a method. You already know lots of algorithms!\sidenote{You are just like the Mr.~Jourdain, in Moli\`ere's \textit{Le Bourgeois Gentilhomme}, who learns that he has been speaking prose his whole life without knowing it. You, too, have been implementing algorithms all your life!}
 
-\begin{figure}[h]
+Once an algorithm exists, it can be implemented and executed in many different ways. Originally, the term ``computer'' was a job title for a people. Human computers executed algorithms by hand with pencil and paper. Today, programmers describe algorithms in programming language code. Each program is an \emph{implementation} of the algorithm. It is perfectly possible to have multiple implementations for the same algorithm---say, to write a progam for Android and another that does the same thing on iOS. Each version is a separate implementation of the same set of algorithms. And, in fact, we will implement some algorithms multiple times in this book as we learn more programming concepts.
+
+\begin{figure}
   \input{figures/introduction/algorithm-fundamental-diagram.tex}
   \caption{\label{fig:intro-algorithm-fundemental-diagram} An algorithm provides the process to turn inputs into outputs. An implementation of the algorithm is the program that you run on actual inputs to produce particular outputs.}
 \end{figure}
@@ -451,9 +453,10 @@ Inputs: n, the square of the number we're trying to calculates
 
 Before we try execute our algorithm, let's try to understand it a little bit. There are three steps, and at each step is one of your four friends! The entire algorithm describes a transformer of two inputs---the number we'd like to square root \texttt{n}, and a guess of the square root of \texttt{n}---and produces one output---an approximation to the square root of \texttt{n}. Since the algorithm describes a transformer, it has a fundamental diagram.
 
-\begin{center}
-\textbf{fundamental diagram of Netwon's method}
-\end{center}
+\begin{figure*}
+  \input{figures/introduction/newton-fundamental-diagram.tex}
+  \caption{\label{fig:intro-newton-fundamental-diagram} Newton's method takes as input a squared number $n$ and outputs an approximation to $\sqrt{n}$.}
+\end{figure*}
 
 \begin{question}
   Which of your four friends is in step 1? Explain your answer. (\textit{Hint:} There may be more than one friend hanging out per step.)
