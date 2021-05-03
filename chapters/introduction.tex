@@ -498,6 +498,7 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 > (1.5 + 2/1.5)/2
 1.4166666666666665
 > $\color{gray}// The new guess is 1.4166666666666665.$
+> $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
 > $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1.4166666666666665 - 2/1.4166666666666665
 0.004901960784313486
@@ -510,9 +511,8 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 > $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
 > 1.4142156862745097 - 2/1.4142156862745097
 > 0.0000042477996395895445
-> $\color{gray}// \textbf{Step 3.} go to Step 1 again.$
-> $\color{gray}// \textbf{Step 1a.} Check: 0.0000042477996395895445 tells us we$
-> $\color{gray}// are correct to 5 decimal places, which is good enough.$
+> $\color{gray}// 0.0000042477996395895445 tells us we are correct to$
+> $\color{gray}// 5 decimal places, which is good enough.$
 > $\color{gray}// \textbf{Step 1b.} Stop! Return the current guess \textbf{1.4142156862745097}.$
 > $\color{gray}// That value is our output.$
 \end{lstlisting}
@@ -536,3 +536,28 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 \begin{question}
   Use Newton's method to calculate $\sqrt{5}$ to three decimal places. How will you choose your initial guess? How many iterations of the loop did you execute in your calculation?
 \end{question}
+
+
+Trace the execution of the program:
+\begin{table*}
+  \small
+  \begin{tabular}{l c l c c c c}
+    Step & Squared Number & Current Guess & Updated Guess Expression & Updated Guess Evaluation & Check Expression & Check Evaluation\\
+    Inputs & \textbf{\texttt{2}} & \textbf{\texttt{1}} & --- & --- & --- \\
+    Step 1a & \texttt{2} & \texttt{1} & --- & --- & \texttt{1 - 2/1} & \texttt{0.5}\\
+    Step 2 (Evaluate) & \texttt{2} & \texttt{1} & \texttt{(1 + 2/1)/2} & \texttt{1.5} & --- & ---\\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.5} & \texttt{(1 + 2/1)/2} & \texttt{1.5} & --- & ---\\
+    Step 3 & \texttt{2} & \texttt{1.5} & --- & --- & --- & ---\\
+    Step 1a & \texttt{2} & \texttt{1.5} & --- & --- & 1.5 - 2/1.5 & 0.16666\\
+    Step 2 (Evaluate) & \texttt{2} & \texttt{1.5} & (1.5 + 2/1.5)/2 & 1.41666\dots & ---& 0.1666\dots\\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
+    Step 3 & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
+    Step 1a & \texttt{2} & \texttt{1.41666} & --- & --- & 1.41666 - 2/1.41666 & 0.0049\\
+    Step 2 (Evaluate) & \texttt{2} & \texttt{1.41666} & (1.4166 + 2/1.4166)/2 & 1.414215\\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
+    Step 3 & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
+    Step 1a &  \texttt{2} & \texttt{1.41421} & --- & --- & 1.41421 - 2/1.41421 & 0.000004\\
+    Step 1b & \texttt{2} & \textbf{\texttt{1.41421}} & --- & --- & --- & ---\\
+  \end{tabular}
+  \caption{Trace of the execution of Newton's method in Listing \ref{listing:intro-newton}}
+\end{table*}
