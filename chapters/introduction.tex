@@ -354,7 +354,16 @@ Remember that we said \texttt{144} is not the number 144, but just a program tha
 0.020000000000000004
 \end{lstlisting}
 
-Look at that! There is a 4 where there shouldn't be. That errant 4 is an artifact of the representation NodeJS uses under the hood to implement numeric values.
+Look at that! There is a 4 where there shouldn't be. That errant 4 is an artifact of the representation NodeJS uses under the hood to implement numeric values. And if you think that this is only a problem with numbers with decimal values, look at what happens when you try to add these two integers.
+
+\begin{lstlisting}[caption={\label{listing:intro-integer-overflow} The limitations of finite memory.}]
+> 9007199254740991 + 2
+9007199254740992
+\end{lstlisting}
+
+\begin{question}
+  Is the result in Listing \ref{listing:intro-integer-overflow} what you expect? If not, how does it differ from your expectation?
+\end{question}
 
 Before you start hating on NodeJS, think about the task at hand. How many numbers are there? An \emph{infinite} number of them.\marginnote{Worse than just infinite. The real numbers, which include pathological numbers like $\pi$ and $e$, are \textit{uncountably infinite}. That's a larger infinity than the number of counting numbers or fractions.} How much memory does your computer have? I'm willing to bet it's less than infinite. Off the bat, that should make you wonder whether its possible to implement numeric values with infinite precision.
 
@@ -559,5 +568,5 @@ Trace the execution of the program:
     Step 1a &  \texttt{2} & \texttt{1.41421} & --- & --- & 1.41421 - 2/1.41421 & 0.000004\\
     Step 1b & \texttt{2} & \textbf{\texttt{1.41421}} & --- & --- & --- & ---\\
   \end{tabular}
-  \caption{Trace of the execution of Newton's method in Listing \ref{listing:intro-newton}}
+  \caption{Trace of the execution of Newton's method in Listing \ref{listing:intro-newton}. Numeric values have been truncated to 5 decimal places for readability. The program used the full values.}
 \end{table*}
