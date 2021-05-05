@@ -558,27 +558,46 @@ Newton's algorithm has only three steps. But because one of the steps implements
   \begin{tabular}{l c l c c c c}
     Step & n & guess & guess exp & guess eval & check exp & check eval\\
     \hline
-    Inputs & \textbf{\texttt{2}} & \textbf{\texttt{1}} & --- & --- & --- \\
+    Input & \textbf{\texttt{2}} & \textbf{\texttt{1}} \\
+    \hline %& --- & --- & --- \\
     Step 1a & \texttt{2} & \texttt{1} & --- & --- & \texttt{1 - 2/1} & \texttt{0.5}\\
     Step 2 (Evaluate) & \texttt{2} & \texttt{1} & \texttt{(1 + 2/1)/2} & \texttt{1.5} & --- & ---\\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.5} & \texttt{(1 + 2/1)/2} & \texttt{1.5} & --- & ---\\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.5} & --- & \texttt{1.5} & --- & ---\\
     Step 3 & \texttt{2} & \texttt{1.5} & --- & --- & --- & ---\\
-    Step 1a & \texttt{2} & \texttt{1.5} & --- & --- & 1.5 - 2/1.5 & 0.16666\\
-    Step 2 (Evaluate) & \texttt{2} & \texttt{1.5} & (1.5 + 2/1.5)/2 & 1.41666 & ---& 0.1666\\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
+    Step 1a & \texttt{2} & \texttt{1.5} & --- & --- & \texttt{1.5 - 2/1.5} & \texttt{0.16666}\\
+    Step 2 (Evaluate) & \texttt{2} & \texttt{1.5} & \texttt{(1.5 + 2/1.5)/2} & 1.41666 & ---& ---\\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.41666} & --- & 1.41666 & --- & ---\\
     Step 3 & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
-    Step 1a & \texttt{2} & \texttt{1.41666} & --- & --- & 1.41666 - 2/1.41666 & 0.0049\\
-    Step 2 (Evaluate) & \texttt{2} & \texttt{1.41666} & (1.4166 + 2/1.4166)/2 & 1.414215\\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
+    Step 1a & \texttt{2} & \texttt{1.41666} & --- & --- & \texttt{1.41666 - 2/1.41666} & \texttt{0.00490}\\
+    Step 2 (Evaluate) & \texttt{2} & \texttt{1.41666} & \texttt{(1.4166 + 2/1.4166)/2} & \texttt{1.41421} & --- & --- \\
+    Step 2 (Assign) & \texttt{2} & \texttt{1.41421} & --- & \texttt{1.41421} & --- & ---\\
     Step 3 & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
-    Step 1a &  \texttt{2} & \texttt{1.41421} & --- & --- & 1.41421 - 2/1.41421 & 0.000004\\
-    Step 1b & \texttt{2} & \textbf{\texttt{1.41421}} & --- & --- & --- & ---\\
+    Step 1a &  \texttt{2} & \texttt{1.41421} & --- & --- & \texttt{1.41421 - 2/1.41421} & \texttt{0.000004}\\
+    Step 1b & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
+    \hline
+    Output & & \textbf{\texttt{1.41421}}\\
+    \hline
   \end{tabular}
   \caption{\label{table:intro-newton-trace} Trace of the execution of Newton's method in Listing \ref{listing:intro-newton}. Numeric values have been truncated to 5 decimal places for readability. The program used the full values.}
 \end{table*}
 
+A standard trace includes one column for each value that participates in the program. Our trace does that. There is a column for the input squared value. That values remains \texttt{2} throughout the execution of the program. At no point does that change, which you can see in the table. The second column shows the value of our current at each step of execution. It begins with the input value \texttt{1}, but progressively improves until we reach a guess that is within our tolernce level of the true value of $\sqrt{2}$. The fourth column---we're skipping the third column for now---shows the new guess that we derive from the current guess and the squared number in Step 2. The current guess and the updated guess are related to one another. Once we calculate the updated guess, we replace the current guess with the updated guess. They are two separate values, but they are intimately related by Step 2. The final column shows the result of our check in Step 1a. This value is used to decide whether to continue with another iteration of the guess-update loop. We know that the updated guess will not change more than the value of the check. So when the check is sufficiently small, the change in updates will be, too. That signals us to stop updating and output the current guess value.
+
+Use the trace in Table \ref{table:intro-newton-trace} to answer the following questions about the execution of Newton's algorthm in Listing \ref{listing:intro-newton}.
+\begin{question}
+  How many times did we calculate the check in Step 1a? What were the values of each check?
+\end{question}
+
+\begin{question}
+  How many times did we calculate an updated guess in Step 2? What were the values of each updated guess?
+\end{question}
+
+\begin{question}
+  How many different values did the current guess take on? What was initial value of the current guess? What was the final value of the current guess? What were the intermediate values of the current guess?
+\end{question}
+But the trace in Listing \ref{listing:intro-newton} is a little unusual in a few ways, too.
 
 \textbf{TODO: Expressions and evaluation}.
 
 \section{Variables}
-\textbf{TODO: identifiers, box diagram of data types, expressions, evaluation, assignment}
+\textbf{TODO: identifiers, box diagram of data types, expressions, evaluation, initialization, assignment}
