@@ -1,0 +1,22 @@
+\begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=\tikzscale, color=cyan, node distance=3cm, font=\ttfamily\small]
+
+    % Division
+    \node (divisors) {2, 1};
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (division) [right of=divisors] {\texttt{/}};
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (divisors) -- (division);
+
+    \node (quotient) [right of=division] {\texttt{2}};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.25em] (division) -- (quotient);
+
+    % Subtraction
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (subtraction) [below of=quotient] {-};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (quotient) -- (subtraction);
+
+    \node (subtrahend) [left of=subtraction] {1};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (subtrahend) -- (subtraction);
+
+    \node (difference) [right of=subtraction] {\textbf{0.5}};
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (subtraction) -- (difference);
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}

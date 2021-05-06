@@ -595,9 +595,35 @@ Use the trace in Table \ref{table:intro-newton-trace} to answer the following qu
 \begin{question}
   How many different values did the current guess take on? What was initial value of the current guess? What was the final value of the current guess? What were the intermediate values of the current guess?
 \end{question}
-But the trace in Listing \ref{listing:intro-newton} is a little unusual in a few ways, too.
 
-\textbf{TODO: Expressions and evaluation}.
+The trace in Listing \ref{listing:intro-newton} is a little unusual in a few ways, too. To start, there are two columns that do not, strictly speaking, include values at all. These are the columns labeled Updated Guess Expression and Check Expression. And, as you may have guessed from their names, these columns contain \emph{expressions}, rather than values. An expression is a special kind of text---that is, it's just symbols---that says how to transform input values into output values by applying operators. For numbers and the operators we've learned about so far, expressions in programming are the same thing as arithmetic expressions in math. In general, however, expressions are the textual form of the fundamental diagram.
+
+Let's look at a few examples from the trace above. The first expression we see calculates a check to see whether to refine and update the current guess.
+
+\begin{center}
+  \texttt{1 - 2/1}
+\end{center}
+
+\begin{question}
+  How many transformers are in the expression above? What are their inputs? What are their outputs?
+\end{question}
+
+This expression has two operators: division~\texttt{/} and subtraction~\texttt{-}. The output of division is fed in as one of the inputs to subtract. The fundamental diagram for this deciptively simple expression is given in Figure \ref{fig:intro-expression-fundamental-diagram} above. The final output is the value of the expression. And the process of transforming all of the inputs and intermediate calculations into the final output is called \emph{evaluation}. Expressions evaluate to values. In a sense they must. The three parts of a piece of data are name, type, and value. In memory, a computer can store and manipulate values only. So expressions must get turned into values somehow. Evaluation is how it happens. In this case \texttt{1 - 2/1} is an expression and it evaluates to the value \texttt{0.5}.
+
+\begin{figure}
+  \input{figures/introduction/expression-fundamental-diagram.tex}
+  \caption{\label{fig:intro-expression-fundemental-diagram} The syntax for arithmetic makes it easy to compose many arithmetic transformers together in short expressions.}
+\end{figure}
+
+\begin{question}
+  Write fundamental diagrams to evaluate the following expressions:
+  \begin{enumerate}
+    \item \texttt{4 ** 5}
+    \item \texttt{1.5 + 2/1.5)/2}
+    \item \texttt{1.41666 - 2/1.41666}
+    \item \texttt{Infinity + 8}
+  \end{enumerate}
+\end{question}
 
 \section{Variables}
 \textbf{TODO: identifiers, box diagram of data types, expressions, evaluation, initialization, assignment}
