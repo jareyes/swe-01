@@ -612,7 +612,7 @@ This expression has two operators: division~\texttt{/} and subtraction~\texttt{-
 
 \begin{figure}
   \input{figures/introduction/expression-fundamental-diagram.tex}
-  \caption{\label{fig:intro-expression-fundemental-diagram} The syntax for arithmetic makes it easy to compose many arithmetic transformers together in short expressions.}
+  \caption{\label{fig:intro-expression-fundamental-diagram} The syntax for arithmetic makes it easy to compose many arithmetic transformers together in short expressions.}
 \end{figure}
 
 \begin{question}
@@ -626,4 +626,90 @@ This expression has two operators: division~\texttt{/} and subtraction~\texttt{-
 \end{question}
 
 \section{Variables}
-\textbf{TODO: identifiers, box diagram of data types, expressions, evaluation, initialization, assignment}
+
+We were able to implement Newton's method with the aid of a computer for the evaluation of arithmetic expressions. But we, as human operators, had to keep track of what each value represented at each time. To give us humans a reminder of all of the values running around, we can use variables. Variables are the first mechanism we'll met to store a bit of information and retrieve it for use later, and they are used absolutely everywhere. Variables are nothing more than a value associated with a name.
+
+Recall that all pieces of data have three components: a type, a value, and (optionally) a name. Values that do not have a name are \emph{literal values}, or just \emph{literals} for short. So far we have been working with Number type literal values---values like \texttt{12.07}, \texttt{-300}, and \texttt{Infinity}. The box diagram for literal values contains a type and value only.
+
+\begin{figure}[h]
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  --- & \textsf{Number} & \texttt{12.07}\\
+  \hline
+\end{tabular}
+\caption{\label{fig:intro-literal}The box diagram for the Number literal value \texttt{12.07}.}
+\end{figure}
+
+Variables are very similar to literal values, except that they have an additional piece of information filled in their box diagram: name.
+
+\begin{figure}[h]
+\begin{tabular}{|c|c|c|}
+  \hline
+  \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+  \hline
+  \texttt{guess} & \textsf{Number} & \texttt{12.07}\\
+  \hline
+\end{tabular}
+\caption{\label{fig:intro-variable} The box diagram for the Number variable \texttt{guess}.}
+\end{figure}
+
+Both the literal value \texttt{12.07} in Figure \ref{fig:intro-literal} and the variable value \texttt{guess} in Figure \ref{fig:intro-variable} evaluate to the same Number value \texttt{12.07}. From a computational point of view, they are the same value. The diffence is that the variable \texttt{guess} can be referred to by its name, whereas the literal \texttt{12.07} must be referred to by its value.
+
+Named values make it easier to understand what value represents. The suggestive name \texttt{guess} in this case makes it clear that \texttt{12.07} is probably not a temperature or bank account balance. We will use this variable name when we rewrite, or \emph{refactor}, Newton's method to use variables.
+
+To retrieve the information in a variable all we need to do is call the variable by name. But how do variables get names in the first place? This is actually a two-step process called \emph{initialization} and \emph{assigment}. Initializiation creates space in the memory in the computer for the variable. Assigment then links up a value to the name. The first step creates an box diagram with only the name part filled in. Assignment fills in the type and value. Different programming languages have different syntax to describe initialiation and assignment.
+
+\begin{question}
+  What is the difference between a literal and variable?
+\end{question}
+
+\begin{question}
+  Describe the difference between initialization and assignment of a variable.
+\end{question}
+
+\begin{question}
+  Draw the box diagram for a variable named \texttt{guess} that has been initialized by has not been assigned to a value.
+\end{question}
+
+In JavaScript there are two ways to create a variable, depending on whether a variable is read-only or can be changed later. Variables that cannot be updated to a different value later in the program are called \emph{constant variables}, or just \emph{constants} for short. Variables whose values can change throughout the execution of a program are called \emph{variable variables}, or just \emph{variables} for short. Yes, the terminology is confusing. A constant variable sounds like a contradiction of terms. And variable variable sounds like a typo.
+
+To get around this problem of vocabulary, people sometimes talk of immutability and mutability instead. An \emph{immutable} value cannot change its value once it has been assigned. Constants are immutable. Literal values are also immutable! You cannot update the literal value \texttt{12.07} to be any other value. It is always \texttt{12.07}. A \emph{mutable} value can change its value once it has been assigned. Variables are mutable. Quantities that don't change are easier to reason about than quantities that do change.
+
+\begin{center}
+  \marginnote{$\gets$ Using constants typically results in fewer kinds of bugs in your code and makes it easier for people to understand.} In general, you should \emph{always} use constants instead of variables whenever you can.
+\end{center}
+
+\begin{question}
+  What is the difference between mutable and immutable values?
+\end{question}
+
+\begin{question}
+  What is another name for mutable values?
+\end{question}
+
+\begin{question}
+  What is another name for immutable values?
+\end{question}
+
+\begin{question}
+  Are literal values mutable, immutable, or does it depend? Explain your answer.
+\end{question}
+
+\begin{question}
+  Which kind of values are generally easier to debug in a program: mutable or immutable values?
+\end{question}
+
+To make it clear whether a value is mutable or immutable, let's add another column to the box diagram \textsf{Read-only}.
+
+\begin{figure}[h]
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+    \hline
+    no & \texttt{guess} & --- & ---\\
+    \hline
+  \end{tabular}
+  \caption{\label{fig:intro-initialized-variable} The box diagram after a mutable variable named \texttt{guess} has been initialized, but before it has been assigned a value.}
+\end{figure}
