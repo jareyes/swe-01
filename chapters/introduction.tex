@@ -163,7 +163,7 @@ Languages make some tasks easier, but at the cost of making other harder. Bob Ma
 
 Remember that programming languages are implemented by their compiler---the compiler converts text files into machine executable code. But the compiler is just a program, so it has to be written in a programming language. There is source code for the compiler that a compiler compiles. The standard implementation of Python is written in C, but Jython is Python implemented in Java.
 
-\subsection{Data Types}
+\section{Data Types}
 Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
 
 \begin{itemize}
@@ -715,7 +715,7 @@ To make it clear whether a value is mutable or immutable, let's add another colu
 \end{figure}
 
 \subsection{Initialization}
-All this is good, but I bet you're itching to write some code! To initialize a variable named \texttt{guess} as in the box diagram in Figure \ref{fig:intro-initialized-variable}, you use the special keyword \texttt{let}.
+All this is good, but I bet you're itching to write some code! To initialize a variable named \texttt{guess} as in the box diagram in Figure \ref{fig:intro-initialized-variable}, you use the special keyword \texttt{let}. The syntax is \texttt{let} followed by the name of the variable you'd like to create. In programming languages, names are often referred to as \emph{identifiers}. Names, or identifiers, need to follow some rules. In JavaScript they must start with a letter\sidenote{They can also start with an underscore (\texttt{\_}), but don't do that.} and can contain numbers in them. Normally variables begin with lower-case letters. To initialize a new variable called \texttt{guess}, we would type:
 
 \begin{lstlisting}[caption={\label{listing:intro-initialized-variable} The NodeJS syntax to create a mutable variable named \texttt{guess}. The result is a value whose box diagram is \ref{fig:intro-initialized-variable}.}]
 > let guess;
@@ -742,17 +742,24 @@ Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved 
 \begin{lstlisting}[caption={\label{listing:intro-let-syntax-error}Several illegal uses of the keyword \texttt{let}.}]
 > let;
 Uncaught ReferenceError: let is not defined
-> let 8.1
-let 8.1
+> let 9.1
+let 9.1
     ^^^
 
 Uncaught SyntaxError: Unexpected number
 \end{lstlisting}
 
 \begin{question}
-  What is the value of the mutable variable \texttt{time} after executing this line of code:
+  What is the value of the mutable variable \texttt{time} after executing this line of code? Draw the resulting box diagram.
   \begin{lstlisting}
     let time;
+  \end{lstlisting}
+\end{question}
+
+\begin{question}
+  Explain the result after executing the following line of code. What is the problem and how can you fix it?
+  \begin{lstlisting}
+    let 8ball;
   \end{lstlisting}
 \end{question}
 
