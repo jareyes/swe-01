@@ -701,7 +701,7 @@ To get around this problem of vocabulary, people sometimes talk of immutability 
   Which kind of values are generally easier to debug in a program: mutable or immutable values?
 \end{question}
 
-To make it clear whether a value is mutable or immutable, let's add another column to the box diagram \textsf{Read-only}.
+To make it clear whether a value is mutable or immutable, let's add another column to the box diagram \textsf{Read-only} to track whether a value can be updated after assignment.
 
 \begin{figure}[h]
   \begin{tabular}{|c|c|c|c|}
@@ -713,3 +713,54 @@ To make it clear whether a value is mutable or immutable, let's add another colu
   \end{tabular}
   \caption{\label{fig:intro-initialized-variable} The box diagram after a mutable variable named \texttt{guess} has been initialized, but before it has been assigned a value.}
 \end{figure}
+
+\subsection{Initialization}
+All this is good, but I bet you're itching to write some code! To initialize a variable named \texttt{guess} as in the box diagram in Figure \ref{fig:intro-initialized-variable}, you use the special keyword \texttt{let}.
+
+\begin{lstlisting}[caption={\label{listing:intro-initialized-variable} The NodeJS syntax to create a mutable variable named \texttt{guess}. The result is a value whose box diagram is \ref{fig:intro-initialized-variable}.}]
+> let guess;
+undefined
+\end{lstlisting}
+
+The keyword \texttt{let} is a special in JavaScript. It is used to allocate space in memory for a variable. That is, \texttt{let} statements initialize variables. There are a few different forms that \texttt{let} statements can take. The one above is the simplest. In Listing \ref{listing:intro-intialized-variable}, the JavaScript interpreter will make space in memory for a variable called \texttt{guess}. At this point, \texttt{guess} has not been assigned a value. JavaScript uses the special literal value \texttt{undefined} to signify that the variable \texttt{guess} is not currently bound to a value.
+
+Since \texttt{undefined} is a value, you should be wondering, ``What is its type?'' I'm glad you asked. The value \texttt{undefined} is the only value of the data type \texttt{undefined}. (Yes, that is confusing.) Both the data type and its lone value have the same name.\sidenote{I know, it's gross. I hate it, too.} Now that we know the type and value of \texttt{guess} after initialization. We can update the box diagram in Figure \ref{fig:intro-initialized-variable} to use the special \texttt{undefined} value.
+
+\begin{figure}[h]
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+    \hline
+    no & \texttt{guess} & \texttt{undefined} & \texttt{undefined}\\
+    \hline
+  \end{tabular}
+  \caption{\label{fig:intro-undefined-variable} The box diagram after a mutable variable named \texttt{guess} has been initialized, but before it has been assigned a value.}
+\end{figure}
+
+Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved word}. That means that we cannot use the \emph{identifier} \texttt{let} as a variable name (or to name anything else). \marginnote{Ran into an error? Fear not. They tell you what they problem is and try to give you a hint to fix it. Errors are love letters the interpreter writes to you. Read them. Cherish them.} Whenever the JavaScript interpreter encounters \texttt{let}, it will check to see if \texttt{let} is being used to create a variable where none existed before. If not, then the interpreter will stop what it's doing and raise an error alerting you to your folly.
+
+\begin{lstlisting}[caption={\label{listing:intro-let-syntax-error}Several illegal uses of the keyword \texttt{let}.}]
+> let;
+Uncaught ReferenceError: let is not defined
+> let 8.1
+let 8.1
+    ^^^
+
+Uncaught SyntaxError: Unexpected number
+\end{lstlisting}
+
+\begin{question}
+  What is the value of the mutable variable \texttt{time} after executing this line of code:
+  \begin{lstlisting}
+    let time;
+  \end{lstlisting}
+\end{question}
+
+\begin{question}
+  Explain the result after executing the following line of code. What is the problem and how can you fix it?
+  \begin{lstlisting}
+    let let;
+  \end{lstlisting}
+\end{question}
+
+\subsection{Assignment}
