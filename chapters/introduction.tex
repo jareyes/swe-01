@@ -771,3 +771,31 @@ Uncaught SyntaxError: Unexpected number
 \end{question}
 
 \subsection{Assignment}
+Once the space for a variable has been allocated in memory, it's time to assign it a value. \emph{Assigment} is the process of associating a value with a named variable in memory. The syntax in most programming languages uses a special symbol (\texttt{=}), the assignment operator, to link a variable name on one side with a value on the other side. For example, to link the previous initialized multable variable \texttt{guess} with the value \texttt{2}, we write:
+
+\begin{lstlisting}
+guess = 2;
+\end{lstlisting}
+
+This line of code is read ``The variable \texttt{guess} \emph{gets} the value \texttt{2}.'' \marginnote{A better symbol for the assignment operator would be $\gets$. Then we could rewrite the example as \texttt{guess} $\gets$ \texttt{2}, and there would be no confusion with the equality operator. Alas, $\gets$ isn't on standard keyboards. So it'd be hard to type.} Do not confuse the assignment operator with the equals sign. They are \textbf{not} the same. We will learn about equality later. The assignment operator updates values in memory. It does not check for equality between two values.
+
+To see the effect of assignment let's look at the box diagrams for \texttt{guess} after initialization but before assignment and after assignment.
+
+
+
+\begin{figure}
+  \input{figures/introduction/assignment.tex}
+  \caption{\label{fig:intro-variable-assignment} The time sequence after two side effects. First initialization creates space in memory for the mutable variable \texttt{guess} via a \texttt{let} statement. Next assignment updates the value of \texttt{guess} to the value \texttt{2} via an assignment statement.}
+\end{figure}
+
+This figure looks a bit like a fundamental diagram. It is, however, different in one very, very important way. There are no inputs or outputs. There was a transformation of sorts, but it happened internally, in the computer's memory. The location in memory for \texttt{guess} was updated. The assigment operator does not have a fundamental diagram. It does not transform inputs into outputs. It is a special beast that is useful for its \emph{side effect}. Side effects in programming are changes to the value of a variable or other quantity.
+
+We've already seen another side effect: initialization is another example of a useful side effect. When we use \texttt{let} to create space for a variable where there was none before, we are explicitly updating changing the state of memory in the computer. Brining a variable into existence is a side effect. We are not calculating a value. There are no inputs or outputs, just a side effect.
+
+Side effects are not limited to variables. Writing information to a file requires a side effect because it updates the contents of the file. Printing to the screen requires a side effect because it changes the contents of screen. The monitor output is treated like a file. Every time the contents of the screen changes, its contents have been updated. Updating what a user sees on a screen requires side effects.
+
+\begin{center}
+  \marginnote{Using constants instead of variables will help minimize opportunities for side effects in your program.}In general, it is easier to understand and debug programs that use as few side effects as possible.
+\end{center}
+
+\textbf{TODO: Examples. Side effects as time. Transformers are timeless. Bank account.}

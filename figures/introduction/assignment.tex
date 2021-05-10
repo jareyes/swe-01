@@ -1,0 +1,26 @@
+\begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=\tikzscale, node distance=3cm, color=cyan, font=\sffamily\small]
+    \node (initialize) {
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+        \hline
+        no & \texttt{guess} & \texttt{undefined} & \texttt{undefined}\\
+        \hline
+      \end{tabular}
+    };
+    \node (void) [above of=initialize] {};
+    \node (assign) [below of=initialize] {
+      \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+        \hline
+        no & \texttt{guess} & \textsf{Number} & \texttt{\phantom{unde}2\phantom{ined}}\\
+        \hline
+      \end{tabular}
+    };
+    \draw[|->, thick, shorten >= 0.25em, shorten <= 0.5em] (void) -- (initialize) node[midway, left] {\texttt{let guess;}};
+
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (initialize) -- (assign) node[midway, left] {\texttt{guess = 2;}};
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}
