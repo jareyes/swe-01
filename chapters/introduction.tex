@@ -608,7 +608,7 @@ Let's look at a few examples from the trace above. The first expression we see c
   How many transformers are in the expression above? What are their inputs? What are their outputs?
 \end{question}
 
-This expression has two operators: division~\texttt{/} and subtraction~\texttt{-}. The output of division is fed in as one of the inputs to subtract. The fundamental diagram for this deciptively simple expression is given in Figure \ref{fig:intro-expression-fundamental-diagram} above. The final output is the value of the expression. And the process of transforming all of the inputs and intermediate calculations into the final output is called \emph{evaluation}. Expressions evaluate to values. In a sense they must. The three parts of a piece of data are name, type, and value. In memory, a computer can store and manipulate values only. So expressions must get turned into values somehow. Evaluation is how it happens. In this case \texttt{1 - 2/1} is an expression and it evaluates to the value \texttt{0.5}.
+This expression has two operators: division~\texttt{/} and subtraction~\texttt{-}. The output of division is fed in as one of the inputs to subtract. The fundamental diagram for this deciptively simple expression is given in Figure \ref{fig:intro-expression-fundamental-diagram} above. The final output is the value of the expression. And the process of transforming all of the inputs and intermediate calculations into the final output is called \emph{evaluation}. Expressions evaluate to literal values. In a sense they must. The three parts of a piece of data are name, type, and value. In memory, a computer can store and manipulate values only. So expressions must get turned into values somehow. Evaluation is how it happens. In this case \texttt{1 - 2/1} is an expression and it evaluates to the value \texttt{0.5}.
 
 \begin{figure}
   \input{figures/introduction/expression-fundamental-diagram.tex}
@@ -771,7 +771,7 @@ Uncaught SyntaxError: Unexpected number
 \end{question}
 
 \subsection{Assignment}
-Once the space for a variable has been allocated in memory, it's time to assign it a value. \emph{Assigment} is the process of associating a value with a named variable in memory. The syntax in most programming languages uses a special symbol (\texttt{=}), the assignment operator, to link a variable name on one side with a value on the other side. For example, to link the previous initialized multable variable \texttt{guess} with the value \texttt{2}, we write:
+Once the space for a variable has been allocated in memory, it's time to assign it a value. \emph{Assigment} is the process of associating a value with a named variable in memory. The syntax in most programming languages uses a special symbol (\texttt{=}), the assignment operator, to link a variable name on one side with a value on the other side. \marginnote{A statement is an instruction to do something. It is the equivalent to a sentence in spoken language. In JavaScript, statements end with a semi-colon, just as instructions in English end in a period.} For example, to link the previous initialized multable variable \texttt{guess} with the value \texttt{2}, we write the following instruction, or \emph{statement}:
 
 \begin{lstlisting}
 guess = 2;
@@ -781,14 +781,12 @@ This line of code is read ``The variable \texttt{guess} \emph{gets} the value \t
 
 To see the effect of assignment let's look at the box diagrams for \texttt{guess} after initialization but before assignment and after assignment.
 
-
-
 \begin{figure}
   \input{figures/introduction/assignment.tex}
   \caption{\label{fig:intro-variable-assignment} The time sequence after two side effects. First initialization creates space in memory for the mutable variable \texttt{guess} via a \texttt{let} statement. Next assignment updates the value of \texttt{guess} to the value \texttt{2} via an assignment statement.}
 \end{figure}
 
-This figure looks a bit like a fundamental diagram. It is, however, different in one very, very important way. There are no inputs or outputs. There was a transformation of sorts, but it happened internally, in the computer's memory. The location in memory for \texttt{guess} was updated. The assigment operator does not have a fundamental diagram. It does not transform inputs into outputs. It is a special beast that is useful for its \emph{side effect}. Side effects in programming are changes to the value of a variable or other quantity.
+This figure looks a bit like a fundamental diagram. It is, however, different in one very, very important way. There are no inputs or outputs. There was a transformation of sorts, but it happened internally, in the computer's memory. The location in memory for \texttt{guess} was updated. The assigment operator does not have a fundamental diagram. It does not transform inputs into outputs. It is a special beast that is useful for its \emph{side effect}. Side effects in programming are changes to the value of a variable or other quantity. Expressions do not produce side effects.
 
 We've already seen another side effect: initialization is another example of a useful side effect. When we use \texttt{let} to create space for a variable where there was none before, we are explicitly updating changing the state of memory in the computer. Brining a variable into existence is a side effect. We are not calculating a value. There are no inputs or outputs, just a side effect.
 
@@ -797,5 +795,59 @@ Side effects are not limited to variables. Writing information to a file require
 \begin{center}
   \marginnote{Using constants instead of variables will help minimize opportunities for side effects in your program.}In general, it is easier to understand and debug programs that use as few side effects as possible.
 \end{center}
+
+Assignment statements have two sides and they generally require to two to be performed, on for each side of the assignment operator.
+
+\begin{enumerate}
+  \item (Evaluation) First, the interpreter evaluates the expression on the right side of the assignment statement.
+  \item (Assignment) Second, the interpreter updates the value of the variable on the left side of the assignment statement with the value of the expression from Step 1.
+\end{enumerate}
+
+The first step in an assignment statement isn't assignment. It's our new old friend expression evaluation! Step 1 is optional if the value on the right-hand side is a literal value. Literal values are expressions that evaluate to themselves.
+
+We've already seen that expressions can involve many operators and literal values, like \texttt{(1.5 + (2/1.5)/2}. Expressions can also include variables, as well. When a variable is evaluated, the interpreter substitutes the name of the variable with the value bound to it in memory. Let's walk through a short snippet of code to see that substition in action.
+
+\begin{lstlisting}[caption={\label{listing:intro-reassignment} Proof that assignment is not equality. The updating would be clearer if we had that arrow!  \texttt{guess} $\gets$ \texttt{guess + 1;}}]
+> let guess;
+> guess = 1;
+> guess = guess + 1;
+\end{lstlisting}
+
+The last statement in Listing \ref{listing:intro-reassignment} should look a little funny to you. This line is a reminder that \texttt{=} does not connate equality. It reads ``the new value of the variable \texttt{guesss} is the current value of \texttt{guess} plus one.'' The assignment operator's job is to update values. So let's create a trace of the program to make sure we know what's going on.
+
+\begin{table*}
+  \small
+  \sffamily
+  \color{cyan}
+  \begin{tabular}{c | l c|c|c c}
+    Step & Line & \texttt{guess} & Left-hand value & Right-hand Expression & Right-hand value\\
+    \hline
+    Initialization & \texttt{let guess;} & \texttt{undefined} & --- & --- & --- \\
+    Evaluation & \texttt{guess = 1;} & \texttt{undefined} & \texttt{undefined} & \texttt{1} & \texttt{1}\\
+    Assignment & \texttt{guess = 1;} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1}\\
+    Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{guess + 1} &  --- \\
+    Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{1 + 1} & \texttt{2}\\
+    Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{2} & \texttt{2}\\
+    Assignment & \texttt{guess = guess + 1;} & \texttt{2} & \texttt{2} & \texttt{2} & \texttt{2}
+  \end{tabular}
+  \caption{\label{table:intro-assignment-trace}A trace of the evaluation and assignment of a variable.}
+\end{table*}
+
+\begin{question}
+  Explain each line in Listing \ref{listing:intro-reassignment} using a short sentence in plain English. \textit{Hint:} the assignment operator (\texttt{=}) is read ``gets'', not ``equals.''
+\end{question}
+
+\begin{question}
+  Trace the following snippet of code. In your trace keep track of the left- and right-hand expressions and values. Use Table \ref{table:intro-assignment-trace} as a template.
+
+  \marginnote{Do these caluations look familiar?}\begin{lstlisting}
+  let guess;
+  guess = 1;
+  guess = (guess + 2 / guess) / 2;
+  guess = (guess + 2 / guess) / 2;
+  guess = (guess + 2 / guess) / 2;
+  guess = (guess + 2 / guess) / 2;
+  \end{lstlisting}
+\end{question}
 
 \textbf{TODO: Examples. Side effects as time. Transformers are timeless. Bank account.}
