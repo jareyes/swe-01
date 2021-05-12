@@ -796,12 +796,12 @@ Side effects are not limited to variables. Writing information to a file require
   \marginnote{Using constants instead of variables will help minimize opportunities for side effects in your program.}In general, it is easier to understand and debug programs that use as few side effects as possible.
 \end{center}
 
-Assignment statements have two sides and they generally require to two to be performed, on for each side of the assignment operator.
+Assignment statements have two sides---a left-hand side and a right-hand side---and they require two procedures to be performed, on for each side of the assignment operator.
 
-\begin{enumerate}
-  \item (Evaluation) First, the interpreter evaluates the expression on the right side of the assignment statement.
-  \item (Assignment) Second, the interpreter updates the value of the variable on the left side of the assignment statement with the value of the expression from Step 1.
-\end{enumerate}
+\begin{itemize}
+  \item[\textit{Evaluation.}] First, the interpreter evaluates the expression on the right-hand side of the assignment statement.
+  \item[\textit{Assignment.}] Second, the interpreter updates the value of the variable on the left-hand side with the value obtained by evaluating the expression on the right-hand side.
+\end{itemize}
 
 The first step in an assignment statement isn't assignment. It's our new old friend expression evaluation! Step 1 is optional if the value on the right-hand side is a literal value. Literal values are expressions that evaluate to themselves.
 
