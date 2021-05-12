@@ -813,7 +813,7 @@ We've already seen that expressions can involve many operators and literal value
 > guess = guess + 1;
 \end{lstlisting}
 
-The last statement in Listing \ref{listing:intro-reassignment} should look a little funny to you. This line is a reminder that \texttt{=} does not connate equality. It reads ``the new value of the variable \texttt{guesss} is the current value of \texttt{guess} plus one.'' The assignment operator's job is to update values. So let's create a trace of the program to make sure we know what's going on.
+The last statement in Listing \ref{listing:intro-reassignment} should look a little funny to you. This line is a reminder that \texttt{=} does not connote equality. It reads ``the new value of the variable \texttt{guesss} is the current value of \texttt{guess} plus one.'' The assignment operator's job is to update values. So let's create a trace of the program to make sure we know what's going on.
 
 \begin{table*}
   \small
@@ -836,10 +836,26 @@ The last statement in Listing \ref{listing:intro-reassignment} should look a lit
 A trace of Listing \ref{listing:intro-reassignment} is in Table \ref{table:intro-reassignment-trace}. A conventional trace would include the columns labeled Line and \texttt{guess} only. We've added a column to keep track of which action (declaration, evaluation, or assignment) is being performed at each step, and the left-hand and right-hand values involved in assignment at each step.
 
 \begin{question}
-  Explain each line in Listing \ref{listing:intro-reassignment} using a short sentence in plain English. \textit{Hint:} the assignment operator (\texttt{=}) is read ``gets'', not ``equals.''
+  Explain each line in Listing \ref{listing:intro-reassignment} using language that a non-programmer could understand.
 \end{question}
 
-The first line declares a new variable named \texttt{guess} (Step 1). Initially, the value of \texttt{guess} is \texttt{undefined}. Next we come to an assignment statement (Steps 2--3). The right-hand side of the assignment statement is \texttt{guess}, and the left-hand side is the expression \texttt{1}. Since \texttt{1} is a literal value, the expression evaluates to \texttt{1} (Step 2) and the value of \texttt{guess} is updated to \texttt{1} (Step 3). The third line of code assigns \texttt{guess} to the value of the expression \texttt{guess + 1}---to the current value of \texttt{guess} plus one (Steps 4--7). Again, we must evaluate the expression on the right-hand side of the assignment statement (Steps 4--6). To evaluate that expression, we first replace \texttt{guess} with the current value of \texttt{guess} in the expression (Step 4). That substitution produces the expression \texttt{1 + 1} (Step 5). Since we have two \textsf{Number} type literal values and a \textsf{Number} operator, we can replace the expression with the output of the transformer \texttt{+}, giving us \texttt{2} (Step 6). Since \texttt{2} is a literal value, we can finally update \texttt{guess} with the value \texttt{2} (Step 7).
+\textit{Step 1.} The first line declares a new variable named \texttt{guess}. Initially, the value of \texttt{guess} is \texttt{undefined}.
+
+Next we come to an assignment statement. The right-hand side of the assignment statement is \texttt{guess}, and the left-hand side is the expression~\texttt{1}.
+
+\textit{Step 2.} Since \texttt{1} is a literal value, the expression evaluates to \texttt{1}.
+
+\textit{Step 3.} Then the value of \texttt{guess} is updated from \texttt{undefined} to \texttt{1}.
+
+The third line of code assigns \texttt{guess} to the value of the expression \texttt{guess~+~1}---to the current value of \texttt{guess} plus one. Again, we must evaluate the expression on the right-hand side of the assignment statement before updating.
+
+\textit{Step 4.} To evaluate that expression, we first replace \texttt{guess} with the current value of \texttt{guess} in the expression.
+
+\textit{Step 5.} That substitution produces the expression \texttt{1 + 1}.
+
+\textit{Step 6.} Since we have two \textsf{Number} type literal values and a \textsf{Number} operator, we can replace the expression with the output of the transformer \texttt{+}, giving us \texttt{2}. Therefore the expression \texttt{guess~+~1} evaluates to the value \texttt{2}.
+
+\textit{Step 7.} Now that evaluation is over, we finally update the existing value \texttt{1} of \texttt{guess} with the value \texttt{2}.
 
 \begin{question}
   Trace the following snippet of code. In your trace keep track of the left- and right-hand expressions and values. Use Table \ref{table:intro-reassignment-trace} as a template.
