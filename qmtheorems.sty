@@ -47,7 +47,7 @@
 \declaretheoremstyle[
   %spaceabove=.5\thm@preskip,
   %spacebelow=.5\thm@postskip,
-  %headfont=\normalfont\bfseries,
+  headfont=\normalfont\bfseries,
   %notefont=\normalfont, notebraces={ (}{)},
   %bodyfont=\normalfont,
   %headformat={\NAME\space\NUMBER\space\NOTE},
@@ -56,7 +56,7 @@
   %prefoothook={\hfill\qedsymbol}
   %refname={theorem,theorems},
   %Refname={Theorem,Theorems},
-]{qmexercise}
+]{answer}
 
 \theoremstyle{qmquestion}
 \declaretheorem[
@@ -71,15 +71,15 @@
   },
 ]{question}
 
-\theoremstyle{qmexercise}
+\theoremstyle{answer}
 \declaretheorem[
-  name=Exercise,
-  refname={exercise,exercises},
-  Refname={Exercise,Exercises},
+  name=Answer,
+  refname={answer,answers},
+  Refname={Answer,Answers},
   numberwithin=section,
   mdframed={
     style=mdfqm,
     backgroundcolor=Dandelion!45!white,
     frametitlebackgroundcolor=Orchid!45!white,
   },
-]{exercise}
+]{answer}

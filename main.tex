@@ -123,6 +123,11 @@ For everyone trying to keep afloat.
 \addpart{Solutions to Problems}
 \pagelayout{margin} % Restore margins
 
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\Alph{chapter}}
+\input{solutions/introduction.tex}
+
+
 \backmatter
 % The bibliography needs to be compiled with biber using your LaTeX editor, or on the command line with 'biber main' from the template directory
 \defbibnote{bibnote}{Here are the references in citation order.\par\bigskip} % Prepend this text to the bibliography

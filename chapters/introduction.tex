@@ -25,6 +25,7 @@ Fortunately, the diagram doesn't have many parts. There are just three: the inpu
 \paragraph{Example (Request and Response)}The same can be said of slightly different kind of speech act called a \emph{request}. People make requests all the time. ``Can you close the door, please?'' ``May I have the lobster sandwich and a raspberry lime rickey?'' ``That'll be \$49.99, please.'' Each of these statements intend to turn simple words into actions that produce some physical effect---producing closed door, a lobster sandwich and a raspberry lime rickey, or money totaling \$49.99.
 
 \begin{question}
+  \label{question:intro-transformers}
   Identify the inputs, outputs, and transformers for the requests above.
 \end{question}
 
@@ -673,7 +674,7 @@ To retrieve the information in a variable all we need to do is call the variable
   Draw the box diagram for a variable named \texttt{guess} that has been declared by has not been assigned to a value.
 \end{question}
 
-In JavaScript there are two ways to create a variable, depending on whether a variable is read-only or can be changed later. Variables that cannot be updated to a different value later in the program are called \emph{constant variables}, or just \emph{constants} for short. Variables whose values can change throughout the execution of a program are called \emph{variable variables}, or just \emph{variables} for short. Yes, the terminology is confusing. A constant variable sounds like a contradiction of terms. And variable variable sounds like a typo.
+In JavaScript there are two ways to create a variable, depending on whether a variable is read-only or read-and-write. Variables that cannot be updated to a different value later in the program are called \emph{constant variables}, or just \emph{constants} for short. Constants are read-only quantities. Variables whose values can change throughout the execution of a program are called \emph{variable variables}, or just \emph{variables} for short. Variables are read-and-write quantities. Yes, the terminology is confusing. A constant variable sounds like a contradiction of terms. And variable variable sounds like a typo.
 
 To get around this problem of vocabulary, people sometimes talk of immutability and mutability instead. An \emph{immutable} value cannot change its value once it has been assigned. Constants are immutable. Literal values are also immutable! You cannot update the literal value \texttt{12.07} to be any other value. It is always \texttt{12.07}. A \emph{mutable} value can change its value once it has been assigned. Variables are mutable. Quantities that don't change are easier to reason about than quantities that do change.
 
@@ -871,6 +872,85 @@ The third line of code assigns \texttt{guess} to the value of the expression \te
 \end{question}
 
 \subsection{State}
-In the world, many quantities change over time.
+Mutable variables created with \texttt{let} statements can change from one line of code to the next. Because of their ability to change, mutable variables are said to be \emph{stateful}. Quantities that exhibit state if their value depends on their history. \marginnote{This fact bears repeating: Side effects introduce state.} In general, side effects introduce state.
 
-\textbf{TODO: Examples. Side effects as time. Transformers are timeless. Bank account.}
+Bank account balances are a common and important example of a stateful quantity. They value of an account balance depends on the history of deposits and withdrawals to the account. In JavaScript we can simulate a balance with a mutable variable. Deposits can be implemented with assignment statements and the addition operator. Likewise we can implement withdrawals with assignment statements and the subtraction operator.
+
+Let's begin with an opening balance of \$1,000 and keep track of things with the suggestively named variable \texttt{balance}. We can declare and assignment \texttt{balance} to a initial value in one line of code that combines the special keyword \texttt{let} and the assignment operator. From here on out, we'll initialize variables in one line of code instead of separating out each of the two steps individually.
+
+\begin{lstlisting}
+let balance = 120.00;
+\end{lstlisting}
+
+Next, let's go shopping! We will withdraw money from the account to buy a few things.
+
+\begin{lstlisting}
+balance = balance - 12.50; // Lunch
+balance = balance - 80.00; // Two programming books
+\end{lstlisting}
+
+And next let's deposit a check that we received.
+
+\begin{lstlisting}
+balance = balance + 50.00; // Joe paid me back
+\end{lstlisting}
+
+And finally, let's order a fancy dinner.
+
+\begin{lstlisting}
+balance = balance - 76.10; // Fancy dinner
+\end{lstlisting}
+
+\begin{question}
+  Write a trace for \texttt{balance}.
+\end{question}
+
+
+\begin{question}
+  What is the state of \texttt{balance} after lunch? After we deposited a check? What is the final state of balance?
+\end{question}
+
+Each transaction changes the value of \texttt{balance}. While \texttt{balance} is a single variable, it is hard to what its value is without knowing the transactions that have updated it. The order of the transactions matters. If you rearrange the order of the deposits or withdrawals, the balance at each point in time changes. Stateful quantities are very sensitive to the order of assignments. This sensitivity makes programs involving state difficult to analyze. Stateful quantities can be difficult to reason about and are often involved in bugs that are notoriously difficult to debug.
+
+ Mutable state, however, does make it convenient to model some things that would be very hard to model otherwise, such a bank balances. Programmers have developed ways of organizing code specifically to tame state, some of which we'll see later on. For now, however, we should turn to the alternative: stateless quantities. Enter constants!
+
+\subsection{Constants}
+Constants, unlike variables, cannot change their value once they have been assigned. For that reason, JavaScript syntax requires declaration and assignment to happen at the same time. Constants do not begin with the initial value \texttt{undefined} which can be later replaced. They must be initialized to a value upon creation. The special keyword to create a constant in JavaScript is \texttt{const}.
+
+\begin{lstlisting}
+const price = 29.95;
+\end{lstlisting}
+
+The box diagram for a constant looks very similar to the box diagram for a variable, except for one very important diffence. Constants are read-only quantities. That is, constants are immutable. Their state is frozen for all time.
+
+\begin{figure}[h]
+  \sffamily
+  \color{cyan}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
+    \hline
+    yes & \texttt{price} & Number & \texttt{29.95}\\
+    \hline
+  \end{tabular}
+  \caption{\label{fig:intro-constant} The box diagram for a constant variable named \texttt{price} that has been initialized to the \textsf{Number} value \texttt{29.95}.}
+\end{figure}
+
+If you try to update the value of a constant, the JavaScript interpreter will refuse and warn loudly with an error.
+
+\begin{lstlisting}
+> const price = 29.95;
+> price = 19.95;
+Uncaught TypeError: Assignment to constant variable.
+\end{lstlisting}
+
+The error above is extremely helpful! Do not ignore errors. They exist to help you write bug-free programs. Errors alert you to the fact that the intepreter encountered a bug in your program and even tries to point out exactly where it is so that you can fix it. In this instance, we tried to change a value that we do not think should ever change during the course of a program run. By declaring a constant, we make a promise with the interpreter never to change its value. The interpreter is wonderful because it will hold us to our word, even when we might forget ourselves. Enlist the help of the interpreter:
+
+\begin{center}
+  Whenever you can, use a constant instead of a variable to store data.
+\end{center}
+
+\
+
+\subsection{Refactoring}
+\textbf{TODO: Newton with variables.}
