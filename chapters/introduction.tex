@@ -93,6 +93,13 @@ Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, `
   Come up with three more examples that can be modeled by the fundamental diagram.
 \end{question}
 
+\section{Programs}
+You will use a text editor to write your programs, because programs are a kind of written text. You can think of them as a sort of genre. Programs follow the rules and conventions of their genre---the same as a sales brochure or novel do. And like any other work of literature, can be judged on any number of dimensions---readability, structure, flow, rhythm---so, too, can the text (code) of an individual program be judged sloppy or sublime. There are a lot of strong opinions about how to organize code. And religious wars about what a good program looks like break out all the time. And just as good writing takes lots of practice and revision, so does writing a good program.
+
+Most genres contain subgenres. Within the novel you find mystery novels, romance novels, travel novels, and other that cross and combine subgenres. Programs constitute a large genre. Quite naturally, the field has split in many kinds of programming: systems programming, graphics programming, web application programming, game programming, scientific programming, etc. All of kinds of programming, however, rely on foundational concepts and common techniques.
+
+Genre transcends language. Novels and sales brochures can be written in any language. And the same general rules apply whether written in English or Swedish. Programs can be written in a variety programming languages. Most programming languages are designed for human readers and writers. The machines, which execute the instructions written in code, however, speak their own \emph{machine languages}. And the contents of the text files that programmers produce need to be converted into directives that can be carried out reliably and directly on hardware. There are two special kinds of programs that perform the translation from a source programming language to machine language: compilers and interpreters. The difference is that compilers take in a full program and convert it all at once. Interpreters take in one statement of programming at a time and convert on the fly. (Much the same difference between translating a book---the compiler---and what someone is saying in real-time---an interpreter.)
+
 \section{Compilers} One of the most important transformer in programming is type of program called a \emph{compiler}. Compilers translate programs from one language into another---specifically, from a \emph{source language} that humans can read, write, and understand to a \emph{target language} that computers can interpret and execute.
 
 \begin{figure}[h]
@@ -131,6 +138,13 @@ Interpreters are an interactive version of compilers. Instead of writing all of 
 Reference \textit{Structure and Interpretation of Computer Programs}.
 
 JavaScript is an interpreted language. It is useful to try things out in an interpreter while writing a program. We will use the NodeJS interpreter a lot to develop our programs as we write them.
+
+\textbf{TODO:} JavaScript is based on another language called ECMAScript, which is specified by an standardization board called ECMA International. ECMA approves standards documents, written in English, for new language features, changes, and extensions. The standards body publishes new editions to the standards documents of ECMAScript with some regularity. Once standards have been approved, developers start implementing the features in a JavaScript interpreter. (Although sometimes it works the other way around. Developers cook up a feature that goes viral, and then the standards body adopts the feature as an official additional to the language.)
+
+There is no rule that says a JavaScript interpreter must implement the standard fully---though, it's less useful if an implementation is not standards-compliant. Each of the major web browsers, for example, implement their own JavaScript engine. From time to time one browser will implement a feature that others have not and vice versa. In this sense, each browser runs a different version or flavor of JavaScript, because, as we've said before---a programming language has to be implemented itself as a program. The Mozilla Foundation keeps track of compliance to ECMAScript standards for each of the major browsers on the MDN Web Docs page\sidenote{https://developer.mozilla.org/en-US/docs/Web/JavaScript}.
+
+JavaScript is not bound to web browsers, however. Due in large part to the effort put into the open-source implementation Node.js\sidenote{nodejs.org}, JavaScipt can be used to general programming outside of the web. Node.js bills itself as server-side JavaScript, and was created to make building fast, scalable network applications for the web. Node.js distributions include extra libraries that are useful for general-purpose programming, such as libraries to manipulate the file system. In this book we will be using Node.js as our reference implementation. While many of the exaples in this book will work in a web browser developer's console, some of them will explicitly use features available only in Node.js.
+
 
 \section{Four Friends of Programming}
 
