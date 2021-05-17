@@ -394,6 +394,8 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 Newton's algorithm has only three steps. But because one of the steps implements a loop, you may run through each of the steps many times before the program stops and produces an output. That means a lot of values change as the program runs. To keep track of each value through the execution of the algorithm, we can form a \emph{trace} of the execution. A trace of a program run keeps track of each value as each step is evaluated. When you are writing a program, it is helpful to write a trace out of the program by hand or add print statements to display the intermediate values calculated as your program runs. In Listing \ref{listing:intro-newton}, the Node interpreter produced a kind of trace for us. We can organize those values into a table to produce a more readable trace of our program, such as the one in Table \ref{table:intro-newton-trace}.
 
 \begin{table*}
+  \sffamily
+  \color{cyan}
   \small
   \begin{tabular}{l c l c c c c}
     Step & n & guess & guess exp & guess eval & check exp & check eval\\
