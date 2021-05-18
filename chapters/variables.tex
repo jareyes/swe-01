@@ -826,37 +826,42 @@ Inputs: n, the square of the number we're trying to calculates
   What variables will we need to implement Newton's method? Can any of them easily be immutable? Which ones would more conveniently be mutable? Explain your reasoning.
 \end{question}
 
-\begin{lstlisting}
-// Input a squared number and an initial guess for its square root
-// The squared number will not change. Use a constant to represent it.
+\begin{lstlisting}[escapeinside=$$]
+$\comment{// Input a squared number and an initial guess for its square root}$
+$\comment{// The squared number will not change. Use a constant to represent}$
+$\comment{// it.}$
 const square = 2;
-// The current guess will get updated over time. Use a variable to represent it.
+$\comment{// The current guess will get updated over time. Use a variable to}$
+$\comment{// represent it.}$
 let guess = 1;
 
-// Step 1a. Check whether the current guess approximates the square root well enough.
-// The check will change as we update the current guess. Use a variale to reprsent it.
+$\comment{// Step 1a. Check whether the current guess approximates the} $
+$\comment{// square root well enough.}$
+$\comment{// The check will change as we update the current guess. Use a}$
+$\comment{// variale to represent it.}$
 let check = guess - square / guess;
 
-// Step 2. Update the current guess with the average of guess and square / guess.
+$\comment{// Step 2. Update the current guess with the average of guess and}$
+$\comment{// square / guess.}$
 let update = (guess - square / guess) / 2;
 guess = update;
-// Step 3. Go to step 1.
-// Step 1a. Check.
+$\comment{// Step 3. Go to step 1.}$
+$\comment{// Step 1a. Check.}$
 check = guess - square / guess;
-// Step 2. Update.
+$\comment{// Step 2. Update.}$
 update = (guess - square / guess) / 2;
 guess = update;
-// Step 3. Go to Step 1.
-// Step 1a. Check.
+$\comment{// Step 3. Go to Step 1.}$
+$\comment{// Step 1a. Check.}$
 check = guess - square / guess;
-// Step 2. Update.
+$\comment{// Step 2. Update.}$
 update = (guess - square / guess) / 2;
 guess = update;
-// Step 3. Go to Step 1.
-// Step 1a. Check.
+$\comment{// Step 3. Go to Step 1.}$
+$\comment{// Step 1a. Check.}$
 check = guess - square / guess;
-// Step 1b. Return the approximate square root.
-// This value will not change. Use a constant to represent it.
+$\comment{// Step 1b. Return the approximate square root.}$
+$\comment{// This value will not change. Use a constant to represent it.}$
 const sqrt = guess;
 \end{lstlisting}
 
