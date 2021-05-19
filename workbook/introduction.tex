@@ -2,16 +2,45 @@
 
 Programming languages are implemented in programs. In particular, JavaScript is implemented by its interpreter. So we'll need to install a JavaScript interpreter in order to run the JavaScript programs we write. But in order to run the interpreter, we need another program\sidenote{Actually, a very large collection of programs} that will run the intepreter: the operating system. We will also need another program, a text editor, to write and edit our programs in. \marginnote{From \textit{Rapanos vs United States}: In our favored version, an Eastern guru affirms that the earth is supported on the back of a tiger. When asked what supports the tiger, he says it stands upon an elephant; and when asked what supports the elephant he says it is a giant turtle. When asked, finally, what supports the giant turtle, he is briefly taken aback, but quickly replies ``Ah, after that it is turtles all the way down.''}In order to write and run programs we need many other programs. It's programs all the way down.
 
-\begin{itemize}
-  \item Operating system: any flavor of Unix. I am using Ubuntu 20.04 on my personal laptop. Just about any version of Linux or MacOS will do. For now, this book does not support Microsoft Windows. In the future it may.
-  \item Web Browser: Mozilla Firefox 86.0.1 or Ubuntu. Since we will be using web browsers only briefly, it doesn't much matter which of the major browsers you use. All of them implement the core features of JavaScript we'll be using.
-  \item JavaScript implementation: Node.js is an open-source general-purpose implementation and extension of JavaScript. It was originally intended to create fast, scalable network applications for the web. We will be using Node.js version 14. At the time of writing, version 16 is already available for preview but has not been released for production use yet. Before this book has started, it is already obselete.
-  \item Text editor: I will be using Atom with some vanilla language highlighting and nothing more. Atom is a full-fledged integrated development environment (IDE). I use it, however, as a plain text editor. I do not enable autocomplete, automatic build processes, or other magic, albeit useful, programming conveniences. As you develop your programming muscle memory, these niceties may increase your productivity. At the beginning, however, they tend to stymie learning and understanding by burying all the interesting bits under the hood.
-\end{itemize}
+\textit{Operating system.} Any flavor of Unix will do. I am using Ubuntu 20.04 on my personal laptop. Just about any version of Linux or MacOS will do. For now, this book does not support Microsoft Windows. In the future it may.
+
+\textit{Web Browser.} Mozilla Firefox 86.0.1 or Ubuntu. Since we will be using web browsers only briefly, it doesn't much matter which of the major browsers you use. All of them implement the core features of JavaScript we'll be using.
+
+\textit{JavaScript implementation.} Node.js is an open-source general-purpose implementation and extension of JavaScript. It was originally intended to create fast, scalable network applications for the web. We will be using Node.js version 14. At the time of writing, version 16 is already available for preview but has not been released for production use yet. Before this book has started, it is already obselete.
+
+\textit{Text editor.} I will be using Atom with some vanilla language highlighting and nothing more. Atom is a full-fledged integrated development environment (IDE). I use it, however, as a plain text editor. I do not enable autocomplete, automatic build processes, or other magic, albeit useful, programming conveniences. As you develop your programming muscle memory, these niceties may increase your productivity. At the beginning, however, they tend to stymie learning and understanding by burying all the interesting bits under the hood.
 
 You should already have a operating system and web browser installed on your computer. We will set up Node.js and Atom together.
 
-\section{Web Browser Interpreter}
+\section{Web Console}
+JavaScript is one of the most popular programming languages on the planet. The reason for this is the ubiquity of the web. Every major web browser includes an implementation of JavaScript. As a developer, you can access the JavaScript console for debugging and tinkering directly in the browser.
+
+In Firefox, select the \textsf{Tools} menu and navigate to the \textsf{Web Developer} submenu. From there, select \textsf{Web Console}\sidenote{Or you can use the keyboard shortcut \textsf{Ctrl + Shift + K}}. The process is similar in other browsers.
+
+On most systems a developer's tools window will appear at the bottom of the browser pane. There are several tabs on the top of the tools pane. Each tab reveals a suite of tools and views that are useful for web development. We're going to ignore most of them for now. We're learning to program in JavaScript. And so we're interested in the JavaScript console right now. The tab \textsf{Console} should already be highlighted. If it is not, click it.
+
+Congratulations! You're running a JavaScript interpreter. It's time to write and run some JavaScript.
+
+Remember that an \emph{interpreter} is a program that transforms human-readable source code into machine language and runs it on the fly. We're going begin---just so we can get it out of the way---with a programming classic. The so-called \textsf{Hello, World!} program is a rite of passage into programming. It's the equivalent of the mic check, ``Testing. Testing. 1-2-3.'' And people often write it to make sure that the system is set up and working.
+
+Without further ado, here is your first JavaScript program.
+
+\suppresslinenumbers
+\begin{lstlisting}[caption={\label{listing:intro-hello}Hello, World! It's good to see you.}]
+console.log("Hello, World!");
+\end{lstlisting}
+
+Type the full text of Listing \ref{listing:intro-hello} into the JavaScript console after the double angle bracket prompt (\prompt). The interpreter will respond with two additional lines.
+
+\reactivatelinenumbers
+\begin{lstlisting}[caption={\label{listing:intro-console} A session in the JavaScript console of a web browser.}, escapeinside=||]
+|\prompt| console.log("Hello, World!");
+Hello, World!
+|\comment{$\gets$ undefined}|
+\end{lstlisting}
+
+\textbf{TODO: Anatomy of Hello, World! Anatomy of JavaScript session. Fundamental diagram for console.log. Sneak peek at side effects and constants.} \texttt{const sum = 1 + 2 + 3 + 4 + 5;} versus \texttt{const greeting = console.log("Hello, World!");} versus \texttt{const greeting = "Hello, World!";}
+
 
 \section{Command Line}
 

@@ -834,13 +834,11 @@ const square = 2;
 $\comment{// The current guess will get updated over time. Use a variable to}$
 $\comment{// represent it.}$
 let guess = 1;
-
 $\comment{// Step 1a. Check whether the current guess approximates the} $
 $\comment{// square root well enough.}$
 $\comment{// The check will change as we update the current guess. Use a}$
 $\comment{// variale to represent it.}$
 let check = guess - square / guess;
-
 $\comment{// Step 2. Update the current guess with the average of guess and}$
 $\comment{// square / guess.}$
 let update = (guess - square / guess) / 2;
