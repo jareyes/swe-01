@@ -8,19 +8,24 @@
       \node (module) {console}; &
       \node (accessor) {.}; &
       \node[text depth=0] (function) {log}; &
-      ( & \node (input) {"Hello, World!"}; & ); \\
+      \node (open-paren) {(}; &
+      \node (input) {"Hello, World!"}; &
+      \node (close-paren) {)}; &
+      \node (terminator) {;}; \\
     };
 
     \sffamily
     \footnotesize
     \node (module-label) [callout, below=3em of module] {Module};
-    \node (accessor-label) [callout, above=3em of accessor] {Property accessor};
-    \node (function-label) [callout, below=3em of function] {Function};
+    \node (accessor-label) [callout, above=3em of accessor] {Property Accessor};
+    \node (function-label) [callout, below=3em of function] {Function };
     \node (input-label) [callout, below=3em of input] {Input};
+    \node (terminator-label) [callout, below=3em of terminator] {Statement Terminator};
 
     \draw[callout, shorten <=3pt] (module) -- (module-label);
     \draw[callout, shorten <=3pt] (accessor) -- (accessor-label);
     \draw[callout, shorten <=3pt] (function) -- (function-label);
     \draw[callout, shorten <=3pt] (input) -- (input-label);
+    \draw[callout, shorten <=3pt] (terminator) -- (terminator-label);
 
 \end{tikzpicture}
