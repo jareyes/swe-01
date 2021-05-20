@@ -1,0 +1,26 @@
+\tikzset{callout/.style={
+    cyan
+  }
+}
+\begin{tikzpicture}
+  \ttfamily
+  \matrix[name=M1, matrix of nodes, inner sep=0pt, column sep=0pt]{
+      \node (module) {console}; &
+      \node (accessor) {.}; &
+      \node[text depth=0] (function) {log}; &
+      ( & \node (input) {"Hello, World!"}; & ); \\
+    };
+
+    \sffamily
+    \footnotesize
+    \node (module-label) [callout, below=3em of module] {Module};
+    \node (accessor-label) [callout, above=3em of accessor] {Property accessor};
+    \node (function-label) [callout, below=3em of function] {Function};
+    \node (input-label) [callout, below=3em of input] {Input};
+
+    \draw[callout, shorten <=3pt] (module) -- (module-label);
+    \draw[callout, shorten <=3pt] (accessor) -- (accessor-label);
+    \draw[callout, shorten <=3pt] (function) -- (function-label);
+    \draw[callout, shorten <=3pt] (input) -- (input-label);
+
+\end{tikzpicture}
