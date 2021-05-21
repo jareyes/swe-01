@@ -1,0 +1,23 @@
+\tikzset{callout/.style={
+    cyan
+  }
+}
+\begin{tikzpicture}
+  \ttfamily
+  \matrix[name=M1, matrix of nodes, inner sep=0pt, column sep=0pt]{
+      \node (keyword) {let}; &
+      \node {\phantom{ }}; &
+      \node[text depth=0] (identifier) {guess}; &
+      \node (terminator) {;}; \\
+    };
+
+    \sffamily
+    \footnotesize
+    \node (keyword-label) [callout, below=3em of keyword] {Special keyword};
+    \node (identifier-label) [callout, above=3em of identifier] {Identifier};
+    \node (terminator-label) [callout, right=3em of terminator] {Statement Terminator};
+
+    \draw[callout, shorten <=3pt] (keyword) -- (keyword-label);
+    \draw[callout, shorten <=3pt] (identifier) -- (identifier-label);
+    \draw[callout, shorten <=3pt] (terminator) -- (terminator-label);
+\end{tikzpicture}

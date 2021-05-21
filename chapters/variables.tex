@@ -559,16 +559,25 @@ To make it clear whether a value is mutable or immutable, let's add another colu
 \section{Declaration}
 All this is good, but I bet you're itching to write some code! To declare a variable named \texttt{guess} as in the box diagram in Figure \ref{fig:intro-declared-variable}, you use the special keyword \texttt{let}. The syntax is \texttt{let} followed by the name of the variable you'd like to create. In programming languages, names are often referred to as \emph{identifiers}. Names, or identifiers, need to follow some rules. In JavaScript they must start with a letter\sidenote{They can also start with an underscore (\texttt{\_}), but don't do that.} and can contain numbers in them. Normally variables begin with lower-case letters. To declare a new variable called \texttt{guess}, we would type:
 
-\begin{lstlisting}[caption={\label{listing:intro-declared-variable} The NodeJS syntax to create a mutable variable named \texttt{guess}. The result is a value whose box diagram is \ref{fig:intro-declared-variable}.}]
+\begin{figure}
+  \input{figures/introduction/book-declaration-statement-anatomy.tex}
+  \caption{Anatomy of a \texttt{let} statement.}
+\end{figure}
+
+\reactivatelinenumbers
+\begin{lstlisting}[caption={\label{listing:intro-declared-variable} The NodeJS syntax to create a mutable variable named \texttt{guess}. The result is a value whose box diagram is \ref{fig:intro-declared-variable}.}, escapeinside=$$]
 > let guess;
-undefined
+$\comment{undefined}$
 \end{lstlisting}
+\suppresslinenumbers
 
 The keyword \texttt{let} is a special in JavaScript. It is used to allocate space in memory for a variable. That is, \texttt{let} statements declare new variables. There are a few different forms that \texttt{let} statements can take. The one above is the simplest. In Listing \ref{listing:intro-declared-variable}, the JavaScript interpreter will make space in memory for a variable called \texttt{guess}. At this point, \texttt{guess} has not been assigned a value. JavaScript uses the special literal value \texttt{undefined} to signify that the variable \texttt{guess} is not currently bound to a value.
 
 Since \texttt{undefined} is a value, you should be wondering, ``What is its type?'' I'm glad you asked. The value \texttt{undefined} is the only value of the data type \texttt{undefined}. (Yes, that is confusing.) Both the data type and its lone value have the same name.\sidenote{I know, it's gross. I hate it, too.} Now that we know the type and value of \texttt{guess} after declaration. We can update the box diagram in Figure \ref{fig:intro-declared-variable} to use the special \texttt{undefined} value.
 
 \begin{figure}[h]
+  \sffamily
+  \color{cyan}
   \begin{tabular}{|c|c|c|c|}
     \hline
     \textsc{Read-only} & \textsc{Name} & \textsc{Type} & \textsc{Value}\\
@@ -579,7 +588,16 @@ Since \texttt{undefined} is a value, you should be wondering, ``What is its type
   \caption{\label{fig:intro-undefined-variable} The box diagram after a mutable variable named \texttt{guess} has been declared, but before it has been assigned a value.}
 \end{figure}
 
-Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved word}. That means that we cannot use the \emph{identifier} \texttt{let} as a variable name (or to name anything else). \marginnote{Ran into an error? Fear not. They tell you what they problem is and try to give you a hint to fix it. Errors are love letters the interpreter writes to you. Read them. Cherish them.} Whenever the JavaScript interpreter encounters \texttt{let}, it will check to see if \texttt{let} is being used to create a variable where none existed before. If not, then the interpreter will stop what it's doing and raise an error alerting you to your folly.
+After the \texttt{let} statement, the JavaScript interpreter responded with the value \texttt{undefined} on line 2. That value is \textit{not} the value of \texttt{guess}. It is the output value of the full \texttt{let} declaration statement. Variable declaration is not a transformer. If we were to create a fundamental diagram for declaration (Figure \ref{fig:intro-declaration-fundamental-diagram}), it would be incomplete. It takes a kind of input, the name of a variable, but produces no output. The special value \texttt{undefined} is one way JavaScript simulates the concept of nothing. The interpreter reports \texttt{undefined} is the value produced by declaration---nothing.
+
+\begin{figure}[h]
+  \input{figures/introduction/declaration-fundamental-diagram.tex}
+  \caption{\label{fig:intro-declaration-fundamental-diagram}Variable declaration is not a transformer. Declaration produces no output.}
+\end{figure}
+
+The keyword \texttt{let} is special because it makes space in the system memory to store a value. This is a feature that a programming language has to make available to you through the use of special keywords. Without them, you wouldn't be able to create variables beause you wouldn't have a way to manage the computer's memory.
+
+Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved word}. That means that we cannot use the \emph{identifier} \texttt{let} as a variable name (or to name anything else). Valid identifiers consister of letters, numbers, the dollar sign (\texttt{\$}) and underscore (\texttt{\_}). Identifiers cannot, however, begin with a number. \marginnote{Ran into an error? Fear not. They tell you what they problem is and try to give you a hint to fix it. Errors are love letters the interpreter writes to you. Read them. Cherish them.} Whenever the JavaScript interpreter encounters \texttt{let}, it will check to see if \texttt{let} is being used to create a variable where none existed before. If not, then the interpreter will stop what it's doing and raise an error alerting you to your folly.
 
 \begin{lstlisting}[caption={\label{listing:intro-let-syntax-error}Several illegal uses of the keyword \texttt{let}.}]
 > let;
@@ -611,6 +629,15 @@ Uncaught SyntaxError: Unexpected number
     let let;
   \end{lstlisting}
 \end{question}
+
+In general, try to name your variables full, suggestive words. Prefer \texttt{guess} over \texttt{g}. Don't name your variables things like \texttt{x} or \texttt{variable} or \texttt{data}. Use names that describe that they simulate in the real word. It's said there there are only three hard problems in software engineering:
+
+\begin{enumerate}
+  \item Choosing good names for variables.
+  \item Off-by-one errors.
+\end{enumerate}
+
+As you read the code in this book, ask yourself, ``Could I come up with a better name for that variable?''
 
 \section{Assignment}
 Once the space for a variable has been allocated in memory, it's time to assign it a value. \emph{Assigment} is the process of associating a value with a named variable in memory. The syntax in most programming languages uses a special symbol (\texttt{=}), the assignment operator, to link a variable name on one side with a value on the other side. \marginnote{A statement is an instruction to do something. It is the equivalent to a sentence in spoken language. In JavaScript, statements end with a semi-colon, just as instructions in English end in a period.} For example, to link the previous declared multable variable \texttt{guess} with the value \texttt{2}, we write the following instruction, or \emph{statement}:
