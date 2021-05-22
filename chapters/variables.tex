@@ -782,6 +782,14 @@ Each transaction changes the value of \texttt{balance}. While \texttt{balance} i
 
  Mutable state, however, does make it convenient to model some things that would be very hard to model otherwise, such a bank balances. Programmers have developed ways of organizing code specifically to tame state, some of which we'll see later on. For now, however, we should turn to the alternative: stateless quantities. Enter constants!
 
+ \begin{question}
+   What is the bug in the following code snippet? What changes do you need to perform in order to fix the bug?
+   \begin{lstlisting}
+   let balance = 550;
+   let balance = balance - 110;
+   \end{lstlisting}
+ \end{question}
+
 \section{Constants}
 Constants, unlike variables, cannot change their value once they have been assigned. For that reason, JavaScript syntax requires declaration and assignment to happen at the same time. Constants do not begin with the initial value \texttt{undefined} which can be later replaced. They must be initialized to a value upon creation. The special keyword to create a constant in JavaScript is \texttt{const}.
 
@@ -829,6 +837,7 @@ The error above is extremely helpful! Do not ignore errors. They exist to help y
 \begin{question}
   Do constant variables contain state? Explain your answer.
 \end{question}
+
 
 \section{Refactoring}
 Now it's time to revisit Newton's method and clean up our implementation using the tools we've learned from our first friend programming friend, variables. In our original implementation, we used JavaScript like a pocket calculator. The actual code we wrote was a complete jumble of numbers, with a secret rhyme and reason. There was no obvious way to map the numbers to the steps in Newton's method.
