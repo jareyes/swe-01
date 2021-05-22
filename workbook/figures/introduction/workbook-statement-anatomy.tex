@@ -2,16 +2,19 @@
     cyan
   }
 }
+
+% \begin{scaletikzpicturetowidth}{\linewidth}
 \begin{tikzpicture}
   \ttfamily
+  \small
   \matrix[name=M1, matrix of nodes, inner sep=0pt, column sep=0pt]{
-      \node (module) {console}; &
-      \node (accessor) {.}; &
+      \node[text depth=0] (module) {console}; &
+      \node[text depth=0] (accessor) {.}; &
       \node[text depth=0] (function) {log}; &
-      \node (open-paren) {(}; &
-      \node (input) {"Hello, World!"}; &
-      \node (close-paren) {)}; &
-      \node (terminator) {;}; \\
+      \node[text depth=0] (open-paren) {(}; &
+      \node[text depth=0] (input) {"Hello, World!"}; &
+      \node[text depth=0] (close-paren) {)}; &
+      \node[text depth=0] (terminator) {;}; \\
     };
 
     \sffamily
@@ -19,7 +22,7 @@
     \node (module-label) [callout, below=3em of module] {Module};
     \node (accessor-label) [callout, above=3em of accessor] {Property Accessor};
     \node (function-label) [callout, below=3em of function] {Function };
-    \node (input-label) [callout, below=3em of input] {Input};
+    \node (input-label) [callout, above=3em of input] {Input};
     \node (terminator-label) [callout, below=3em of terminator] {Statement Terminator};
 
     \draw[callout, shorten <=3pt] (module) -- (module-label);
@@ -29,3 +32,4 @@
     \draw[callout, shorten <=3pt] (terminator) -- (terminator-label);
 
 \end{tikzpicture}
+% \end{scaletikzpicturetowidth}

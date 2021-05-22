@@ -1,0 +1,89 @@
+\chapter{\label{chapter:intro} Introduction}
+
+Programming languages are implemented in programs. In particular, JavaScript is implemented by its interpreter. So we'll need to install a JavaScript interpreter in order to run the JavaScript programs we write. But in order to run the interpreter, we need another program\sidenote{Actually, a very large collection of programs} that will run the intepreter: the operating system. We will also need another program, a text editor, to write and edit our programs in. \marginnote{From \textit{Rapanos vs United States}: In our favored version, an Eastern guru affirms that the earth is supported on the back of a tiger. When asked what supports the tiger, he says it stands upon an elephant; and when asked what supports the elephant he says it is a giant turtle. When asked, finally, what supports the giant turtle, he is briefly taken aback, but quickly replies ``Ah, after that it is turtles all the way down.''}In order to write and run programs we need many other programs. It's programs all the way down.
+
+\textit{Operating system.} Any flavor of Unix will do. I am using Ubuntu 20.04 on my personal laptop. Just about any version of Linux or MacOS will do. For now, this book does not support Microsoft Windows. In the future it may.
+
+\textit{Web Browser.} Mozilla Firefox 86.0.1 or Ubuntu. Since we will be using web browsers only briefly, it doesn't much matter which of the major browsers you use. All of them implement the core features of JavaScript we'll be using.
+
+\textit{JavaScript implementation.} Node.js is an open-source general-purpose implementation and extension of JavaScript. It was originally intended to create fast, scalable network applications for the web. We will be using Node.js version 14. At the time of writing, version 16 is already available for preview but has not been released for production use yet. Before this book has started, it is already obselete.
+
+\textit{Text editor.} I will be using Atom with some vanilla language highlighting and nothing more. Atom is a full-fledged integrated development environment (IDE). I use it, however, as a plain text editor. I do not enable autocomplete, automatic build processes, or other magic, albeit useful, programming conveniences. As you develop your programming muscle memory, these niceties may increase your productivity. At the beginning, however, they tend to stymie learning and understanding by burying all the interesting bits under the hood.
+
+You should already have a operating system and web browser installed on your computer. We will set up Node.js and Atom together.
+
+\section{Web Console}
+JavaScript is one of the most popular programming languages on the planet. The reason for this is the ubiquity of the web. Every major web browser includes an implementation of JavaScript. As a developer, you can access the JavaScript console for debugging and tinkering directly in the browser.
+
+In Firefox, select the \textsf{Tools} menu and navigate to the \textsf{Web Developer} submenu. From there, select \textsf{Web Console}\sidenote{Or you can use the keyboard shortcut \textsf{Ctrl + Shift + K}}. The process is similar in other browsers.
+
+On most systems a developer's tools window will appear at the bottom of the browser pane. There are several tabs on the top of the tools pane. Each tab reveals a suite of tools and views that are useful for web development. We're going to ignore most of them for now. We're learning to program in JavaScript. And so we're interested in the JavaScript console right now. The tab \textsf{Console} should already be highlighted. If it is not, click it.
+
+Congratulations! You're running a JavaScript interpreter. It's time to write and run some JavaScript.
+
+Remember that an \emph{interpreter} is a program that transforms human-readable source code into machine language and runs it on the fly. We're going begin---just so we can get it out of the way---with a programming classic. The so-called \textsf{Hello, World!} program is a rite of passage into programming. It's the equivalent of the mic check, ``Testing. Testing. 1-2-3.'' And people often write it to make sure that the system is set up and working.
+
+Even though Hello, World! programs are often the simplest programs to write in a language, they are a little tricky to reason about. I hate Hello, World! as a introductory programming example. But who am I to disagree with history and convention? Here we are anyway. Without further ado, here is your first JavaScript program.
+
+\suppresslinenumbers
+\begin{lstlisting}[caption={\label{listing:intro-hello}Hello, World! It's good to see you.}]
+console.log("Hello, World!");
+\end{lstlisting}
+
+Type the full text of Listing \ref{listing:intro-hello} into the JavaScript console after the double angle bracket prompt (\prompt). The interpreter will respond with two additional lines.
+
+\reactivatelinenumbers
+\begin{lstlisting}[caption={\label{listing:intro-console} A session in the JavaScript console of a web browser.}, escapeinside=||]
+|\prompt| console.log("Hello, World!");
+Hello, World!
+|\comment{$\gets$ undefined}|
+\end{lstlisting}
+
+To understand how the interpreter responded, let's first go over what we asked it to do.
+
+\begin{figure}[h]
+  \input{workbook/figures/introduction/workbook-statement-anatomy.tex}
+  \caption{The anatomy of a JavaScript statement.}
+\end{figure}
+
+Let's start with Line 1. Firstly, we asked JavaScript to perform a single task, described in a single \emph{statement}. Statements are the programming equivalent of sentences in human language. Statements roughly correspond to one instruction. Each statement in JavaScript is terminated by a semi-colon (\texttt{;}). The semi-colon let's the interpreter know that the statement is complete and ready to be interpreted and run.
+
+The statement in our program calls a single function named \texttt{log}. The \texttt{log} function is built-in to JavaScript. It is designed to print, or log, its input arguments to the JavaScript console. Functions in JavaScript use a similar syntax from math. Inputs to functions are supplied in between parentheses. In this case, the function \texttt{log} has been called with one input, the text \texttt{"Hello, World!"}.
+
+The function \texttt{log} is contained in a \emph{module}. The module is named \texttt{console}. \texttt{console} is a built-in library module that contains a handful of functions to print messages to the JavaScript console, including the function we used, \texttt{log}. To access the function inside of the module, JavaScript uses a dot notation called the \emph{property accessor}. The name isn't as important as its usage. \marginnote{We'll see that things other than modules have properties that you can acccess, too.} Dot notation allows programmers to use data and functions contained inside of a module. Modules and properties are two of the major ways that JavaScript allows programmers to organize information.
+
+That gets us through Line 1 of List \ref{listing:intro-hello}. Phew!
+
+Now onto Line 2. Line 2 is where you see the effect of calling \texttt{console.log}. It printed the input argument \texttt{"Hello, World!"} to the screen. Notice that the quotation symbols (\texttt{"}) have disappeared. \marginnote{You'll learn about text data types in SWE Ch.~3. But for now, if you'd like to print the quotation marks, too, you need to supply a different input:\\ \texttt{console.log("\textbackslash"Hello, World!\textbackslash"");} \\ \\ You'll learn about literal and variable values in SWE Ch.~2.} The quotation marks aren't part of the message to log to the screen. The quotes are syntax required by JavaScript for making a \textsf{String} literal value, so that the ineterpreter doesn't confuse normal text with JavaScript code.
+
+Line 3 displays the output of the statement on Line 1. Notice that this value is different from console display in line 2. Printing to the screen is different from function output. In fact, \texttt{console.log} produces \textit{no} output at all. JavaScript simulates the idea of ``nothing'' with the special value \texttt{undefined}. The fact that the `console.log("Hello, World!");` evaluates to \texttt{undefined} is tantamount to a fundamental diagram that has no output. The function \texttt{console.log} is not a transformer because it produces no output. It is useful for its \emph{side effect} that prints information to the screen.
+
+\begin{figure}[h]
+  \input{workbook/figures/introduction/log-fundamental-diagram.tex}
+  \caption{The function \texttt{console.log} is a not a transformer because it has an incomplete fundamental diagram.}
+\end{figure}
+
+Another way you can tell that \texttt{console.log} does not produce any output is by trying to save the output in a variable. Expressions that produce an output can be saved to a variable, the topic of SWE Ch.~2. As a sneek peek, consider the following two JavaScript console sessions. Don't mind the syntax just yet. The first statement saves the output of adding \texttt{1} and \texttt{2} to a variable named \texttt{sum}. The second line retrieves the value associated with \texttt{sum}, which is the number \texttt{3}. The addition operator is a transformer. It transforms its inputs into an output.
+
+\suppresslinenumbers
+\begin{lstlisting}[escapeinside=||]
+|\prompt| const sum = 1 + 2;
+|\comment{$\gets$ undefined}|
+|\prompt| sum
+|\comment{$\gets$}| 3
+\end{lstlisting}
+
+We can try to save the output of \texttt{console.log} in a similar way. What happens when we do?
+
+\begin{lstlisting}[escapeinside=||]
+|\prompt| const greeting = console.log("Hello, World!");
+|\comment{$\gets$ undefined}|
+|\prompt| greeting
+|\comment{$\gets$ undefined}|
+\end{lstlisting}
+
+The value of \texttt{greeting} is \texttt{undefined} because \texttt{console.log} produces no output. It is not a transformer. It accepts inputs produces no output. JavaScript witnesses that fact with the special value \texttt{undefined}. Printing to the screen is a side effect, not an output. And that's confusing. Now you understand why I don't like introducing programming with Hello, World! But congratulations, you made it.
+
+\section{Command Line}
+
+\section{Node.js}
