@@ -112,7 +112,7 @@ For everyone trying to keep afloat.
 \KOMAoptions{twoside=true}
 
 % Preface
-\input{chapters/preface.tex}
+\input{book/chapters/preface.tex}
 % Table of conents
 \etocstandarddisplaystyle % "toc display" as if etoc was not loaded
 \etocstandardlines % "toc lines as if etoc was not loaded
@@ -120,9 +120,9 @@ For everyone trying to keep afloat.
 
 \mainmatter % Denotes the start of the main document content, resets page numbering and uses arabic numbers
 \setchapterstyle{kao} % Choose the default chapter heading style
-\input{chapters/introduction.tex}
-\input{chapters/variables.tex}
-\input{chapters/conditionals.tex}
+\input{book/chapters/introduction.tex}
+\input{book/chapters/variables.tex}
+\input{book/chapters/conditionals.tex}
 
 \pagelayout{wide} % No margins
 \addpart{Solutions to Problems}
@@ -130,7 +130,7 @@ For everyone trying to keep afloat.
 
 \setcounter{chapter}{0}
 \renewcommand{\thechapter}{\Alph{chapter}}
-\input{solutions/introduction.tex}
+\input{book/solutions/introduction.tex}
 
 
 \backmatter

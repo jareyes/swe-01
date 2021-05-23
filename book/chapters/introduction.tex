@@ -9,7 +9,7 @@ Sucessful programmers need to use a mix of tricks from computer science and soft
 The \textbf{Fundamental Diagram} is at the heart of everything software engineers and computer scientists do.\sidenote{Full disclaimer: I might be the only person who calls this the Fundamental Diagram. But everyone should. Like reading, this diagram is fundamental.} As a programmer, you'll get to know this picture very well. It shows up in just about every concept you'll ever encounter---from the very big, to the obnoxiously small.
 
 \begin{figure}[h]
-  \input{figures/introduction/fundamental-diagram.tex}
+  \input{book/figures/introduction/fundamental-diagram.tex}
   \caption{\label{fig:intro-fundemental-diagram} The Fundamental Diagram of computer science and software engineering in all its glory. It describes just about everything a programmer could possibly do.}
 \end{figure}
 
@@ -18,7 +18,7 @@ Fortunately, the diagram doesn't have many parts. There are just three: the inpu
 \paragraph{Example (Question and Answer)} A lot of human interaction follows the input-transformer-output pattern. Questions and answers can be modeled by the fundamental diagram pretty easily. For example, ``What's your favorite color?''\sidenote{The answer is orange. Well, it is if I am the transformer being asked. You might come up with a different but correct answer. Different transformers can give different answers to the same question.} But what is the transformer in this case? The transformer is the person who gives the answer to the question; she listens to a question asked by somebody else, processes what it means, and then produces an answer. For historical reasons---think ancient Greek history---sometimes the role of the transformer in a Q\&A session is called an \emph{oracle}.
 
 \begin{figure}[h]
-  \input{figures/introduction/example-question-answer.tex}
+  \input{book/figures/introduction/example-question-answer.tex}
   \caption{\label{fig:intro-example-question-answer} Fundamental diagram for a question, oracle, and answer.}
 \end{figure}
 
@@ -38,7 +38,7 @@ On the web, requests are ubiquitous. When you open a web browser and type in the
 This pattern of request and response is exactly how the world wide web works. The piece of software that initiates the request is called the \emph{client}. Because this is the software that human users can see, people sometimes say client technology is \emph{front end} technology. The software that receives, processes, and sends back a response to the client is called the \emph{server}. The server is not something that human users interact with directly. We don't get to see what the server is doing, only the response that it produced. This is a lot like how clients at a restaurant don't get to interact with the kitchen directly. Instead they get to experience the finished product---but they don't get know how the sausage is made, so to speak. Because the server's work to transform a request into a full web page response is opaque to the user, we say that servers a \emph{back end} technology.
 
 \begin{figure}[h]
-  \input{figures/introduction/example-request-response.tex}
+  \input{book/figures/introduction/example-request-response.tex}
   \caption{\label{fig:intro-example-request-response} Fundamental diagram for a request, server, and response.}
 \end{figure}
 
@@ -47,7 +47,7 @@ The client-server architecture, like the fundamental diagram, is deceptively sim
 \paragraph{Example (Making Ice Cream)} Recipes are hands-down the tastiest kinds of transformers.Recipes explain how to transform ingredients into prepared dishes. Here's one I like because it's quick, easy, and the result is something near and dear to my heart: ice cream.
 
 \begin{marginfigure}
-  \input{figures/introduction/example-ice-cream.tex}
+  \input{book/figures/introduction/example-ice-cream.tex}
   \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice cream by Landan Lloyd from the Noun Project.}
 \end{marginfigure}
 
@@ -75,7 +75,7 @@ Chill the container in a freezer overnight.
 Did you notice that our great big ice cream transformer is made up of three smaller input-output transformers? The first one decribed on lines 1--2. It turns the input ingredients into a liquid base mixture. The next one on lines 3--4 takes as input the base mixture and outputs a cold cream. While cold cream is delicious, it melts extremely rapidly. And so the recipe finishes with the transformer on lines 5--6, which takes as input the cold cream and freezes it until to produce bona fide ice cream.
 
 \begin{figure*}[h]
-  \input{figures/introduction/example-ice-cream-pipeline.tex}
+  \input{book/figures/introduction/example-ice-cream-pipeline.tex}
   \caption{\label{fig:intro-example-ice-cream-pipeline} The steps inside transformers are often simpler transformers. The transfromation that produces ice cream from ingredients is made up of three successive transformers. The output of one transformer is the input to the next transformer.}
 \end{figure*}
 
@@ -107,7 +107,7 @@ Genre transcends language. Novels and sales brochures can be written in any lang
 \section{Compilers} One of the most important transformer in programming is type of program called a \emph{compiler}. Compilers translate programs from one language into another---specifically, from a \emph{source language} that humans can read, write, and understand to a \emph{target language} that computers can interpret and execute.
 
 \begin{figure}[h]
-  \input{figures/introduction/example-compiler.tex}
+  \input{book/figures/introduction/example-compiler.tex}
   \caption{\label{fig:intro-example-compiler} Fundamental diagram for source code compilation into machine-readable bytecode.}
 \end{figure}
 
