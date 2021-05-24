@@ -1,0 +1,13 @@
+\begin{scaletikzpicturetowidth}{\textwidth}
+  \begin{tikzpicture}[scale=\tikzscale, node distance=3cm, color=cyan, font=\sffamily\small]
+
+    \node[draw, thick, fill=cyan!20, minimum size=2em, inner sep=1em] (transformer) {not};
+    \node (inputs) [left of=transformer] {\texttt{true}};
+    \node (outputs) [right of=transformer] {\texttt{false}};
+    \node (expression) [below=1em of transformer] {\texttt{!true}};
+
+    \draw[->, thick, shorten >= 1em, shorten <= 0.25em] (inputs) -- (transformer);
+    \draw[->, thick, shorten >= 0.25em, shorten <= 0.5em] (transformer) -- (outputs);
+
+  \end{tikzpicture}
+\end{scaletikzpicturetowidth}

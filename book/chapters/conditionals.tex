@@ -1,8 +1,35 @@
 \chapter[Second Friend: Conditionals]{Conditionals}
 
+The next thing that you can do is make decisions between alternatives. Conditional logic in your programs simulates decision-making. The common way to decide what to do in JavaScript is to use an if-statement. If-statements will be your second friend! Along the way, we'll meet new data types, including one that allows us to group multiple variables together.
+
+\section{Truthiness}
+When deciding between two options---should we go to the beach or stay inside?---we use some criterion to push us to one side or the other---It's hot out, let's go to the beach. We can phrase the process in terms of asking a question and responding with a context-appropriate answer:
+
+Is it hot out?
+Yes, let's go to the beach.
+No, let's stay inside.
+
+In JavaScript we use the \textsf{Boolean} data type to simulate the answers yes and no. Because \textsf{Boolean} is a data type it has two parts: a collection of values, and a collection of operators that operate on those values. Unlike \textsf{Number} values, there aren't that many distinct \textsf{Boolean} values. In fact, there are only two. They are the literal values \texttt{true} and \texttt{false}. Don't let the fact that there are only two of them fool you. They are immensely powerful and can be combined in very complicated and useful ways. Let's see how.
+
+\begin{question}
+  Find and fix the bug in the following line of code.
+  \begin{lstlisting}
+    let true;
+  \end{lstlisting}
+\end{question}
+
+There are three built-in operators that transform \textsf{Boolean} values into other \textsf{Boolean} values. They are named logical \textsf{not}, logical \textsf{and}, and logical \textsf{or}. They let you model answers to compound questions. It's easy to get caught up in logic puzzles and every single programmer gets it backwards at some point. But at their core, \textsf{Boolean} expressions involving the so-called logical operators are just answers to questions. And you know how to answer questions. Don't let the foreign programming language syntax make you forget that.
+
+Let's start with the simplest transformer logical \textsf{not}. In JavaScript, the explaination point (\texttt{!})---sometimes pronounced ``bang!'' in programming circles---is used to notate logical \textsf{not} in code. It takes one \textsf{Boolean} input and transforms it into one \textsf{Boolean} output. To describe logical \textsf{not} fully, we can draw its fundamental diagram all of its inputs, i.e., twice: once with the input \texttt{true}, and again with the input \texttt{false}.
+
+\begin{figure}
+  \input{book/figures/conditionals/not-true-fundamental-diagram.tex}\\
+  \input{book/figures/conditionals/not-false-fundamental-diagram.tex}
+  \caption{\label{conds:not-fundamental-diagram.tex}}
+\end{figure}
 \begin{itemize}
-  \item comparison operators
   \item boolean data types
+  \item comparison operators
   \item transformers can convert one type to another type. that's the transform part! (transformers are stateless?)
   \item equality operators
   \item if statements
