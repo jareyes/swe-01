@@ -25,8 +25,53 @@ Let's start with the simplest transformer logical \textsf{not}. In JavaScript, t
 \begin{figure}
   \input{book/figures/conditionals/not-true-fundamental-diagram.tex}\\
   \input{book/figures/conditionals/not-false-fundamental-diagram.tex}
-  \caption{\label{conds:not-fundamental-diagram.tex}}
+  \caption{\label{conds:not-fundamental-diagram.tex}The fundamental diagrams for logical \textsf{not} applied to each input.}
 \end{figure}
+
+Now you (technically) know everything there is to know about the function logical \textsf{not}. When the input is \texttt{true}, the output \textsf{not} \texttt{true} evaluates to the value \texttt{false}. Likewise, when the input is \texttt{false}, the output \textsf{not} \texttt{false} evaluates to \texttt{true}. Logical \textsf{not} flips Boolean values between \texttt{true} and \texttt{false}.
+
+It is somewhat cumbersome to write out the fundamental diagram for each input value to a function. For functions that operate on a small number of inputs, such as these \textsf{Boolean} operators, it is convenient to collect the inputs and outputs into a table, with one column for each input and another column for an expression of function applied to the inputs, and a final column for the evaluation of the expression.
+
+\begin{figure}[h]
+  \ttfamily
+  \small
+  \color{cyan}
+  \begin{tabular}{c  c  c}
+    \textsf{Input} & \textsf{Application} & \textsf{Evaluation}\\
+    \hline
+    true & !true & false\\
+    false & !false & true
+  \end{tabular}
+  \caption{\label{fig:conditionals-logical-not} The truth table for the function logical \textsf{not}.}
+\end{figure}
+
+You can create such a table for any function. But when you create this kind of table for combinations of \textsf{Boolean} functions, it gets a special name: a \emph{truth table}. It is extremely easy to get confused when working through the value of a \textsf{Boolean} expression. Even very experienced programmers will get tripped out.\marginnote{Always write things down. Don't try to calculate in your head. You don't get bonus points for doing it in your head.} Truth tables are extremely helpful at making the logic of an expression plain, especially once we start combining operators to make more complicated expressions.
+
+\begin{question}
+  Write the pipeline fundamental diagram of the function double \textsf{not} (\texttt{!!}); that is, the function of \textsf{not} applied to the output of \textsf{not}.
+\end{question}
+
+\begin{question}
+  Write the truth table for double \textsf{not} (\texttt{!!}). \textsc{Hint:} For any input \texttt{x}, \texttt{!!x} evaluate to the same value as \texttt{!(!x)}; that is, the value of \textsf{not} applied to the output of \textsf{not}.
+\end{question}
+
+When calculating the value of a boolean expression is very, very helpful to break it down into as many subexpressions as possible. As an example, let's construct the truth table for triple \textsf{not} (\texttt{!!!}). We'd like to be able to write down the answer straight away, but that involves a lot of intermediate calculations. If we tried to keep track of things in our head, it'd be easy to lose track of how many times we've applied \textsf{not}. So, let's expand our table to include all of the intermediate calculations. \marginnote{When working on pipelines with big data, saving intermediate steps becomes even more critical. If the pipeline fails after running for days on a large data set, you'll be happy that you saved intermediate steps instead of starting over at the beginning. Your boss will be happy that you did, too.} It is good and be explicit and write down all of the steps.
+
+Let's make a dummy variable \texttt{x} to be in the input of our expression. In one row, \texttt{x} will be assigned the value \texttt{true}. In the other, \texttt{x} will be assigned the value \texttt{false}. We want to know what the output value \texttt{!!!x} evaluates to. In order to calculate \texttt{!!!x}, we first need to calculate \texttt{!!x}. But to calculate \texttt{!!x}, we first need to calculate \texttt{!x}. But we know how to calculate \texttt{!x}. Let's go!
+
+\begin{figure}[h]
+  \ttfamily
+  \color{cyan}
+  \small
+  \begin{tabular}{c c c c}
+    x & !x & !!x & !!!x \\
+    \hline
+    true & false & true & false\\
+    false & true & false & true
+  \end{tabular}
+  \caption{\label{fig:conditional-triple-not-table}The truth table for triple \textsf{not}, with intermediate calculations for subexpressions.}
+\end{figure}
+
 \begin{itemize}
   \item boolean data types
   \item comparison operators
