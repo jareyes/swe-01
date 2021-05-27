@@ -37,6 +37,7 @@ It is somewhat cumbersome to write out the fundamental diagram for each input va
   \small
   \color{cyan}
   \begin{tabular}{c  c  c}
+    x & !x & !x\\
     \textsf{Input} & \textsf{Application} & \textsf{Evaluation}\\
     \hline
     true & !true & false\\
@@ -59,18 +60,19 @@ When calculating the value of a boolean expression is very, very helpful to brea
 
 Let's make a dummy variable \texttt{x} to be in the input of our expression. In one row, \texttt{x} will be assigned the value \texttt{true}. In the other, \texttt{x} will be assigned the value \texttt{false}. We want to know what the output value \texttt{!!!x} evaluates to. In order to calculate \texttt{!!!x}, we first need to calculate \texttt{!!x}. But to calculate \texttt{!!x}, we first need to calculate \texttt{!x}. But we know how to calculate \texttt{!x}. Let's go!
 
-\begin{figure}[h]
+\begin{figure*}[h]
   \ttfamily
   \color{cyan}
   \small
-  \begin{tabular}{c c c c}
-    x & !x & !!x & !!!x \\
+  \begin{tabular}{c c c c c c c}
+    x & !x & !x & !!x & !!x & !!!x & !!!x \\
+    \textsf{Input} & \textsf{Application} & \textsf{Evaluation} & \textsf{Application} & \textsf{Evaluation} & \textsf{Application} & \textsf{Evaluation}\\
     \hline
-    true & false & true & false\\
-    false & true & false & true
+    true & !true & false & !false & true & !true & false\\
+    false & !false & true & !true & false & !false & true
   \end{tabular}
   \caption{\label{fig:conditional-triple-not-table}The truth table for triple \textsf{not}, with intermediate calculations for subexpressions.}
-\end{figure}
+\end{figure*}
 
 \begin{itemize}
   \item boolean data types
