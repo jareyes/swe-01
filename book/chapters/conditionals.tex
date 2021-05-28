@@ -65,7 +65,7 @@ Let's make a dummy variable \texttt{x} to be in the input of our expression. In 
   \color{cyan}
   \small
   \begin{tabular}{c c c c c c c}
-    x & !x & !x & !!x & !!x & !!!x & !!!x \\
+    x & !x & !x & !(!x) & !(!x) & !(!!x) & !(!!x) \\
     \textsf{Input} & \textsf{Application} & \textsf{Evaluation} & \textsf{Application} & \textsf{Evaluation} & \textsf{Application} & \textsf{Evaluation}\\
     \hline
     true & !true & false & !false & true & !true & false\\
@@ -73,6 +73,35 @@ Let's make a dummy variable \texttt{x} to be in the input of our expression. In 
   \end{tabular}
   \caption{\label{fig:conditional-triple-not-table}The truth table for triple \textsf{not}, with intermediate calculations for subexpressions.}
 \end{figure*}
+
+Logical \textsf{not} produces a single \textsf{Boolean} output. When we repeatedly apply \textsf{not}, we can temporarily forget about that all of the other \textsf{not}s to come and focus on the inputs and outputs one at a time. In general, to evaluate an expression (of any kind), we evaluate the nearest function on its input and work to the outside, providing the output of one function as the input to the next. While we could draw a fundamental diagram each time we supply outputs as inputs, we often use parentheses to signify the inputs. Below we've written out the top row of the truth table for triple-\textsf{not} with parentheses to point out which step we're working on. After each applicaion of \textsf{not}, the expression reduces to a simpler one. Then we pass on the output to the next copy of \textsf{not} for evaluation. Each time, moving the parentheses over by one place to capture the next function application. This process of grouping inputs and moving to the next function will work for all expressions, not just \textsf{Boolean} expressions. And we will use this technique widely for the rest of programming for all time.
+
+\begin{figure*}[h]
+  \ttfamily
+  \color{cyan}
+  \small
+  \begin{center}
+  !!!true $\to$ !!(!true) $\to$ !!(false) $\to$ !(!false) $\to$ !(true) $\to$ (!true) $\to$  false
+  \end{center}
+  \caption{This is a margin figure.}
+\end{figure*}
+
+Logical \textsf{not} takes only on input. The other two \textsf{Boolean} functions, logical \textsf{or} and logical \textsf{and}, operate on two inputs.
+
+\begin{marginfigure}
+  \input{book/figures/conditionals/venn-and.tex}
+  \caption{Logical \textsf{and} is \texttt{true} only when both \texttt{a} is \texttt{true} and \texttt{b} is \texttt{true}. You can visualize it as the instances where \texttt{a} and \texttt{b} coincide.}
+\end{marginfigure}
+
+\begin{marginfigure}
+  \input{book/figures/conditionals/venn-or.tex}
+  \caption{Logical \textsf{or} is \texttt{true} when either \texttt{a} is \texttt{true} or \texttt{b} is \texttt{true}. You can visualize it as all the instances of \texttt{a} and \texttt{b} combined.}
+\end{marginfigure}
+
+\begin{marginfigure}
+  \input{book/figures/conditionals/venn-not.tex}
+  \caption{Logical \textsf{not} is \texttt{true} whenever \texttt{a} is \texttt{false}. You can visualize it as all the instances that are not instances of \texttt{a}.}
+\end{marginfigure}
 
 \begin{itemize}
   \item boolean data types
