@@ -1,7 +1,14 @@
-\begin{tikzpicture}[node distance=0.75cm, color=cyan, font=\sffamily\small, thick]
+\begin{tikzpicture}[node distance=0.75cm, color=cyan, font=\ttfamily\small, thick]
 
-  \filldraw[fill=cyan!20] (0, 0) circle (1cm);
-  \filldraw[fill=cyan!20] (1, 0) circle (1cm);
-  \draw (0,0) circle (1cm);
+  \filldraw[fill=lightcyan] (0, 0) circle (1);
+  \filldraw[fill=lightcyan] (1, 0) circle (1);
+
+  \begin{scope}
+    \clip (0,0) circle (1);
+    \filldraw[fill=lightcyan] (0,0) circle (1);
+  \end{scope}
+
+  \fill[fill=lightcyan] (1,0) circle (0.98);
+  \draw (0.5, 0) node {a || b};
 
 \end{tikzpicture}
