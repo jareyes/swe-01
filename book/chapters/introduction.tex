@@ -1,28 +1,80 @@
 \setchapterpreamble[u]{\margintoc}
 \chapter{Introduction}
 
-Computer science is ths study of what we can compute. Computer scientists try to answer questions like, are there unavoidable limits on the programs we can write? (The answer is \emph{yes}. Some programs are impossible to write no matter what.) And are there unavoidable limits on how slow some programs have to run? (The answer again is yes. We'll see an example of a performance limit later on.) Software engineering is concerned not with whether it is possible to build something---they take the fact that their project can be built for granted---but rather how can the project be built \emph{cheaply}. Software engineers are concerned with how much the project costs, how much time the software takes to run, how much memory it consumes---and, most importantly, whether the whole thing can be shipped to the customer on schedule.
+Computer science is ths study of what we can compute. Computer scientists try to
+answer questions like, are there unavoidable limits on the programs we can
+write? (The answer is \emph{yes}. Some programs are impossible to write no
+matter what.) And are there unavoidable limits on how slow some programs have to
+run? (The answer again is yes. We'll see an example of a performance limit later
+on.) Software engineering is concerned not with whether it is possible to build
+something---they take the fact that their project can be built for granted---but
+rather how can the project be built \emph{cheaply}. Software engineers are
+concerned with how much the project costs, how much time the software takes to
+run, how much memory it consumes---and, most importantly, whether the whole
+thing can be shipped to the customer on schedule.
 
-Sucessful programmers need to use a mix of tricks from computer science and software engineering. Generally the two fields grow from one another. Engineers sometiems stumble onto a new, unsolved problem during the course of working on their projects. In the process of completing the project, new computer science is made. Researchers cook up new algorithms to solve outstanding problems in the field. In the process they invent new programming techniques. Those new techniques make it back to the engineers, who then apply them in new projects. And so the cycle goes on and on. What computer scientists and software engineers do aren't that different. They approach similar problems with different perspectives. To be a sucessful programmer, you will sometimes want to think like a computer scientist and sometimes like a software engineer. Fortunately, both perspectives come from the same underlying idea of computation, which can be drawn very neatly in a diagram---the \emph{fundamental diagram}.
+Sucessful programmers need to use a mix of tricks from computer science and
+software engineering. Generally the two fields grow from one another. Engineers
+sometiems stumble onto a new, unsolved problem during the course of working on
+their projects. In the process of completing the project, new computer science
+is made. Researchers cook up new algorithms to solve outstanding problems in the
+field. In the process they invent new programming techniques. Those new
+techniques make it back to the engineers, who then apply them in new projects.
+And so the cycle goes on and on. What computer scientists and software engineers
+do aren't that different. They approach similar problems with different
+perspectives. To be a sucessful programmer, you will sometimes want to think
+like a computer scientist and sometimes like a software engineer. Fortunately,
+both perspectives come from the same underlying idea of computation, which can
+be drawn very neatly in a diagram---the \emph{fundamental diagram}.
 
 \section{The Fundamental Diagram}
-The \textbf{Fundamental Diagram} is at the heart of everything software engineers and computer scientists do.\sidenote{Full disclaimer: I might be the only person who calls this the Fundamental Diagram. But everyone should. Like reading, this diagram is fundamental.} As a programmer, you'll get to know this picture very well. It shows up in just about every concept you'll ever encounter---from the very big, to the obnoxiously small.
+The \textbf{Fundamental Diagram} is at the heart of everything software
+engineers and computer scientists do.\sidenote{Full disclaimer: I might be the
+only person who calls this the Fundamental Diagram. But everyone should. Like
+reading, this diagram is fundamental.} As a programmer, you'll get to know this
+picture very well. It shows up in just about every concept you'll ever
+encounter---from the very big, to the obnoxiously small.
 
 \begin{figure}[h]
   \input{book/figures/introduction/fundamental-diagram.tex}
-  \caption{\label{fig:intro-fundemental-diagram} The Fundamental Diagram of computer science and software engineering in all its glory. It describes just about everything a programmer could possibly do.}
+\caption{\label{fig:intro-fundemental-diagram} The Fundamental Diagram of
+computer science and software engineering in all its glory. It describes just
+about everything a programmer could possibly do.}
 \end{figure}
 
-Fortunately, the diagram doesn't have many parts. There are just three: the inputs, the outputs, and the transformer. The transformer takes in \emph{inputs} and \emph{transforms} them into \emph{outputs}. That's it. As a programmer, you will write software that turns specific inputs into particular outputs to accomplsh a given task. If that description sounds vague, that's because it is. Let's look at a few examples to see the Fundamental Diagram in action to get a better idea of what's going on.
+Fortunately, the diagram doesn't have many parts. There are just three: the
+inputs, the outputs, and the transformer. The transformer takes in \emph{inputs}
+and \emph{transforms} them into \emph{outputs}. That's it. As a programmer, you
+will write software that turns specific inputs into particular outputs to
+accomplsh a given task. If that description sounds vague, that's because it is.
+Let's look at a few examples to see the Fundamental Diagram in action to get a
+better idea of what's going on.
 
-\paragraph{Example (Question and Answer)} A lot of human interaction follows the input-transformer-output pattern. Questions and answers can be modeled by the fundamental diagram pretty easily. For example, ``What's your favorite color?''\sidenote{The answer is orange. Well, it is if I am the transformer being asked. You might come up with a different but correct answer. Different transformers can give different answers to the same question.} But what is the transformer in this case? The transformer is the person who gives the answer to the question; she listens to a question asked by somebody else, processes what it means, and then produces an answer. For historical reasons---think ancient Greek history---sometimes the role of the transformer in a Q\&A session is called an \emph{oracle}.
+\paragraph{Example (Question and Answer)} A lot of human interaction follows the
+input-transformer-output pattern. Questions and answers can be modeled by the
+fundamental diagram pretty easily. For example, ``What's your favorite
+color?''\sidenote{The answer is orange. Well, it is if I am the transformer
+being asked. You might come up with a different but correct answer. Different
+transformers can give different answers to the same question.} But what is the
+transformer in this case? The transformer is the person who gives the answer to
+the question; she listens to a question asked by somebody else, processes what
+it means, and then produces an answer. For historical reasons---think ancient
+Greek history---sometimes the role of the transformer in a Q\&A session is
+called an \emph{oracle}.
 
 \begin{figure}[h]
   \input{book/figures/introduction/example-question-answer.tex}
-  \caption{\label{fig:intro-example-question-answer} Fundamental diagram for a question, oracle, and answer.}
+\caption{\label{fig:intro-example-question-answer} Fundamental diagram for a
+question, oracle, and answer.}
 \end{figure}
 
-\paragraph{Example (Request and Response)}The same can be said of slightly different kind of speech act called a \emph{request}. People make requests all the time. ``Can you close the door, please?'' ``May I have the lobster sandwich and a raspberry lime rickey?'' ``That'll be \$49.99, please.'' Each of these statements intend to turn simple words into actions that produce some physical effect---producing closed door, a lobster sandwich and a raspberry lime rickey, or money totaling \$49.99.
+\paragraph{Example (Request and Response)}The same can be said of slightly
+different kind of speech act called a \emph{request}. People make requests all
+the time. ``Can you close the door, please?'' ``May I have the lobster sandwich
+and a raspberry lime rickey?'' ``That'll be \$49.99, please.'' Each of these
+statements intend to turn simple words into actions that produce some physical
+effect---producing closed door, a lobster sandwich and a raspberry lime rickey,
+or money totaling \$49.99.
 
 \begin{question}
   \label{question:intro-transformers}
@@ -33,30 +85,83 @@ Fortunately, the diagram doesn't have many parts. There are just three: the inpu
   Draw the fundamental diagrams for each of the requests above.
 \end{question}
 
-On the web, requests are ubiquitous. When you open a web browser and type in the address of a web page, the web browser makes a formal request to the machine located at that address. \sidenote{In the same way individual people have street addresses---like Sirius Black, who resided at 12 Grimmauld Place, London---computers have internet addresses, too. These computers are called \emph{web servers}. Like the computer which resides at the address \texttt{www.dafk.net}.\vskip 5pt Individual web pages reside on web servers. For example, the webapge \texttt{what} resides on the computer with the address \texttt{www.darfk.net}. Its full address is \texttt{www.darfk.net/what}.} The terminology for the actors in a web request comes from the restaurant industry. At restaurants, clients make requests to people called servers, who fulfill their clients' requests (usually with the help of many other people who are not client-facing).
+On the web, requests are ubiquitous. When you open a web browser and type in the
+address of a web page, the web browser makes a formal request to the machine
+located at that address. \sidenote{In the same way individual people have street
+addresses---like Sirius Black, who resided at 12 Grimmauld Place,
+London---computers have internet addresses, too. These computers are called
+\emph{web servers}. Like the computer which resides at the address
+\texttt{www.dafk.net}.\vskip 5pt Individual web pages reside on web servers. For
+example, the webapge \texttt{what} resides on the computer with the address
+\texttt{www.darfk.net}. Its full address is \texttt{www.darfk.net/what}.} The
+terminology for the actors in a web request comes from the restaurant industry.
+At restaurants, clients make requests to people called servers, who fulfill
+their clients' requests (usually with the help of many other people who are not
+client-facing).
 
-This pattern of request and response is exactly how the world wide web works. The piece of software that initiates the request is called the \emph{client}. Because this is the software that human users can see, people sometimes say client technology is \emph{front end} technology. The software that receives, processes, and sends back a response to the client is called the \emph{server}. The server is not something that human users interact with directly. We don't get to see what the server is doing, only the response that it produced. This is a lot like how clients at a restaurant don't get to interact with the kitchen directly. Instead they get to experience the finished product---but they don't get know how the sausage is made, so to speak. Because the server's work to transform a request into a full web page response is opaque to the user, we say that servers a \emph{back end} technology.
+This pattern of request and response is exactly how the world wide web works.
+The piece of software that initiates the request is called the \emph{client}.
+Because this is the software that human users can see, people sometimes say
+client technology is \emph{front end} technology. The software that receives,
+processes, and sends back a response to the client is called the \emph{server}.
+The server is not something that human users interact with directly. We don't
+get to see what the server is doing, only the response that it produced. This is
+a lot like how clients at a restaurant don't get to interact with the kitchen
+directly. Instead they get to experience the finished product---but they don't
+get know how the sausage is made, so to speak. Because the server's work to
+transform a request into a full web page response is opaque to the user, we say
+that servers a \emph{back end} technology.
 
 \begin{figure}[h]
   \input{book/figures/introduction/example-request-response.tex}
-  \caption{\label{fig:intro-example-request-response} Fundamental diagram for a request, server, and response.}
+\caption{\label{fig:intro-example-request-response} Fundamental diagram for a
+request, server, and response.}
 \end{figure}
 
-The client-server architecture, like the fundamental diagram, is deceptively simple and yet it powers the whole of the internet.\sidenote{Software engineers call the organization of data flows an \emph{architecture}. In this case, the flow of information is the request from the client to the server and the response from server to client.} Web programming is a specialized collection of technologies, many of which we'll encounter in this series. When you're bushwacking the jargon and buzzwords of the web technology jungle, stop and remember Figure \ref{fig:intro-example-request-response}: just two arrows and a box in the middle. Almost all of the latest and greatest technologies are just fancy ways to request some piece of data from a server. Always keep this picture in mind.
+The client-server architecture, like the fundamental diagram, is deceptively
+simple and yet it powers the whole of the internet.\sidenote{Software engineers
+call the organization of data flows an \emph{architecture}. In this case, the
+flow of information is the request from the client to the server and the
+response from server to client.} Web programming is a specialized collection of
+technologies, many of which we'll encounter in this series. When you're
+bushwacking the jargon and buzzwords of the web technology jungle, stop and
+remember Figure \ref{fig:intro-example-request-response}: just two arrows and a
+box in the middle. Almost all of the latest and greatest technologies are just
+fancy ways to request some piece of data from a server. Always keep this picture
+in mind.
 
-\paragraph{Example (Making Ice Cream)} Recipes are hands-down the tastiest kinds of transformers.Recipes explain how to transform ingredients into prepared dishes. Here's one I like because it's quick, easy, and the result is something near and dear to my heart: ice cream.
+\paragraph{Example (Making Ice Cream)} Recipes are hands-down the tastiest kinds
+of transformers.Recipes explain how to transform ingredients into prepared
+dishes. Here's one I like because it's quick, easy, and the result is something
+near and dear to my heart: ice cream.
 
 \begin{marginfigure}
   \input{book/figures/introduction/example-ice-cream.tex}
-  \caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15 minutes plus a 20 minutes soft freeze in the ice cream maker followed by an overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice cream by Landan Lloyd from the Noun Project.}
+\caption{\label{fig:intro-example-ice-cream} Total preparation time is about 15
+minutes plus a 20 minutes soft freeze in the ice cream maker followed by an
+overnight hard freeze in the freezer.\vskip 5pt Milk by Wawan Hermawan and ice
+cream by Landan Lloyd from the Noun Project.}
 \end{marginfigure}
 
-Up until now, each transformer we've described takes exactly one input and produces a single output. Here is our first example of a transformer that takes multiple inputs to produce its output. It is not uncommon for a transformer to take multiple inputs. There are very few recipes that require just a single ingredient. So, too, programs often need to use combine multiple inputs to generate a desired output.
+Up until now, each transformer we've described takes exactly one input and
+produces a single output. Here is our first example of a transformer that takes
+multiple inputs to produce its output. It is not uncommon for a transformer to
+take multiple inputs. There are very few recipes that require just a single
+ingredient. So, too, programs often need to use combine multiple inputs to
+generate a desired output.
 
-Let's look at the process to transform a few ingredients into ice cream in some detail. Below is a kind of step-by-step list of instructions that transform the input ingredients milk, cream, sugar, and salt, into ice cream. Each step goes on its own line. As a general rule, steps should be kept as simple as possible. Complex steps should be broken up into multiple, simpler steps. This strategy makes it easier for the person preparing the recipe to understand and execute. The programs we write to transform inputs into outputs will have a very similar character.
+Let's look at the process to transform a few ingredients into ice cream in some
+detail. Below is a kind of step-by-step list of instructions that transform the
+input ingredients milk, cream, sugar, and salt, into ice cream. Each step goes
+on its own line. As a general rule, steps should be kept as simple as possible.
+Complex steps should be broken up into multiple, simpler steps. This strategy
+makes it easier for the person preparing the recipe to understand and execute.
+The programs we write to transform inputs into outputs will have a very similar
+character.
 
 \suppresslinenumbers
-\begin{lstlisting}[caption={\label{listing:intro-ice-cream} Ice cream transformer. It's as short as it is sweet.}, escapeinside=$$, firstnumber=0]
+\begin{lstlisting}[caption={\label{listing:intro-ice-cream} Ice cream
+transformer. It's as short as it is sweet.}, escapeinside=$$, firstnumber=0]
 $\textbf{Inputs:}$ 1 c. whole milk
         2 c. heavy cream
         2/3 c. sugar
@@ -72,17 +177,39 @@ Transfer the cold cream into a sealed container.
 Chill the container in a freezer overnight.
 \end{lstlisting}
 
-Did you notice that our great big ice cream transformer is made up of three smaller input-output transformers? The first one decribed on lines 1--2. It turns the input ingredients into a liquid base mixture. The next one on lines 3--4 takes as input the base mixture and outputs a cold cream. While cold cream is delicious, it melts extremely rapidly. And so the recipe finishes with the transformer on lines 5--6, which takes as input the cold cream and freezes it until to produce bona fide ice cream.
+Did you notice that our great big ice cream transformer is made up of three
+smaller input-output transformers? The first one decribed on lines 1--2. It
+turns the input ingredients into a liquid base mixture. The next one on lines
+3--4 takes as input the base mixture and outputs a cold cream. While cold cream
+is delicious, it melts extremely rapidly. And so the recipe finishes with the
+transformer on lines 5--6, which takes as input the cold cream and freezes it
+until to produce bona fide ice cream.
 
 \begin{figure*}[h]
   \input{book/figures/introduction/example-ice-cream-pipeline.tex}
-  \caption{\label{fig:intro-example-ice-cream-pipeline} The steps inside transformers are often simpler transformers. The transfromation that produces ice cream from ingredients is made up of three successive transformers. The output of one transformer is the input to the next transformer.}
+\caption{\label{fig:intro-example-ice-cream-pipeline} The steps inside
+transformers are often simpler transformers. The transfromation that produces
+ice cream from ingredients is made up of three successive transformers. The
+output of one transformer is the input to the next transformer.}
 \end{figure*}
 
-Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, ``One transformer's output is another transformer's input.'' And that is the real power of the fundamental diagram. You can chain copies of it together to produce more and more complicated flows of inputs and outputs. In this case, we chained together three transformers in the simplest way possible, in a line, one after the other. The \emph{pipeline} pattern is very common in software architecture. In fact, many of the applications in ``big data'' reduce to pipelines of transformers, no different conceptually to the ice cream pipeline above. When we work with command line tools, we will meet the pipe operator that feeds the output of one program as the input to another.\sidenote{The pipe operator notated by the symbol `\texttt{|}`. It's that shift character on the backslash key. Now go lay some pipe!} It acts like a pipe for the information to flow through. Hence the name \emph{pipe}.
+Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying,
+``One transformer's output is another transformer's input.'' And that is the
+real power of the fundamental diagram. You can chain copies of it together to
+produce more and more complicated flows of inputs and outputs. In this case, we
+chained together three transformers in the simplest way possible, in a line, one
+after the other. The \emph{pipeline} pattern is very common in software
+architecture. In fact, many of the applications in ``big data'' reduce to
+pipelines of transformers, no different conceptually to the ice cream pipeline
+above. When we work with command line tools, we will meet the pipe operator that
+feeds the output of one program as the input to another.\sidenote{The pipe
+operator notated by the symbol `\texttt{|}`. It's that shift character on the
+backslash key. Now go lay some pipe!} It acts like a pipe for the information to
+flow through. Hence the name \emph{pipe}.
 
 \begin{question}
-  In the style of Listing \ref{listing:intro-ice-cream}, write the inputs, outputs, and steps to create a grilled cheese sandwich.
+In the style of Listing \ref{listing:intro-ice-cream}, write the inputs,
+outputs, and steps to create a grilled cheese sandwich.
 \end{question}
 
 \begin{question}
@@ -90,97 +217,264 @@ Figure \ref{fig:intro-example-ice-cream-pipeline} illustrates that old saying, `
 \end{question}
 
 \begin{question}
-  Come up with three more examples that can be modeled by the fundamental diagram.
-\end{question}
+Come up with three more examples that can be modeled by the fundamental diagram.\end{question}
 
 \section{Programs}
-You will use a text editor to write your programs, because programs are a kind of written text. You can think of them as a sort of genre. Programs follow the rules and conventions of their genre---the same as a sales brochure or novel do. And like any other work of literature, can be judged on any number of dimensions---readability, structure, flow, rhythm---so, too, can the text (code) of an individual program be judged sloppy or sublime. There are a lot of strong opinions about how to organize code. And religious wars about what a good program looks like break out all the time. And just as good writing takes lots of practice and revision, so does writing a good program.
+You will use a text editor to write your programs, because programs are a kind
+of written text. You can think of them as a sort of genre. Programs follow the
+rules and conventions of their genre---the same as a sales brochure or novel do.
+And like any other work of literature, can be judged on any number of
+dimensions---readability, structure, flow, rhythm---so, too, can the text (code)
+of an individual program be judged sloppy or sublime. There are a lot of strong
+opinions about how to organize code. And religious wars about what a good
+program looks like break out all the time. And just as good writing takes lots
+of practice and revision, so does writing a good program.
 
-Writing a program is an iterative process, with many drafts, edits, and restructuring. The practice of editing a program is so important that it has been given a special name, \emph{refactoring}. Refactoring is the process of restructuring code in a program to improve it somehow. Often the aim of refactoring is understandability. Remember, programs are for human-readers, not computers. \marginnote{Other programmers include \emph{you} in the future. You think you'll remember what you were thinking when you wrote that obtuse line of code, but I promise you, you will not.} So you should go to great pains to make your code legible and digestable to other programmers. Other goals include troubleshootability, extensibility, and performance.
+Writing a program is an iterative process, with many drafts, edits, and
+restructuring. The practice of editing a program is so important that it has
+been given a special name, \emph{refactoring}. Refactoring is the process of
+restructuring code in a program to improve it somehow. Often the aim of
+refactoring is understandability. Remember, programs are for human-readers, not
+computers. \marginnote{Other programmers include \emph{you} in the future. You
+think you'll remember what you were thinking when you wrote that obtuse line of
+code, but I promise you, you will not.} So you should go to great pains to make
+your code legible and digestable to other programmers. Other goals include
+troubleshootability, extensibility, and performance.
 
-Refactoring isn't separate from programming. It's part of writing, drafting, and improving every program you write. Refactoring projects can be as small as changing a variable name, or as large as a full-scale project rewrite. Usually they range somewhere in between. Refactoring is an essential skill. We will refactor many of the programs we write in this book because we refactor many of the programs we write on the job.
+Refactoring isn't separate from programming. It's part of writing, drafting, and
+improving every program you write. Refactoring projects can be as small as
+changing a variable name, or as large as a full-scale project rewrite. Usually
+they range somewhere in between. Refactoring is an essential skill. We will
+refactor many of the programs we write in this book because we refactor many of
+the programs we write on the job.
 
-Most genres contain subgenres. Within the novel you find mystery novels, romance novels, travel novels, and other that cross and combine subgenres. Programs constitute a large genre. Quite naturally, the field has split in many kinds of programming: systems programming, graphics programming, web application programming, game programming, scientific programming, etc. All of kinds of programming, however, rely on foundational concepts and common techniques.
+Most genres contain subgenres. Within the novel you find mystery novels, romance
+novels, travel novels, and other that cross and combine subgenres. Programs
+constitute a large genre. Quite naturally, the field has split in many kinds of
+programming: systems programming, graphics programming, web application
+programming, game programming, scientific programming, etc. All of kinds of
+programming, however, rely on foundational concepts and common techniques.
 
-Genre transcends language. Novels and sales brochures can be written in any language. And the same general rules apply whether written in English or Swedish. Programs can be written in a variety programming languages. Most programming languages are designed for human readers and writers. The machines, which execute the instructions written in code, however, speak their own \emph{machine languages}. And the contents of the text files that programmers produce need to be converted into directives that can be carried out reliably and directly on hardware. There are two special kinds of programs that perform the translation from a source programming language to machine language: compilers and interpreters. The difference is that compilers take in a full program and convert it all at once. Interpreters take in one statement of programming at a time and convert on the fly. (Much the same difference between translating a book---the compiler---and what someone is saying in real-time---an interpreter.)
+Genre transcends language. Novels and sales brochures can be written in any
+language. And the same general rules apply whether written in English or
+Swedish. Programs can be written in a variety programming languages. Most
+programming languages are designed for human readers and writers. The machines,
+which execute the instructions written in code, however, speak their own
+\emph{machine languages}. And the contents of the text files that programmers
+produce need to be converted into directives that can be carried out reliably
+and directly on hardware. There are two special kinds of programs that perform
+the translation from a source programming language to machine language:
+compilers and interpreters. The difference is that compilers take in a full
+program and convert it all at once. Interpreters take in one statement of
+programming at a time and convert on the fly. (Much the same difference between
+translating a book---the compiler---and what someone is saying in real-time---an
+interpreter.)
 
-\section{Compilers} One of the most important transformer in programming is type of program called a \emph{compiler}. Compilers translate programs from one language into another---specifically, from a \emph{source language} that humans can read, write, and understand to a \emph{target language} that computers can interpret and execute.
+\section{Compilers} One of the most important transformer in programming is type
+of program called a \emph{compiler}. Compilers translate programs from one
+language into another---specifically, from a \emph{source language} that humans
+can read, write, and understand to a \emph{target language} that computers can
+interpret and execute.
 
 \begin{figure}[h]
   \input{book/figures/introduction/example-compiler.tex}
-  \caption{\label{fig:intro-example-compiler} Fundamental diagram for source code compilation into machine-readable bytecode.}
+\caption{\label{fig:intro-example-compiler} Fundamental diagram for source code
+compilation into machine-readable bytecode.}
 \end{figure}
 
-It may seem surprising that the code you write is \emph{not} for the computer but for people---like yourself! The source code that you write needs to be converted into machine-friendly instructions that can be executed by hardware. Compilers make programming accessible to people who do not hold PhDs in mathematics, and they are one of the great achievements in the history of computing. Without compilers we would need to know absolutely everything about the hardware your program runs on---how its memory is structured, how many registers it has---and to manually keep track of and manipulate the location of your data in memory. You can program in a \emph{low level language} like Assembly if you want to get cozy with the bare metal. Since there are so many more things to keep track, low-level language programs tend to be very long and hard to follow. By comparison, \emph{high level languages} cannot be executed by the machine directly and require an extra compilation step that generates the low-level code for you. Generally, this extra step is worth it. Programs written in high level languages are shorter and easier to follow than their low level counterparts.
+It may seem surprising that the code you write is \emph{not} for the computer
+but for people---like yourself! The source code that you write needs to be
+converted into machine-friendly instructions that can be executed by hardware.
+Compilers make programming accessible to people who do not hold PhDs in
+mathematics, and they are one of the great achievements in the history of
+computing. Without compilers we would need to know absolutely everything about
+the hardware your program runs on---how its memory is structured, how many
+registers it has---and to manually keep track of and manipulate the location of
+your data in memory. You can program in a \emph{low level language} like
+Assembly if you want to get cozy with the bare metal. Since there are so many
+more things to keep track, low-level language programs tend to be very long and
+hard to follow. By comparison, \emph{high level languages} cannot be executed by
+the machine directly and require an extra compilation step that generates the
+low-level code for you. Generally, this extra step is worth it. Programs written
+in high level languages are shorter and easier to follow than their low level
+counterparts.
 
-As an example, compare two implementations of the classic program \textsf{Hello, World}. The first one is written in NodeJS, a high level language.
+As an example, compare two implementations of the classic program \textsf{Hello,
+World}. The first one is written in NodeJS, a high level language.
 
-\begin{lstlisting}[caption={\label{listing:intro-hello-world-nodejs} Hello, World! in NodeJS.}, escapeinside=$$, firstnumber=1]
+\begin{lstlisting}[caption={\label{listing:intro-hello-world-nodejs} Hello,
+World! in NodeJS.}, escapeinside=$$, firstnumber=1]
 // hello.js
 "use strict";
 
 console.log("Hello, World!");
 \end{lstlisting}
 
-The second implementation is written in Assembly, a low level language that mimics the architecture of the hardware that the program runs on.
+The second implementation is written in Assembly, a low level language that
+mimics the architecture of the hardware that the program runs on.
 
-Be very thankful that you have a friendly compiler that can translate your directions into machine-readable instructions.
+Be very thankful that you have a friendly compiler that can translate your
+directions into machine-readable instructions.
 
-\textbf{TODO: Hello World in Assembly} https://tldp.org/HOWTO/Assembly-HOWTO/hello.html Say that assembly maps 1:1 to machine architecture using an \emph{assembler}. Often source code gets compiled to assembly instructions then assembled into machine instructrions. One assembler per type of chip architecture. Why talk about this at all? The important part is that software needs to run on hardware. At the end of the day, there is a physical location to all of the information in a program. (What about virtualization? Well, those virtualizations model the hardware, so they have to model the physical location, too. And those virtualizations run on real hardware. So even programs that simulate computers need to run on real computers. The data has to live in a physical location at some point. It can't be turtles \emph{all} the way down.)
+\textbf{TODO: Hello World in Assembly}
+https://tldp.org/HOWTO/Assembly-HOWTO/hello.html Say that assembly maps 1:1 to
+machine architecture using an \emph{assembler}. Often source code gets compiled
+to assembly instructions then assembled into machine instructrions. One
+assembler per type of chip architecture. Why talk about this at all? The
+important part is that software needs to run on hardware. At the end of the day,
+there is a physical location to all of the information in a program. (What about
+virtualization? Well, those virtualizations model the hardware, so they have to
+model the physical location, too. And those virtualizations run on real
+hardware. So even programs that simulate computers need to run on real
+computers. The data has to live in a physical location at some point. It can't
+be turtles \emph{all} the way down.)
 
-Make a fundamental diagram of source code $\to$ compiler $\to$ assembly code $\to$ assembler $\to$ machine instructions.
+Make a fundamental diagram of source code $\to$ compiler $\to$ assembly code
+$\to$ assembler $\to$ machine instructions.
 
 \textbf{TODO: Grace Hopper.
-Fran Allen: https://www.ibm.com/blogs/research/2020/08/remembering-frances-allen/}
+Fran Allen:
+https://www.ibm.com/blogs/research/2020/08/remembering-frances-allen/}
 
 \section{Interpreters}
 
-Interpreters are an interactive version of compilers. Instead of writing all of the code out at once and compiling it to a finish program, interpreters let you type in instructions one at a time and run your program incrementally. They are a playground, a sandbox to try things out.
+Interpreters are an interactive version of compilers. Instead of writing all of
+the code out at once and compiling it to a finish program, interpreters let you
+type in instructions one at a time and run your program incrementally. They are
+a playground, a sandbox to try things out.
 
 [Insert fundamental diagram for interpreter]
 
 Reference \textit{Structure and Interpretation of Computer Programs}.
 
-JavaScript is an interpreted language. It is useful to try things out in an interpreter while writing a program. We will use the NodeJS interpreter a lot to develop our programs as we write them.
+JavaScript is an interpreted language. It is useful to try things out in an
+interpreter while writing a program. We will use the NodeJS interpreter a lot to
+develop our programs as we write them.
 
-\textbf{TODO:} JavaScript is based on another language called ECMAScript, which is specified by an standardization board called ECMA International. ECMA approves standards documents, written in English, for new language features, changes, and extensions. The standards body publishes new editions to the standards documents of ECMAScript with some regularity. Once standards have been approved, developers start implementing the features in a JavaScript interpreter. (Although sometimes it works the other way around. Developers cook up a feature that goes viral, and then the standards body adopts the feature as an official additional to the language.)
+\textbf{TODO:} JavaScript is based on another language called ECMAScript, which
+is specified by an standardization board called ECMA International. ECMA
+approves standards documents, written in English, for new language features,
+changes, and extensions. The standards body publishes new editions to the
+standards documents of ECMAScript with some regularity. Once standards have been
+approved, developers start implementing the features in a JavaScript
+interpreter. (Although sometimes it works the other way around. Developers cook
+up a feature that goes viral, and then the standards body adopts the feature as
+an official additional to the language.)
 
-There is no rule that says a JavaScript interpreter must implement the standard fully---though, it's less useful if an implementation is not standards-compliant. Each of the major web browsers, for example, implement their own JavaScript engine. From time to time one browser will implement a feature that others have not and vice versa. In this sense, each browser runs a different version or flavor of JavaScript, because, as we've said before---a programming language has to be implemented itself as a program. The Mozilla Foundation keeps track of compliance to ECMAScript standards for each of the major browsers on the MDN Web Docs page\sidenote{https://developer.mozilla.org/en-US/docs/Web/JavaScript}.
+There is no rule that says a JavaScript interpreter must implement the standard
+fully---though, it's less useful if an implementation is not
+standards-compliant. Each of the major web browsers, for example, implement
+their own JavaScript engine. From time to time one browser will implement a
+feature that others have not and vice versa. In this sense, each browser runs a
+different version or flavor of JavaScript, because, as we've said before---a
+programming language has to be implemented itself as a program. The Mozilla
+Foundation keeps track of compliance to ECMAScript standards for each of the
+major browsers on the MDN Web Docs
+page\sidenote{https://developer.mozilla.org/en-US/docs/Web/JavaScript}.
 
-JavaScript is not bound to web browsers, however. Due in large part to the effort put into the open-source implementation Node.js\sidenote{nodejs.org}, JavaScipt can be used to general programming outside of the web. Node.js bills itself as server-side JavaScript, and was created to make building fast, scalable network applications for the web. Node.js distributions include extra libraries that are useful for general-purpose programming, such as libraries to manipulate the file system. In this book we will be using Node.js as our reference implementation. While many of the exaples in this book will work in a web browser developer's console, some of them will explicitly use features available only in Node.js.
+JavaScript is not bound to web browsers, however. Due in large part to the
+effort put into the open-source implementation Node.js\sidenote{nodejs.org},
+JavaScipt can be used to general programming outside of the web. Node.js bills
+itself as server-side JavaScript, and was created to make building fast,
+scalable network applications for the web. Node.js distributions include extra
+libraries that are useful for general-purpose programming, such as libraries to
+manipulate the file system. In this book we will be using Node.js as our
+reference implementation. While many of the exaples in this book will work in a
+web browser developer's console, some of them will explicitly use features
+available only in Node.js.
 
 
 \section{Four Friends of Programming}
 
-There are lots of things to learn about engineering. New technologies are built every single day. And it is difficult to keep up. The shear number of things to know can be overwhelming. But fear not! There actually aren't that many different things you can do with a programming language. In fact, there are only four.\marginnote{The fact that there are only four things you can do is something of a theoretical marvel. It is related to \emph{Church-Turing thesis} and lies as the heart of the foundations of computing. Lucky for us, it means we need to learn only four concepts. Actually the fourth one, organization and reuse, is merely a convenience for us humans.} Any new technology or technique you run across is a cousin to one or more of the four friends you will make in this chapter. The four things you can do in a programming language are:
+There are lots of things to learn about engineering. New technologies are built
+every single day. And it is difficult to keep up. The shear number of things to
+know can be overwhelming. But fear not! There actually aren't that many
+different things you can do with a programming language. In fact, there are only
+four.\marginnote{The fact that there are only four things you can do is
+something of a theoretical marvel. It is related to \emph{Church-Turing thesis}
+and lies as the heart of the foundations of computing. Lucky for us, it means we
+need to learn only four concepts. Actually the fourth one, organization and
+reuse, is merely a convenience for us humans.} Any new technology or technique
+you run across is a cousin to one or more of the four friends you will make in
+this chapter. The four things you can do in a programming language are:
 
 \begin{enumerate}
   \item \textbf{Store data and retrieve it later to use.}
-  Your friend for the pillar of data storage and retrieval is a \emph{variable}. Other instances of this pillar include files, databases, networked resources, and web pages on the Internet. At their heart, however, they're all about stashing some information somewhere and fetching it later.
+Your friend for the pillar of data storage and retrieval is a \emph{variable}.
+Other instances of this pillar include files, databases, networked resources,
+and web pages on the Internet. At their heart, however, they're all about
+stashing some information somewhere and fetching it later.
 
   \item \textbf{Decide between alternatives.}
-  Your friend for the pillar of decision-making is the \textsf{if} statement. Other examples of this pillar include associative arrays, pattern matching, and \textsf{switch} statements. These technologies exist to add decision-making into programs. Conditional elements put the ``sometimes'' into programs that would otherwise be ``always'' based on context and circumstance.
+Your friend for the pillar of decision-making is the \textsf{if} statement.
+Other examples of this pillar include associative arrays, pattern matching, and
+\textsf{switch} statements. These technologies exist to add decision-making into
+programs. Conditional elements put the ``sometimes'' into programs that would
+otherwise be ``always'' based on context and circumstance.
 
   \item \textbf{Repeat things.}
-  The ability to repeat things quickly is what makes computers so useful. Your friend for the pillar of repetition is the \textsf{for}~loop. Other examples of this pillar include \textsf{while}~loops and \textsf{do-while}~loops, recursion, and coroutines. At their core, however, the whole point is to repeat something.
+The ability to repeat things quickly is what makes computers so useful. Your
+friend for the pillar of repetition is the \textsf{for}~loop. Other examples of
+this pillar include \textsf{while}~loops and \textsf{do-while}~loops, recursion,
+and coroutines. At their core, however, the whole point is to repeat something.
 
   \item \textbf{Organize 1--3 into individual pieces.}
-  This last pillar isn't technically required, but it perhaps the most useful.\marginnote{See, for example, the controversy about whether or not to put curly braces on their own line or not: https://en.wikipedia.org/wiki/Indentation\_style.} It's all about organizing our programs into pieces that are easy for people to read, understand, expand, troubleshoot, and fix. This pillar could also be called \emph{programming style}. Your friend from this pillar is \emph{function}. Other members of the pillar include libraries, modules, closures, classes, and design patterns\marginnote{People write full books on programming style and they almost always disagree on what ``best'' practices are.}. Since style is often a matter of taste, this pillar is the most contentious and is the basis of many religious wars.
+This last pillar isn't technically required, but it perhaps the most
+useful.\marginnote{See, for example, the controversy about whether or not to put
+curly braces on their own line or not:
+https://en.wikipedia.org/wiki/Indentation\_style.} It's all about organizing our
+programs into pieces that are easy for people to read, understand, expand,
+troubleshoot, and fix. This pillar could also be called \emph{programming
+style}. Your friend from this pillar is \emph{function}. Other members of the
+pillar include libraries, modules, closures, classes, and design
+patterns\marginnote{People write full books on programming style and they almost
+always disagree on what ``best'' practices are.}. Since style is often a matter
+of taste, this pillar is the most contentious and is the basis of many religious
+wars.
 \end{enumerate}
 
-That's it! Master the four pillars of programming and you can confidently tackle any project. That is not to say that these four skills are easy to master. Mastery is hard work. But when you find yourself learning something new, ask yourself, ``Which of my four friends is this new friend most like?'' Or if you are stuck implementing a solution and aren't sure what to do, ask yourself, ``Which of my four friends could help me most right now?''
+That's it! Master the four pillars of programming and you can confidently tackle
+any project. That is not to say that these four skills are easy to master.
+Mastery is hard work. But when you find yourself learning something new, ask
+yourself, ``Which of my four friends is this new friend most like?'' Or if you
+are stuck implementing a solution and aren't sure what to do, ask yourself,
+``Which of my four friends could help me most right now?''
 
 \textbf{TODO: Add questions about the four pillars/abilities.}
 
-\textbf{TODO: Remark that programming languages are programs.} Compilers and interpreters are programs themselves, and therefore need to be programmed in a programming language.
+\textbf{TODO: Remark that programming languages are programs.} Compilers and
+interpreters are programs themselves, and therefore need to be programmed in a
+programming language.
 
-If ther are only four things you can do in any programming language, why are there so many? You need to be able to do 1--3 in any general programming language. How do you do that and how you organize the code is all up to 4. Programming languages fall into certain ways of organizing your thoughts---these styles of thinking and orgaization are called paradigms. Most languages will be multi-paradigm.
+If ther are only four things you can do in any programming language, why are
+there so many? You need to be able to do 1--3 in any general programming
+language. How do you do that and how you organize the code is all up to 4.
+Programming languages fall into certain ways of organizing your thoughts---these
+styles of thinking and orgaization are called paradigms. Most languages will be
+multi-paradigm.
 
-Examples Imperative: C, Algol, Fortan, NodeJS. Declarative: SQL, Metafont, Prolog. Object based: Java.  Stack-based: PostScript, Forth. Functional: Haskell. Erlang. List-based: LISP, Scheme. Array-based: Matlab, Julia, Numpy. Multi-paradigm: Python, Swift.\marginnote{There are as many paradigms as there are ways of thinking. APL is insane-o. Here is a program that finds prime numbers in APL. \texttt{PRIMES : (\textasciitilde R$\in$R$\circ$.$\times$R)/R$\leftarrow$1$\downarrow$$\iota$R}}
+Examples Imperative: C, Algol, Fortan, NodeJS. Declarative: SQL, Metafont,
+Prolog. Object based: Java. Stack-based: PostScript, Forth. Functional: Haskell.
+Erlang. List-based: LISP, Scheme. Array-based: Matlab, Julia, Numpy.
+Multi-paradigm: Python, Swift.\marginnote{There are as many paradigms as there
+are ways of thinking. APL is insane-o. Here is a program that finds prime
+numbers in APL. \texttt{PRIMES : (\textasciitilde
+R$\in$R$\circ$.$\times$R)/R$\leftarrow$1$\downarrow$$\iota$R}}
 
-Languages make some tasks easier, but at the cost of making other harder. Bob Marley, ``Truth is everybody is going to hurt you: you just gotta find the ones worth suffering for.'' Everything is a trade-off in design, including programming language design. You can technically create a mobile app in Julia, but it would be very, very, very hard. You can implement scientific computing in NodeJS, but it would be very, very hard. Choose a good tool for the task at hand.
+Languages make some tasks easier, but at the cost of making other harder. Bob
+Marley, ``Truth is everybody is going to hurt you: you just gotta find the ones
+worth suffering for.'' Everything is a trade-off in design, including
+programming language design. You can technically create a mobile app in Julia,
+but it would be very, very, very hard. You can implement scientific computing in
+NodeJS, but it would be very, very hard. Choose a good tool for the task at
+hand.
 
-Remember that programming languages are implemented by their compiler---the compiler converts text files into machine executable code. But the compiler is just a program, so it has to be written in a programming language. There is source code for the compiler that a compiler compiles. The standard implementation of Python is written in C, but Jython is Python implemented in Java.
+Remember that programming languages are implemented by their compiler---the
+compiler converts text files into machine executable code. But the compiler is
+just a program, so it has to be written in a programming language. There is
+source code for the compiler that a compiler compiles. The standard
+implementation of Python is written in C, but Jython is Python implemented in
+Java.
 
 \section{Summary}
 \textbf{TODO}

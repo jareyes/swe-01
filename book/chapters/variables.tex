@@ -1,10 +1,24 @@
 \chapter[First Friend: Variables]{Variables}
-The first thing you can do in programming is store information and retrieve it to use later. Variables do exactly that. They allow you to make a note of an important piece of information and call it later by name. Variables are your first friend. (Hi!)
+The first thing you can do in programming is store information and retrieve it
+to use later. Variables do exactly that. They allow you to make a note of an
+important piece of information and call it later by name. Variables are your
+first friend. (Hi!)
 
-There are, of course, many ways to store information. Variables are not the only way. In fact, we will learn that there are many different aspects and kinds of variables. And later we will encounter other ways to store and retrieve data, such as files, databases, and other exotic storage mechanisms. But at their core beats the same heart as the heart of a variable. Get to know variables well, and you will be set up to understand and interact wth their cousins more easily.
+There are, of course, many ways to store information. Variables are not the only
+way. In fact, we will learn that there are many different aspects and kinds of
+variables. And later we will encounter other ways to store and retrieve data,
+such as files, databases, and other exotic storage mechanisms. But at their core
+beats the same heart as the heart of a variable. Get to know variables well, and
+you will be set up to understand and interact wth their cousins more easily.
 
 \section{Data Types}
-Before we can talk about storing and using information, we need to talk about how we represent information in programs in the first place. In programming, we use data types to represent information. A \emph{data type} is a collection of values and operations\marginnote{The transformers that operate on the values of a data type are called \emph{operators}, or, more generally, \emph{functions}. In this text, I'm going to use the two terms interchangeably.} that you can apply to those values. Each piece of information in a program has three parts:
+Before we can talk about storing and using information, we need to talk about
+how we represent information in programs in the first place. In programming, we
+use data types to represent information. A \emph{data type} is a collection of
+values and operations\marginnote{The transformers that operate on the values of
+a data type are called \emph{operators}, or, more generally, \emph{functions}.
+In this text, I'm going to use the two terms interchangeably.} that you can
+apply to those values. Each piece of information in a program has three parts:
 
 \begin{itemize}
   \item Name
@@ -12,9 +26,19 @@ Before we can talk about storing and using information, we need to talk about ho
   \item Value
 \end{itemize}
 
-Since each value in a program belongs to a data type---data types are how we represent information, after all---type and value are always associated with a piece of data. Names, however, are optional. When an element of a data type is associated with a name, we call it a \emph{variable}. A variable is a data type value that has a name. An element of a data type that does not have a name is called a \emph{literal value}. The diffrence between a variable and a literal value is that you can use the name of a variable to reference it later. Literal values, however, need to be used immediately and cannot be referened later in your program---because they don't have a name to call them later!
+Since each value in a program belongs to a data type---data types are how we
+represent information, after all---type and value are always associated with a
+piece of data. Names, however, are optional. When an element of a data type is
+associated with a name, we call it a \emph{variable}. A variable is a data type
+value that has a name. An element of a data type that does not have a name is
+called a \emph{literal value}. The diffrence between a variable and a literal
+value is that you can use the name of a variable to reference it later. Literal
+values, however, need to be used immediately and cannot be referened later in
+your program---because they don't have a name to call them later!
 
-NodeJS has a handful of built-in data types. The most familiar one will be the \textsf{Number} data type. You won't be surprised to learn that the \textsf{Number} data type is used to represent numerical values in NodeJS.
+NodeJS has a handful of built-in data types. The most familiar one will be the
+\textsf{Number} data type. You won't be surprised to learn that the
+\textsf{Number} data type is used to represent numerical values in NodeJS.
 
 Since \textsf{Number} is a data type, we need to know two things:
 \begin{enumerate}
@@ -22,10 +46,17 @@ Since \textsf{Number} is a data type, we need to know two things:
   \item What are the \emph{operators} that act on values of \textsf{Number}?
 \end{enumerate}
 
-The reason we're staring with the \textsf{Number} data type is because the values of \textsf{Number} can be expressed in NodeJS in roughly the same way you'd write them anywhere else: by typing digits of the number you want to use. Node can handle positive and negative values, as well as values with fractional parts using decimal notations. For example, let's type a few literal \textsf{Number} values into the NodeJS interpreter and see how it responds:
+The reason we're staring with the \textsf{Number} data type is because the
+values of \textsf{Number} can be expressed in NodeJS in roughly the same way
+you'd write them anywhere else: by typing digits of the number you want to use.
+Node can handle positive and negative values, as well as values with fractional
+parts using decimal notations. For example, let's type a few literal
+\textsf{Number} values into the NodeJS interpreter and see how it responds:
 
 \marginnote{
-You always can---and often should!---write a box diagram for data in your programs. Here are box diagrams for the other \textsf{Number} values we typed into the interpreter.
+You always can---and often should!---write a box diagram for data in your
+programs. Here are box diagrams for the other \textsf{Number} values we typed
+into the interpreter.
 
 \begin{tabular}{|c|c|c|}
   \hline
@@ -65,7 +96,10 @@ You always can---and often should!---write a box diagram for data in your progra
 \reactivatelinenumbers
 
 
-The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Number} value 144. Remember that each piece of information in a program has three parts: a name, a type, and a value. Let's draw a box diagram for the symbol \texttt{144}.
+The NodeJS interpreter interprets the symbol \texttt{144} into the
+\textsf{Number} value 144. Remember that each piece of information in a program
+has three parts: a name, a type, and a value. Let's draw a box diagram for the
+symbol \texttt{144}.
 
 \begin{table}[h!]
   \begin{tabular}{|c|c|c|}
@@ -78,9 +112,18 @@ The NodeJS interpreter interprets the symbol \texttt{144} into the \textsf{Numbe
   \caption{Box diagram for the literal value \texttt{144}}
 \end{table}
 
-The symbol \texttt{144} looks like the number 144 you've used outside of programs, but it is not! NodeJS turns the symbol \texttt{144} into a \textsf{Number} value under the hood that behaves like the like number 144. It was \emph{programmed} that way. And the program works so well that is easy to forget that it exists and is doing work at all. Sometimes, however, the fact that we are working with programs that simulate numbers and not working with numbers themselves does show through. This fact is especially evident when working with numbers with fractional parts.
+The symbol \texttt{144} looks like the number 144 you've used outside of
+programs, but it is not! NodeJS turns the symbol \texttt{144} into a
+\textsf{Number} value under the hood that behaves like the like number 144. It
+was \emph{programmed} that way. And the program works so well that is easy to
+forget that it exists and is doing work at all. Sometimes, however, the fact
+that we are working with programs that simulate numbers and not working with
+numbers themselves does show through. This fact is especially evident when
+working with numbers with fractional parts.
 
-\marginnote{There is nothing special about the box diagrams for the special \textsf{Number} values. They have a type and value, just like any other piece of data.
+\marginnote{There is nothing special about the box diagrams for the special
+\textsf{Number} values. They have a type and value, just like any other piece of
+data.
 
 \begin{tabular}{|c|c|c|}
   \hline
@@ -107,7 +150,16 @@ The symbol \texttt{144} looks like the number 144 you've used outside of program
 \end{tabular}
 }
 
-Before we get to how \textsf{Number} values do not behave identically to numerical values you're used to, it's worth mentioning three special \textsf{Number} values that exist in NodeJS. They are identified by the symbols \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN}. The first two represent and represent positive and negative infinity, respectively. Third, \texttt{NaN}, usually pronounced ``nan'', represents a special value that is \emph{not a number}. \texttt{NaN} appears when programs try to combine numerical values with non-numerical values. We'll encounter \texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN} later on, but for now it's good enough simply to know that they exist.
+Before we get to how \textsf{Number} values do not behave identically to
+numerical values you're used to, it's worth mentioning three special
+\textsf{Number} values that exist in NodeJS. They are identified by the symbols
+\texttt{Infinity}, \texttt{-Infinity}, and \texttt{NaN}. The first two represent
+and represent positive and negative infinity, respectively. Third, \texttt{NaN},
+usually pronounced ``nan'', represents a special value that is \emph{not a
+number}. \texttt{NaN} appears when programs try to combine numerical values with
+non-numerical values. We'll encounter \texttt{Infinity}, \texttt{-Infinity}, and
+\texttt{NaN} later on, but for now it's good enough simply to know that they
+exist.
 
 \begin{question}
   Is \texttt{-0.2} a variable or a literal value? How do you know?
@@ -118,16 +170,29 @@ Before we get to how \textsf{Number} values do not behave identically to numeric
 \end{question}
 
 \begin{question}
-  Draw the box diagrams for \texttt{100}, \texttt{3.14159}, \texttt{-64}, and \texttt{0}.
+Draw the box diagrams for \texttt{100}, \texttt{3.14159}, \texttt{-64}, and
+\texttt{0}.
 \end{question}
 
-Numbers would be useless if all we could do was type them on after another. The reason numbers show up so often, in computing and in life, is because they can be combined, substracted, compared, exponentiated, square-rooted, and a million other things. Numbers are useful because of the operators that transform input numbers into output values. That idea is so important, it bears repeating:
+Numbers would be useless if all we could do was type them on after another. The
+reason numbers show up so often, in computing and in life, is because they can
+be combined, substracted, compared, exponentiated, square-rooted, and a million
+other things. Numbers are useful because of the operators that transform input
+numbers into output values. That idea is so important, it bears repeating:
 
 \begin{quotation}
-  Values are not useful on their own. Transformations\marginnote{You might even say that transformations are fundamentally important.} that relate values to each other are what make them useful.
+Values are not useful on their own. Transformations\marginnote{You might even
+say that transformations are fundamentally important.} that relate values to
+each other are what make them useful.
 \end{quotation}
 
-NodeJS has a handful of built-in operators that transform \textsf{Number} values into other \textsf{Number} values that you are probably familiar with. Arithmetic operators like addition (\texttt{+}) and subtraction (\texttt{-}) follow a syntax that is commonly used outside of programming. The arithmetic operators are special in JavaScript in that they use infix notation---you place the operator in between its inputs. For example, to add the \textsf{Number} values \texttt{4} and \texttt{5} you type:
+NodeJS has a handful of built-in operators that transform \textsf{Number} values
+into other \textsf{Number} values that you are probably familiar with.
+Arithmetic operators like addition (\texttt{+}) and subtraction (\texttt{-})
+follow a syntax that is commonly used outside of programming. The arithmetic
+operators are special in JavaScript in that they use infix notation---you place
+the operator in between its inputs. For example, to add the \textsf{Number}
+values \texttt{4} and \texttt{5} you type:
 
 \suppresslinenumbers
 \begin{lstlisting}
@@ -135,7 +200,12 @@ NodeJS has a handful of built-in operators that transform \textsf{Number} values
 9
 \end{lstlisting}
 
-Other arthmetic expressions work more or less as you would expect, except that multiplication is denoted by an asterisk (\texttt{*}) and exponentiation is denoted by a double asterisk (\texttt{**}). The remainder operator (\texttt{\%}) is an old favorite among programmers. It calculates the remainder when one whole number has been divided by another. In the example below \texttt{4 \% 5} evaluates to \texttt{4} because 5 goes into 4 zero times and leaves 4 left over.
+Other arthmetic expressions work more or less as you would expect, except that
+multiplication is denoted by an asterisk (\texttt{*}) and exponentiation is
+denoted by a double asterisk (\texttt{**}). The remainder operator (\texttt{\%})
+is an old favorite among programmers. It calculates the remainder when one whole
+number has been divided by another. In the example below \texttt{4 \% 5}
+evaluates to \texttt{4} because 5 goes into 4 zero times and leaves 4 left over.
 
 \begin{table}
   \begin{tabular}{lccc}
@@ -191,29 +261,59 @@ Other arthmetic expressions work more or less as you would expect, except that m
 \textbf{TODO: Parentheses to group operations, just like in normal arithmetic}
 \end{center}
 
-Remember that we said \texttt{144} is not the number 144, but just a program that simulates the number 144? What did we mean by that? It's easiest to understand that even data types as central computing as numeric values are just programmatic models of the real thing when our experience in the real world doesn't match the model. What should you get when you multiply \texttt{0.1} by \texttt{0.2}? Compare that with that you actually get.
+Remember that we said \texttt{144} is not the number 144, but just a program
+that simulates the number 144? What did we mean by that? It's easiest to
+understand that even data types as central computing as numeric values are just
+programmatic models of the real thing when our experience in the real world
+doesn't match the model. What should you get when you multiply \texttt{0.1} by
+\texttt{0.2}? Compare that with that you actually get.
 
 \begin{lstlisting}
 > 0.1 * 0.2
 0.020000000000000004
 \end{lstlisting}
 
-Look at that! There is a 4 where there shouldn't be. That errant 4 is an artifact of the representation NodeJS uses under the hood to implement numeric values. And if you think that this is only a problem with numbers with decimal values, look at what happens when you try to add these two integers.
+Look at that! There is a 4 where there shouldn't be. That errant 4 is an
+artifact of the representation NodeJS uses under the hood to implement numeric
+values. And if you think that this is only a problem with numbers with decimal
+values, look at what happens when you try to add these two integers.
 
-\begin{lstlisting}[caption={\label{listing:intro-integer-overflow} The limitations of finite memory.}]
+\begin{lstlisting}[caption={\label{listing:intro-integer-overflow} The
+limitations of finite memory.}]
 > 9007199254740991 + 2
 9007199254740992
 \end{lstlisting}
 
 \begin{question}
-  Is the result in Listing \ref{listing:intro-integer-overflow} what you expect? If not, how does it differ from your expectation?
+Is the result in Listing \ref{listing:intro-integer-overflow} what you expect?
+If not, how does it differ from your expectation?
 \end{question}
 
-Before you start hating on NodeJS, think about the task at hand. How many numbers are there? An \emph{infinite} number of them.\marginnote{Worse than just infinite. The real numbers, which include pathological numbers like $\pi$ and $e$, are \textit{uncountably infinite}. That's a larger infinity than the number of counting numbers or fractions.} How much memory does your computer have? I'm willing to bet it's less than infinite. Off the bat, that should make you wonder whether its possible to implement numeric values with infinite precision.
+Before you start hating on NodeJS, think about the task at hand. How many
+numbers are there? An \emph{infinite} number of them.\marginnote{Worse than just
+infinite. The real numbers, which include pathological numbers like $\pi$ and
+$e$, are \textit{uncountably infinite}. That's a larger infinity than the number
+of counting numbers or fractions.} How much memory does your computer have? I'm
+willing to bet it's less than infinite. Off the bat, that should make you wonder
+whether its possible to implement numeric values with infinite precision.
 
-Instead, NodeJS uses a scheme called \textit{floating point arithmetic} represent numeric values. \marginnote{Never, \emph{ever}, EVER use floating point numbers to represent money. If you do, the IRS will come knocking on your door to explain all the money you invented and lost.} That choice is a compromise between having numeric values that act like numbers most of the time, within a tolerance that is acceptable for most applications, and still fitting in memory and being fast. Most programming languages use floating point arithmetic to implement numeric values under the hood. If you work on financial applications, you should not use floating point values. And if you end up doing scientific computing, you'll want to learn about errors that occur because we cannot implement infinitely precise numbers. That field of study is called \emph{numerical analysis} and it deals deeply with the trade-offs that come with approximation.
+Instead, NodeJS uses a scheme called \textit{floating point arithmetic}
+represent numeric values. \marginnote{Never, \emph{ever}, EVER use floating
+point numbers to represent money. If you do, the IRS will come knocking on your
+door to explain all the money you invented and lost.} That choice is a
+compromise between having numeric values that act like numbers most of the time,
+within a tolerance that is acceptable for most applications, and still fitting
+in memory and being fast. Most programming languages use floating point
+arithmetic to implement numeric values under the hood. If you work on financial
+applications, you should not use floating point values. And if you end up doing
+scientific computing, you'll want to learn about errors that occur because we
+cannot implement infinitely precise numbers. That field of study is called
+\emph{numerical analysis} and it deals deeply with the trade-offs that come with
+approximation.
 
-Now that we have a \textsf{Number} data type, complete with values and operators to play with, let's try to break it! In school, teachers often say you can't divide by zero. Let's see what happens when we try in NodeJS.
+Now that we have a \textsf{Number} data type, complete with values and operators
+to play with, let's try to break it! In school, teachers often say you can't
+divide by zero. Let's see what happens when we try in NodeJS.
 
 \begin{lstlisting}
 > 8 / 0
@@ -222,16 +322,33 @@ Infinity
 -Infinity
 \end{lstlisting}
 
-In JavaScript, you \emph{can} divide by zero. Division by zero is defined in this simulation of number. Depending on whether you divide a positive number or a negative number by zero, you get the \textsf{Number} value \texttt{Infinity} or \texttt{-Infinity}. Both are perfectly good \textsf{Number} values and work more-or-less the same as any other \textsf{Number} value. Note that an expression that evaluates to \texttt{Infinity} (or any other \textsf{Number} value) is \emph{not} an error. In other languages, division by zero would cause an error.
+In JavaScript, you \emph{can} divide by zero. Division by zero is defined in
+this simulation of number. Depending on whether you divide a positive number or
+a negative number by zero, you get the \textsf{Number} value \texttt{Infinity}
+or \texttt{-Infinity}. Both are perfectly good \textsf{Number} values and work
+more-or-less the same as any other \textsf{Number} value. Note that an
+expression that evaluates to \texttt{Infinity} (or any other \textsf{Number}
+value) is \emph{not} an error. In other languages, division by zero would cause
+an error.
 
-\begin{lstlisting}[caption={Try this at home, kids! A stack trace caused by a \texttt{ZeroDivisionError} in a Python interpreter.}]
+\begin{lstlisting}[caption={Try this at home, kids! A stack trace caused by a
+\texttt{ZeroDivisionError} in a Python interpreter.}]
 >>> 8 / 0
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ZeroDivisionError: integer division or modulo by zero
 \end{lstlisting}
 
-In some programming languages, like Python, division by zero is totally verboten and will cause your program to crash. Even an expression that evaluates to the not-a-number \textsf{Number} value \texttt{NaN} is \emph{not} an error. Since \texttt{NaN} is a value, it can be the legitimate result of a calculation. The fact that division by zero is legal and evaluates to \texttt{Infinity} is neither right nor wrong, but an implemenation choice that the folks who designed NodeJS decided on. They could have gone the same route as Python by forbiding division by zero entirely, but they didn't. And that is not objectively better or worse. It just means the rules in NodeJS are different than in Python, and that's okay.
+In some programming languages, like Python, division by zero is totally verboten
+and will cause your program to crash. Even an expression that evaluates to the
+not-a-number \textsf{Number} value \texttt{NaN} is \emph{not} an error. Since
+\texttt{NaN} is a value, it can be the legitimate result of a calculation. The
+fact that division by zero is legal and evaluates to \texttt{Infinity} is
+neither right nor wrong, but an implemenation choice that the folks who designed
+NodeJS decided on. They could have gone the same route as Python by forbiding
+division by zero entirely, but they didn't. And that is not objectively better
+or worse. It just means the rules in NodeJS are different than in Python, and
+that's okay.
 
 \begin{question}
   Draw the fundamental diagram for the expression \texttt{-9 / 0}.
@@ -248,11 +365,14 @@ In some programming languages, like Python, division by zero is totally verboten
 \end{question}
 
 \begin{question}
-  In plain English, what do the expressions \texttt{5 \% Infinity} and \texttt{Infinity \% 5} mean?
+In plain English, what do the expressions \texttt{5 \% Infinity} and
+\texttt{Infinity \% 5} mean?
 \end{question}
 
 \begin{question}
-  What do the expressions \texttt{5 \% Infinity} and \texttt{Infinity \% 5} evaluate to? Why are they different? Do you agree with the programming language designers choice of values for the results of each expression?
+What do the expressions \texttt{5 \% Infinity} and \texttt{Infinity \% 5}
+evaluate to? Why are they different? Do you agree with the programming language
+designers choice of values for the results of each expression?
 \end{question}
 
 \begin{question}
@@ -262,32 +382,86 @@ In some programming languages, like Python, division by zero is totally verboten
 
 \section{Algorithms}
 
-Now that we have the \textsf{Number} data type, we have numeric \emph{values} and arithmetic \emph{operators} that can transform numeric values into other numeric values. So what good is that? The power of data types comes from how you can string transformations of values one after another in a prescribed way to accomplish something. Enter algorithms.
+Now that we have the \textsf{Number} data type, we have numeric \emph{values}
+and arithmetic \emph{operators} that can transform numeric values into other
+numeric values. So what good is that? The power of data types comes from how you
+can string transformations of values one after another in a prescribed way to
+accomplish something. Enter algorithms.
 
-An \emph{algorithm} is a step-by-step description of how to do something. An algorithm is not a solution to a problem. It is a procedure for coming up with a solution given inputs. In other words, an algorithm describes a method for transforming inputs into outputs. You know how to do many things in real life---you can tie your shoes, shuffle cards, wash the dishes, make scrambled eggs, and install an app on your phone. In each task you follow a method. You already know lots of algorithms!\sidenote{You are just like the Mr.~Jourdain, in Moli\`ere's \textit{Le Bourgeois Gentilhomme}, who learns that he has been speaking prose his whole life without knowing it. You, too, have been implementing algorithms all your life!}
+An \emph{algorithm} is a step-by-step description of how to do something. An
+algorithm is not a solution to a problem. It is a procedure for coming up with a
+solution given inputs. In other words, an algorithm describes a method for
+transforming inputs into outputs. You know how to do many things in real
+life---you can tie your shoes, shuffle cards, wash the dishes, make scrambled
+eggs, and install an app on your phone. In each task you follow a method. You
+already know lots of algorithms!\sidenote{You are just like the Mr.~Jourdain, in
+Moli\`ere's \textit{Le Bourgeois Gentilhomme}, who learns that he has been
+speaking prose his whole life without knowing it. You, too, have been
+implementing algorithms all your life!}
 
 \begin{question}
-  In plain English, describe an algorithm for making a peanut butter and jelly sandwich. (If you aren't fond of peanut and jelly, substitute a sandwich you prefer better.) Number each step in your description.
+In plain English, describe an algorithm for making a peanut butter and jelly
+sandwich. (If you aren't fond of peanut and jelly, substitute a sandwich you
+prefer better.) Number each step in your description.
 \end{question}
 
 \begin{question}
-  Describe an algorithm for adding two positive integers together. Number each step in your description. Apply your algorithm on the inputs 119 and 246.
+Describe an algorithm for adding two positive integers together. Number each
+step in your description. Apply your algorithm on the inputs 119 and 246.
 \end{question}
 
 \begin{question}
-  List three more things you know how to do and describe step-by-step instructions to teach someone else how to do one of them.
+List three more things you know how to do and describe step-by-step instructions
+to teach someone else how to do one of them.
 \end{question}
 
-Once an algorithm exists, it can be implemented and executed in many different ways. Originally, the term ``computer'' was a job title for a people. Human computers executed algorithms by hand with pencil and paper. Today, programmers describe algorithms in programming language code. Each program is an \emph{implementation} of the algorithm. It is perfectly possible to have multiple implementations for the same algorithm---say, to write a progam for Android and another that does the same thing on iOS. Each version is a separate implementation of the same set of algorithms.\marginnote{Stop for a moment and think about what you would do if someone asked you to find numerical value of $\sqrt{2}$ without a calculator or computer. What would you do? While running an algorithm is something a machine can do, coming up with an algorithm in the first place is typically not simple at all!} The first algorithm we're going to implement calculates square roots called Newton's method. As we learn more programming concepts, we'll reimplement Newton's method to take advantage of what we've learned.
+Once an algorithm exists, it can be implemented and executed in many different
+ways. Originally, the term ``computer'' was a job title for a people. Human
+computers executed algorithms by hand with pencil and paper. Today, programmers
+describe algorithms in programming language code. Each program is an
+\emph{implementation} of the algorithm. It is perfectly possible to have
+multiple implementations for the same algorithm---say, to write a progam for
+Android and another that does the same thing on iOS. Each version is a separate
+implementation of the same set of algorithms.\marginnote{Stop for a moment and
+think about what you would do if someone asked you to find numerical value of
+$\sqrt{2}$ without a calculator or computer. What would you do? While running an
+algorithm is something a machine can do, coming up with an algorithm in the
+first place is typically not simple at all!} The first algorithm we're going to
+implement calculates square roots called Newton's method. As we learn more
+programming concepts, we'll reimplement Newton's method to take advantage of
+what we've learned.
 
 \begin{figure}
   \input{book/figures/variables/algorithm-fundamental-diagram.tex}
-  \caption{\label{fig:intro-algorithm-fundemental-diagram} An algorithm provides the process to turn inputs into outputs. An implementation of the algorithm is the program that you run on actual inputs to produce particular outputs.}
+\caption{\label{fig:intro-algorithm-fundemental-diagram} An algorithm provides
+the process to turn inputs into outputs. An implementation of the algorithm is
+the program that you run on actual inputs to produce particular outputs.}
 \end{figure}
 
-We will use an algorithm to turn a guess for the square root of 2 into a numeric approximation of the square root of two. Because $\sqrt{2}$ is an irrational number, its decimal representation 1.41421356237\dots goes on forever without repeating. We'd run out of memory before we got all of the digits down. So we're going to settle for an approximation that suits our tolerances.\marginnote{How many digits of precision are necessary? The answer will vary depending on your particular problem. Only 15 digits of $\pi$ are good enough for NASA to pilot the interplanetary nagivation systems of the space probe Voyager 1, which is currently about 12.5 billion miles away!} Keep in mind that the method we describe is not the square root of two itself. In fact, the method is general enough to calculate the square root of any number, not just of two!
+We will use an algorithm to turn a guess for the square root of 2 into a numeric
+approximation of the square root of two. Because $\sqrt{2}$ is an irrational
+number, its decimal representation 1.41421356237\dots goes on forever without
+repeating. We'd run out of memory before we got all of the digits down. So we're
+going to settle for an approximation that suits our tolerances.\marginnote{How
+many digits of precision are necessary? The answer will vary depending on your
+particular problem. Only 15 digits of $\pi$ are good enough for NASA to pilot
+the interplanetary nagivation systems of the space probe Voyager 1, which is
+currently about 12.5 billion miles away!} Keep in mind that the method we
+describe is not the square root of two itself. In fact, the method is general
+enough to calculate the square root of any number, not just of two!
 
-The method we will use is called Newton's method, and it is a classic example of an approximation algorithm from numerical analysis. And while we won't discuss why Netwon's method works here, it is worth noting that to execute an algorithm you don't need to understand how the algorithm was concocted in the first place. That's the point of algorithms! They are so well specified, that even cold, unthinking pieces of electrified rocks can run them. In your career as a programmer, sometimes you will need to come up with an algorithm of your own to solve a problem. Other times, you will need to implement an algorithm that someone else came up with. It is good and necessary to be able to do both. For now, let's implement an algorithm that's between 300 and 4000 years old\sidenote{The Babylonian method for computing square roots is a special case of Netwon's method.}.
+The method we will use is called Newton's method, and it is a classic example of
+an approximation algorithm from numerical analysis. And while we won't discuss
+why Netwon's method works here, it is worth noting that to execute an algorithm
+you don't need to understand how the algorithm was concocted in the first place.
+That's the point of algorithms! They are so well specified, that even cold,
+unthinking pieces of electrified rocks can run them. In your career as a
+programmer, sometimes you will need to come up with an algorithm of your own to
+solve a problem. Other times, you will need to implement an algorithm that
+someone else came up with. It is good and necessary to be able to do both. For
+now, let's implement an algorithm that's between 300 and 4000 years
+old\sidenote{The Babylonian method for computing square roots is a special case
+of Netwon's method.}.
 
 Here is a description of what we're going to do:
 
@@ -301,15 +475,22 @@ Inputs: n, the square of the number we're trying to calculates
 3. Go to Step 1
 \end{lstlisting}
 
-Before we try execute our algorithm, let's try to understand it a little bit. There are three steps, and at each step is one of your four friends! The entire algorithm describes a transformer of two inputs---the number we'd like to square root \texttt{n}, and a guess of the square root of \texttt{n}---and produces one output---an approximation to the square root of \texttt{n}. Since the algorithm describes a transformer, it has a fundamental diagram.
+Before we try execute our algorithm, let's try to understand it a little bit.
+There are three steps, and at each step is one of your four friends! The entire
+algorithm describes a transformer of two inputs---the number we'd like to square
+root \texttt{n}, and a guess of the square root of \texttt{n}---and produces one
+output---an approximation to the square root of \texttt{n}. Since the algorithm
+describes a transformer, it has a fundamental diagram.
 
 \begin{figure*}
   \input{book/figures/variables/newton-fundamental-diagram.tex}
-  \caption{\label{fig:intro-newton-fundamental-diagram} Newton's method takes as input a squared number $n$ and outputs an approximation to $\sqrt{n}$.}
+\caption{\label{fig:intro-newton-fundamental-diagram} Newton's method takes as
+input a squared number $n$ and outputs an approximation to $\sqrt{n}$.}
 \end{figure*}
 
 \begin{question}
-  Which of your four friends is in step 1? Explain your answer. (\textit{Hint:} There may be more than one friend hanging out per step.)
+Which of your four friends is in step 1? Explain your answer. (\textit{Hint:}
+There may be more than one friend hanging out per step.)
 \end{question}
 
 \begin{question}
@@ -324,18 +505,41 @@ Before we try execute our algorithm, let's try to understand it a little bit. Th
   Which line describes the output of the transformer? Explain your answer.
 \end{question}
 
-Newton's method works by successively honing in on the square root of the input number \texttt{n}. At each step, the true square root is between the current \texttt{guess} and the value \texttt{n / guess}. So we check to see if those two values are close enough to each other. If they are within our tolerance, we stop. The current guess is good enough for our approximation. If they are not, we continue to update \texttt{guess} to get a value that is closer to the square root, making a sequence of progressively better guesses as we go along.
+Newton's method works by successively honing in on the square root of the input
+number \texttt{n}. At each step, the true square root is between the current
+\texttt{guess} and the value \texttt{n / guess}. So we check to see if those two
+values are close enough to each other. If they are within our tolerance, we
+stop. The current guess is good enough for our approximation. If they are not,
+we continue to update \texttt{guess} to get a value that is closer to the square
+root, making a sequence of progressively better guesses as we go along.
 
-As it is described, Newton's method requires only numeric values and arithmetic operators. That means we can already implement the algorithm! Let's try to calculate $\sqrt{2}$ to three decimal places. We'll start with an initial guess of 1, though you could start with any guess you like\sidenote{The closer your initial guess is to the actual square root, the faster the Newton's method converges.}.
+As it is described, Newton's method requires only numeric values and arithmetic
+operators. That means we can already implement the algorithm! Let's try to
+calculate $\sqrt{2}$ to three decimal places. We'll start with an initial guess
+of 1, though you could start with any guess you like\sidenote{The closer your
+initial guess is to the actual square root, the faster the Newton's method
+converges.}.
 
-You can (and \emph{should}) type the following into a JavaScript or Node interpreter to follow along. Each line beginning with \texttt{>} is a line that you type. Then Node will evaluate your instructions and display the evaluation on the next line. There are special lines that begin with \texttt{//}. These lines contain \emph{comments}. Comments are used widely in programming to help out human readers---machines blissfully ignore them. Comments describe tricky bits of code; remind ourselves why we did something that at first glance looks counterintuitive or wrong; or leave a note explaining how you were feeling at the moment you wrote the code. Comments are the unsung heroes of programming, and you should write lots and lots of comments in your own code. We'll talk about them more as we go on. In this example, comments annotate exactly which step of Newton's method we're calculating and keeping track of the values involved in the algorithm.
+You can (and \emph{should}) type the following into a JavaScript or Node
+interpreter to follow along. Each line beginning with \texttt{>} is a line that
+you type. Then Node will evaluate your instructions and display the evaluation
+on the next line. There are special lines that begin with \texttt{//}. These
+lines contain \emph{comments}. Comments are used widely in programming to help
+out human readers---machines blissfully ignore them. Comments describe tricky
+bits of code; remind ourselves why we did something that at first glance looks
+counterintuitive or wrong; or leave a note explaining how you were feeling at
+the moment you wrote the code. Comments are the unsung heroes of programming,
+and you should write lots and lots of comments in your own code. We'll talk
+about them more as we go on. In this example, comments annotate exactly which
+step of Newton's method we're calculating and keeping track of the values
+involved in the algorithm.
 
-\begin{lstlisting}[caption={\label{listing:intro-newton}Calculating $\sqrt{2}$ to three decimal places using Newton's Method}, escapeinside=$$]
+\begin{lstlisting}[caption={\label{listing:intro-newton}Calculating $\sqrt{2}$
+to three decimal places using Newton's Method}, escapeinside=$$]
 > $\color{gray}// \textbf{Initial guess:} 1$
 > 1
 1
-> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
-> 1 - 2/1
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$> 1 - 2/1
 0.5
 > $\color{gray}// 0.5 is not close enough. Keep going.$
 > $\color{gray}// \textbf{Step 2.} Update the current guess.$
@@ -343,8 +547,7 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 1.5
 > $\color{gray}// The new guess is 1.5.$
 > $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
-> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
-> 1.5 - 2/1.5
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$> 1.5 - 2/1.5
 0.16666666666666674
 > $\color{gray}// 0.16666666666666674 is not close enough. Keep going$
 > $\color{gray}// \textbf{Step 2.} Update the current guess.$
@@ -352,8 +555,7 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 1.4166666666666665
 > $\color{gray}// The new guess is 1.4166666666666665.$
 > $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
-> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
-> 1.4166666666666665 - 2/1.4166666666666665
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$> 1.4166666666666665 - 2/1.4166666666666665
 0.004901960784313486
 > $\color{gray}// 0.004901960784313486 is 2 decimal places correct.$
 > $\color{gray}// But we want three. Keep going.$
@@ -361,37 +563,54 @@ You can (and \emph{should}) type the following into a JavaScript or Node interpr
 > (1.4166666666666665 + 2/1.4166666666666665)/2
 > $\color{gray}// The new guess is 1.4142156862745097$
 > $\color{gray}// \textbf{Step 3.} Go back to Step 1.$
-> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$
-> 1.4142156862745097 - 2/1.4142156862745097
+> $\color{gray}// \textbf{Step 1a.} Check if the current guess is close enough.$> 1.4142156862745097 - 2/1.4142156862745097
 > 0.0000042477996395895445
 > $\color{gray}// 0.0000042477996395895445 tells us we are correct to$
 > $\color{gray}// 5 decimal places, which is good enough.$
-> $\color{gray}// \textbf{Step 1b.} Stop! Return the current guess \textbf{1.4142156862745097}.$
+> $\color{gray}// \textbf{Step 1b.} Stop! Return the current guess
+\textbf{1.4142156862745097}.$
 > $\color{gray}// That value is our output.$
 \end{lstlisting}
 
 \begin{question}
-  How many times did we repeat the loop in Listing \ref{listing:intro-newton}? Why did we stop?
+How many times did we repeat the loop in Listing \ref{listing:intro-newton}? Why
+did we stop?
 \end{question}
 
 \begin{question}
-  What inputs would you supply to use Newton's method to find the square root of three?
+What inputs would you supply to use Newton's method to find the square root of
+three?
 \end{question}
 
 \begin{question}
-  Use Newton's method to calculate $\sqrt{3}$ to three decimal places. How many iterations of the loop did you execute in your calculation?
+Use Newton's method to calculate $\sqrt{3}$ to three decimal places. How many
+iterations of the loop did you execute in your calculation?
 \end{question}
 
 \begin{question}
-  Use Newton's method to calculate $\sqrt{4}$ to three decimal places three times using 1, 2, and 100 as initial guesses. How many iterations of the loop did you execute in your calculation for each different initial guess?
+Use Newton's method to calculate $\sqrt{4}$ to three decimal places three times
+using 1, 2, and 100 as initial guesses. How many iterations of the loop did you
+execute in your calculation for each different initial guess?
 \end{question}
 
 \begin{question}
-  Use Newton's method to calculate $\sqrt{5}$ to three decimal places. How will you choose your initial guess? How many iterations of the loop did you execute in your calculation?
+Use Newton's method to calculate $\sqrt{5}$ to three decimal places. How will
+you choose your initial guess? How many iterations of the loop did you execute
+in your calculation?
 \end{question}
 
 
-Newton's algorithm has only three steps. But because one of the steps implements a loop, you may run through each of the steps many times before the program stops and produces an output. That means a lot of values change as the program runs. To keep track of each value through the execution of the algorithm, we can form a \emph{trace} of the execution. A trace of a program run keeps track of each value as each step is evaluated. When you are writing a program, it is helpful to write a trace out of the program by hand or add print statements to display the intermediate values calculated as your program runs. In Listing \ref{listing:intro-newton}, the Node interpreter produced a kind of trace for us. We can organize those values into a table to produce a more readable trace of our program, such as the one in Table \ref{table:intro-newton-trace}.
+Newton's algorithm has only three steps. But because one of the steps implements
+a loop, you may run through each of the steps many times before the program
+stops and produces an output. That means a lot of values change as the program
+runs. To keep track of each value through the execution of the algorithm, we can
+form a \emph{trace} of the execution. A trace of a program run keeps track of
+each value as each step is evaluated. When you are writing a program, it is
+helpful to write a trace out of the program by hand or add print statements to
+display the intermediate values calculated as your program runs. In Listing
+\ref{listing:intro-newton}, the Node interpreter produced a kind of trace for
+us. We can organize those values into a table to produce a more readable trace
+of our program, such as the one in Table \ref{table:intro-newton-trace}.
 
 \begin{table*}
   \sffamily
@@ -402,59 +621,112 @@ Newton's algorithm has only three steps. But because one of the steps implements
     \hline
     Input & \textbf{\texttt{2}} & \textbf{\texttt{1}} \\
     \hline %& --- & --- & --- \\
-    Step 1a & \texttt{2} & \texttt{1} & --- & --- & \texttt{1 - 2/1} & \texttt{0.5}\\
-    Step 2 (Evaluate) & \texttt{2} & \texttt{1} & \texttt{(1 + 2/1)/2} & \texttt{1.5} & --- & ---\\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.5} & --- & \texttt{1.5} & --- & ---\\
-    Step 3 & \texttt{2} & \texttt{1.5} & --- & --- & --- & ---\\
-    Step 1a & \texttt{2} & \texttt{1.5} & --- & --- & \texttt{1.5 - 2/1.5} & \texttt{0.16666}\\
-    Step 2 (Evaluate) & \texttt{2} & \texttt{1.5} & \texttt{(1.5 + 2/1.5)/2} & 1.41666 & ---& ---\\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.41666} & --- & 1.41666 & --- & ---\\
-    Step 3 & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
-    Step 1a & \texttt{2} & \texttt{1.41666} & --- & --- & \texttt{1.41666 - 2/1.41666} & \texttt{0.00490}\\
-    Step 2 (Evaluate) & \texttt{2} & \texttt{1.41666} & \texttt{(1.4166 + 2/1.4166)/2} & \texttt{1.41421} & --- & --- \\
-    Step 2 (Assign) & \texttt{2} & \texttt{1.41421} & --- & \texttt{1.41421} & --- & ---\\
+Step 1a & \texttt{2} & \texttt{1} & --- & --- & \texttt{1 - 2/1} &
+\texttt{0.5}\\
+Step 2 (Evaluate) & \texttt{2} & \texttt{1} & \texttt{(1 + 2/1)/2} &
+\texttt{1.5} & --- & ---\\
+Step 2 (Assign) & \texttt{2} & \texttt{1.5} & --- & \texttt{1.5} & --- & ---\\    Step 3 & \texttt{2} & \texttt{1.5} & --- & --- & --- & ---\\
+Step 1a & \texttt{2} & \texttt{1.5} & --- & --- & \texttt{1.5 - 2/1.5} &
+\texttt{0.16666}\\
+Step 2 (Evaluate) & \texttt{2} & \texttt{1.5} & \texttt{(1.5 + 2/1.5)/2} &
+1.41666 & ---& ---\\
+Step 2 (Assign) & \texttt{2} & \texttt{1.41666} & --- & 1.41666 & --- & ---\\    Step 3 & \texttt{2} & \texttt{1.41666} & --- & --- & --- & ---\\
+Step 1a & \texttt{2} & \texttt{1.41666} & --- & --- & \texttt{1.41666 -
+2/1.41666} & \texttt{0.00490}\\
+Step 2 (Evaluate) & \texttt{2} & \texttt{1.41666} & \texttt{(1.4166 +
+2/1.4166)/2} & \texttt{1.41421} & --- & --- \\
+Step 2 (Assign) & \texttt{2} & \texttt{1.41421} & --- & \texttt{1.41421} & --- &
+---\\
     Step 3 & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
-    Step 1a &  \texttt{2} & \texttt{1.41421} & --- & --- & \texttt{1.41421 - 2/1.41421} & \texttt{0.000004}\\
+Step 1a & \texttt{2} & \texttt{1.41421} & --- & --- & \texttt{1.41421 -
+2/1.41421} & \texttt{0.000004}\\
     Step 1b & \texttt{2} & \texttt{1.41421} & --- & --- & --- & ---\\
     \hline
     Output & & \textbf{\texttt{1.41421}}\\
     \hline
   \end{tabular}
-  \caption{\label{table:intro-newton-trace} Trace of the execution of Newton's method in Listing \ref{listing:intro-newton}. Numeric values have been truncated to 5 decimal places for readability. The program used the full values.}
+\caption{\label{table:intro-newton-trace} Trace of the execution of Newton's
+method in Listing \ref{listing:intro-newton}. Numeric values have been truncated
+to 5 decimal places for readability. The program used the full values.}
 \end{table*}
 
-A standard trace includes one column for each value that participates in the program. Our trace does that. There is a column for the input squared value. That values remains \texttt{2} throughout the execution of the program. At no point does that change, which you can see in the table. The second column shows the value of our current at each step of execution. It begins with the input value \texttt{1}, but progressively improves until we reach a guess that is within our tolernce level of the true value of $\sqrt{2}$. The fourth column---we're skipping the third column for now---shows the new guess that we derive from the current guess and the squared number in Step 2. The current guess and the updated guess are related to one another. Once we calculate the updated guess, we replace the current guess with the updated guess. They are two separate values, but they are intimately related by Step 2. The final column shows the result of our check in Step 1a. This value is used to decide whether to continue with another iteration of the guess-update loop. We know that the updated guess will not change more than the value of the check. So when the check is sufficiently small, the change in updates will be, too. That signals us to stop updating and output the current guess value.
+A standard trace includes one column for each value that participates in the
+program. Our trace does that. There is a column for the input squared value.
+That values remains \texttt{2} throughout the execution of the program. At no
+point does that change, which you can see in the table. The second column shows
+the value of our current at each step of execution. It begins with the input
+value \texttt{1}, but progressively improves until we reach a guess that is
+within our tolernce level of the true value of $\sqrt{2}$. The fourth
+column---we're skipping the third column for now---shows the new guess that we
+derive from the current guess and the squared number in Step 2. The current
+guess and the updated guess are related to one another. Once we calculate the
+updated guess, we replace the current guess with the updated guess. They are two
+separate values, but they are intimately related by Step 2. The final column
+shows the result of our check in Step 1a. This value is used to decide whether
+to continue with another iteration of the guess-update loop. We know that the
+updated guess will not change more than the value of the check. So when the
+check is sufficiently small, the change in updates will be, too. That signals us
+to stop updating and output the current guess value.
 
-Use the trace in Table \ref{table:intro-newton-trace} to answer the following questions about the execution of Newton's algorthm in Listing \ref{listing:intro-newton}.
+Use the trace in Table \ref{table:intro-newton-trace} to answer the following
+questions about the execution of Newton's algorthm in Listing
+\ref{listing:intro-newton}.
 \begin{question}
-  How many times did we calculate the check in Step 1a? What were the values of each check?
+How many times did we calculate the check in Step 1a? What were the values of
+each check?
 \end{question}
 
 \begin{question}
-  How many times did we calculate an updated guess in Step 2? What were the values of each updated guess?
+How many times did we calculate an updated guess in Step 2? What were the values
+of each updated guess?
 \end{question}
 
 \begin{question}
-  How many different values did the current guess take on? What was initial value of the current guess? What was the final value of the current guess? What were the intermediate values of the current guess?
+How many different values did the current guess take on? What was initial value
+of the current guess? What was the final value of the current guess? What were
+the intermediate values of the current guess?
 \end{question}
 
-The trace in Listing \ref{listing:intro-newton} is a little unusual in a few ways, too. To start, there are two columns that do not, strictly speaking, include values at all. These are the columns labeled Updated Guess Expression and Check Expression. And, as you may have guessed from their names, these columns contain \emph{expressions}, rather than values. An expression is a special kind of text---that is, it's just symbols---that says how to transform input values into output values by applying operators. For numbers and the operators we've learned about so far, expressions in programming are the same thing as arithmetic expressions in math. In general, however, expressions are the textual form of the fundamental diagram.
+The trace in Listing \ref{listing:intro-newton} is a little unusual in a few
+ways, too. To start, there are two columns that do not, strictly speaking,
+include values at all. These are the columns labeled Updated Guess Expression
+and Check Expression. And, as you may have guessed from their names, these
+columns contain \emph{expressions}, rather than values. An expression is a
+special kind of text---that is, it's just symbols---that says how to transform
+input values into output values by applying operators. For numbers and the
+operators we've learned about so far, expressions in programming are the same
+thing as arithmetic expressions in math. In general, however, expressions are
+the textual form of the fundamental diagram.
 
-Let's look at a few examples from the trace above. The first expression we see calculates a check to see whether to refine and update the current guess.
+Let's look at a few examples from the trace above. The first expression we see
+calculates a check to see whether to refine and update the current guess.
 
 \begin{center}
   \texttt{1 - 2/1}
 \end{center}
 
 \begin{question}
-  How many transformers are in the expression above? What are their inputs? What are their outputs?
+How many transformers are in the expression above? What are their inputs? What
+are their outputs?
 \end{question}
 
-This expression has two operators: division~\texttt{/} and subtraction~\texttt{-}. The output of division is fed in as one of the inputs to subtract. The fundamental diagram for this deciptively simple expression is given in Figure \ref{fig:intro-expression-fundamental-diagram} above. The final output is the value of the expression. And the process of transforming all of the inputs and intermediate calculations into the final output is called \emph{evaluation}. Expressions evaluate to literal values. In a sense they must. The three parts of a piece of data are name, type, and value. In memory, a computer can store and manipulate values only. So expressions must get turned into values somehow. Evaluation is how it happens. In this case \texttt{1 - 2/1} is an expression and it evaluates to the value \texttt{0.5}.
+This expression has two operators: division~\texttt{/} and
+subtraction~\texttt{-}. The output of division is fed in as one of the inputs to
+subtract. The fundamental diagram for this deciptively simple expression is
+given in Figure \ref{fig:intro-expression-fundamental-diagram} above. The final
+output is the value of the expression. And the process of transforming all of
+the inputs and intermediate calculations into the final output is called
+\emph{evaluation}. Expressions evaluate to literal values. In a sense they must.
+The three parts of a piece of data are name, type, and value. In memory, a
+computer can store and manipulate values only. So expressions must get turned
+into values somehow. Evaluation is how it happens. In this case \texttt{1 - 2/1}
+is an expression and it evaluates to the value \texttt{0.5}.
 
 \begin{figure}
   \input{book/figures/variables/expression-fundamental-diagram.tex}
-  \caption{\label{fig:intro-expression-fundamental-diagram} The syntax for arithmetic makes it easy to compose many arithmetic transformers together in short expressions.}
+\caption{\label{fig:intro-expression-fundamental-diagram} The syntax for
+arithmetic makes it easy to compose many arithmetic transformers together in
+short expressions.}
 \end{figure}
 
 \begin{question}
@@ -469,9 +741,20 @@ This expression has two operators: division~\texttt{/} and subtraction~\texttt{-
 
 \section{Variables}
 
-We were able to implement Newton's method with the aid of a computer for the evaluation of arithmetic expressions. But we, as human operators, had to keep track of what each value represented at each time. To give us humans a reminder of all of the values running around, we can use variables. Variables are the first mechanism we'll met to store a bit of information and retrieve it for use later, and they are used absolutely everywhere. Variables are nothing more than a value associated with a name.
+We were able to implement Newton's method with the aid of a computer for the
+evaluation of arithmetic expressions. But we, as human operators, had to keep
+track of what each value represented at each time. To give us humans a reminder
+of all of the values running around, we can use variables. Variables are the
+first mechanism we'll met to store a bit of information and retrieve it for use
+later, and they are used absolutely everywhere. Variables are nothing more than
+a value associated with a name.
 
-Recall that all pieces of data have three components: a type, a value, and (optionally) a name. Values that do not have a name are \emph{literal values}, or just \emph{literals} for short. So far we have been working with Number type literal values---values like \texttt{12.07}, \texttt{-300}, and \texttt{Infinity}. The box diagram for literal values contains a type and value only.
+Recall that all pieces of data have three components: a type, a value, and
+(optionally) a name. Values that do not have a name are \emph{literal values},
+or just \emph{literals} for short. So far we have been working with Number type
+literal values---values like \texttt{12.07}, \texttt{-300}, and
+\texttt{Infinity}. The box diagram for literal values contains a type and value
+only.
 
 \begin{figure}[h]
 \begin{tabular}{|c|c|c|}
@@ -481,10 +764,12 @@ Recall that all pieces of data have three components: a type, a value, and (opti
   --- & \textsf{Number} & \texttt{12.07}\\
   \hline
 \end{tabular}
-\caption{\label{fig:intro-literal}The box diagram for the Number literal value \texttt{12.07}.}
+\caption{\label{fig:intro-literal}The box diagram for the Number literal value
+\texttt{12.07}.}
 \end{figure}
 
-Variables are very similar to literal values, except that they have an additional piece of information filled in their box diagram: name.
+Variables are very similar to literal values, except that they have an
+additional piece of information filled in their box diagram: name.
 
 \begin{figure}[h]
 \begin{tabular}{|c|c|c|}
@@ -494,14 +779,30 @@ Variables are very similar to literal values, except that they have an additiona
   \texttt{guess} & \textsf{Number} & \texttt{12.07}\\
   \hline
 \end{tabular}
-\caption{\label{fig:intro-variable} The box diagram for the Number variable \texttt{guess}.}
+\caption{\label{fig:intro-variable} The box diagram for the Number variable
+\texttt{guess}.}
 \end{figure}
 
-Both the literal value \texttt{12.07} in Figure \ref{fig:intro-literal} and the variable value \texttt{guess} in Figure \ref{fig:intro-variable} evaluate to the same Number value \texttt{12.07}. From a computational point of view, they are the same value. The diffence is that the variable \texttt{guess} can be referred to by its name, whereas the literal \texttt{12.07} must be referred to by its value.
+Both the literal value \texttt{12.07} in Figure \ref{fig:intro-literal} and the
+variable value \texttt{guess} in Figure \ref{fig:intro-variable} evaluate to the
+same Number value \texttt{12.07}. From a computational point of view, they are
+the same value. The diffence is that the variable \texttt{guess} can be referred
+to by its name, whereas the literal \texttt{12.07} must be referred to by its
+value.
 
-Named values make it easier to understand what value represents. The suggestive name \texttt{guess} in this case makes it clear that \texttt{12.07} is probably not a temperature or bank account balance. We will use this variable name when we rewrite, or \emph{refactor}, Newton's method to use variables.
+Named values make it easier to understand what value represents. The suggestive
+name \texttt{guess} in this case makes it clear that \texttt{12.07} is probably
+not a temperature or bank account balance. We will use this variable name when
+we rewrite, or \emph{refactor}, Newton's method to use variables.
 
-To retrieve the information in a variable all we need to do is call the variable by name. But how do variables get names in the first place? This is actually a two-step process called \emph{declaration} and \emph{assigment}. Declaration creates space in the memory in the computer for the variable. Assigment then links up a value to the name. The first step creates an box diagram with only the name part filled in. Assignment fills in the type and value. Different programming languages have different syntax to describe initialiation and assignment.
+To retrieve the information in a variable all we need to do is call the variable
+by name. But how do variables get names in the first place? This is actually a
+two-step process called \emph{declaration} and \emph{assigment}. Declaration
+creates space in the memory in the computer for the variable. Assigment then
+links up a value to the name. The first step creates an box diagram with only
+the name part filled in. Assignment fills in the type and value. Different
+programming languages have different syntax to describe initialiation and
+assignment.
 
 \begin{question}
   What is the difference between a literal and variable?
@@ -512,15 +813,32 @@ To retrieve the information in a variable all we need to do is call the variable
 \end{question}
 
 \begin{question}
-  Draw the box diagram for a variable named \texttt{guess} that has been declared by has not been assigned to a value.
+Draw the box diagram for a variable named \texttt{guess} that has been declared
+by has not been assigned to a value.
 \end{question}
 
-In JavaScript there are two ways to create a variable, depending on whether a variable is read-only or read-and-write. Variables that cannot be updated to a different value later in the program are called \emph{constant variables}, or just \emph{constants} for short. Constants are read-only quantities. Variables whose values can change throughout the execution of a program are called \emph{variable variables}, or just \emph{variables} for short. Variables are read-and-write quantities. Yes, the terminology is confusing. A constant variable sounds like a contradiction of terms. And variable variable sounds like a typo.
+In JavaScript there are two ways to create a variable, depending on whether a
+variable is read-only or read-and-write. Variables that cannot be updated to a
+different value later in the program are called \emph{constant variables}, or
+just \emph{constants} for short. Constants are read-only quantities. Variables
+whose values can change throughout the execution of a program are called
+\emph{variable variables}, or just \emph{variables} for short. Variables are
+read-and-write quantities. Yes, the terminology is confusing. A constant
+variable sounds like a contradiction of terms. And variable variable sounds like
+a typo.
 
-To get around this problem of vocabulary, people sometimes talk of immutability and mutability instead. An \emph{immutable} value cannot change its value once it has been assigned. Constants are immutable. Literal values are also immutable! You cannot update the literal value \texttt{12.07} to be any other value. It is always \texttt{12.07}. A \emph{mutable} value can change its value once it has been assigned. Variables are mutable. Quantities that don't change are easier to reason about than quantities that do change.
+To get around this problem of vocabulary, people sometimes talk of immutability
+and mutability instead. An \emph{immutable} value cannot change its value once
+it has been assigned. Constants are immutable. Literal values are also
+immutable! You cannot update the literal value \texttt{12.07} to be any other
+value. It is always \texttt{12.07}. A \emph{mutable} value can change its value
+once it has been assigned. Variables are mutable. Quantities that don't change
+are easier to reason about than quantities that do change.
 
 \begin{center}
-  \marginnote{$\gets$ Using constants typically results in fewer kinds of bugs in your code and makes it easier for people to understand.} In general, you should \emph{always} use constants instead of variables whenever you can.
+\marginnote{$\gets$ Using constants typically results in fewer kinds of bugs in
+your code and makes it easier for people to understand.} In general, you should
+\emph{always} use constants instead of variables whenever you can.
 \end{center}
 
 \begin{question}
@@ -536,14 +854,16 @@ To get around this problem of vocabulary, people sometimes talk of immutability 
 \end{question}
 
 \begin{question}
-  Are literal values mutable, immutable, or does it depend? Explain your answer.
-\end{question}
+Are literal values mutable, immutable, or does it depend? Explain your answer.\end{question}
 
 \begin{question}
-  Which kind of values are generally easier to debug in a program: mutable or immutable values?
+Which kind of values are generally easier to debug in a program: mutable or
+immutable values?
 \end{question}
 
-To make it clear whether a value is mutable or immutable, let's add another column to the box diagram \textsf{Read-only} to track whether a value can be updated after assignment.
+To make it clear whether a value is mutable or immutable, let's add another
+column to the box diagram \textsf{Read-only} to track whether a value can be
+updated after assignment.
 
 \begin{figure}[h]
   \begin{tabular}{|c|c|c|c|}
@@ -553,11 +873,22 @@ To make it clear whether a value is mutable or immutable, let's add another colu
     no & \texttt{guess} & --- & ---\\
     \hline
   \end{tabular}
-  \caption{\label{fig:intro-declared-variable} The box diagram after a mutable variable named \texttt{guess} has been declared, but before it has been assigned a value.}
+\caption{\label{fig:intro-declared-variable} The box diagram after a mutable
+variable named \texttt{guess} has been declared, but before it has been assigned
+a value.}
 \end{figure}
 
 \section{Declaration}
-All this is good, but I bet you're itching to write some code! To declare a variable named \texttt{guess} as in the box diagram in Figure \ref{fig:intro-declared-variable}, you use the special keyword \texttt{let}. The syntax is \texttt{let} followed by the name of the variable you'd like to create. In programming languages, names are often referred to as \emph{identifiers}. Names, or identifiers, need to follow some rules. In JavaScript they must start with a letter\sidenote{They can also start with an underscore (\texttt{\_}), but don't do that.} and can contain numbers in them. Normally variables begin with lower-case letters. To declare a new variable called \texttt{guess}, we would type:
+All this is good, but I bet you're itching to write some code! To declare a
+variable named \texttt{guess} as in the box diagram in Figure
+\ref{fig:intro-declared-variable}, you use the special keyword \texttt{let}. The
+syntax is \texttt{let} followed by the name of the variable you'd like to
+create. In programming languages, names are often referred to as
+\emph{identifiers}. Names, or identifiers, need to follow some rules. In
+JavaScript they must start with a letter\sidenote{They can also start with an
+underscore (\texttt{\_}), but don't do that.} and can contain numbers in them.
+Normally variables begin with lower-case letters. To declare a new variable
+called \texttt{guess}, we would type:
 
 \begin{figure}
   \input{book/figures/variables/declaration-statement-anatomy.tex}
@@ -565,15 +896,31 @@ All this is good, but I bet you're itching to write some code! To declare a vari
 \end{figure}
 
 \reactivatelinenumbers
-\begin{lstlisting}[caption={\label{listing:intro-declared-variable} The NodeJS syntax to create a mutable variable named \texttt{guess}. The result is a value whose box diagram is \ref{fig:intro-declared-variable}.}, escapeinside=$$]
+\begin{lstlisting}[caption={\label{listing:intro-declared-variable} The NodeJS
+syntax to create a mutable variable named \texttt{guess}. The result is a value
+whose box diagram is \ref{fig:intro-declared-variable}.}, escapeinside=$$]
 > let guess;
 $\comment{undefined}$
 \end{lstlisting}
 \suppresslinenumbers
 
-The keyword \texttt{let} is a special in JavaScript. It is used to allocate space in memory for a variable. That is, \texttt{let} statements declare new variables. There are a few different forms that \texttt{let} statements can take. The one above is the simplest. In Listing \ref{listing:intro-declared-variable}, the JavaScript interpreter will make space in memory for a variable called \texttt{guess}. At this point, \texttt{guess} has not been assigned a value. JavaScript uses the special literal value \texttt{undefined} to signify that the variable \texttt{guess} is not currently bound to a value.
+The keyword \texttt{let} is a special in JavaScript. It is used to allocate
+space in memory for a variable. That is, \texttt{let} statements declare new
+variables. There are a few different forms that \texttt{let} statements can
+take. The one above is the simplest. In Listing
+\ref{listing:intro-declared-variable}, the JavaScript interpreter will make
+space in memory for a variable called \texttt{guess}. At this point,
+\texttt{guess} has not been assigned a value. JavaScript uses the special
+literal value \texttt{undefined} to signify that the variable \texttt{guess} is
+not currently bound to a value.
 
-Since \texttt{undefined} is a value, you should be wondering, ``What is its type?'' I'm glad you asked. The value \texttt{undefined} is the only value of the data type \texttt{undefined}. (Yes, that is confusing.) Both the data type and its lone value have the same name.\sidenote{I know, it's gross. I hate it, too.} Now that we know the type and value of \texttt{guess} after declaration. We can update the box diagram in Figure \ref{fig:intro-declared-variable} to use the special \texttt{undefined} value.
+Since \texttt{undefined} is a value, you should be wondering, ``What is its
+type?'' I'm glad you asked. The value \texttt{undefined} is the only value of
+the data type \texttt{undefined}. (Yes, that is confusing.) Both the data type
+and its lone value have the same name.\sidenote{I know, it's gross. I hate it,
+too.} Now that we know the type and value of \texttt{guess} after declaration.
+We can update the box diagram in Figure \ref{fig:intro-declared-variable} to use
+the special \texttt{undefined} value.
 
 \begin{figure}[h]
   \sffamily
@@ -585,21 +932,48 @@ Since \texttt{undefined} is a value, you should be wondering, ``What is its type
     no & \texttt{guess} & \texttt{undefined} & \texttt{undefined}\\
     \hline
   \end{tabular}
-  \caption{\label{fig:intro-undefined-variable} The box diagram after a mutable variable named \texttt{guess} has been declared, but before it has been assigned a value.}
+\caption{\label{fig:intro-undefined-variable} The box diagram after a mutable
+variable named \texttt{guess} has been declared, but before it has been assigned
+a value.}
 \end{figure}
 
-After the \texttt{let} statement, the JavaScript interpreter responded with the value \texttt{undefined} on line 2. That value is \textit{not} the value of \texttt{guess}. It is the output value of the full \texttt{let} declaration statement. Variable declaration is not a transformer. If we were to create a fundamental diagram for declaration (Figure \ref{fig:intro-declaration-fundamental-diagram}), it would be incomplete. It takes a kind of input, the name of a variable, but produces no output. The special value \texttt{undefined} is one way JavaScript simulates the concept of nothing. The interpreter reports \texttt{undefined} is the value produced by declaration---nothing.
+After the \texttt{let} statement, the JavaScript interpreter responded with the
+value \texttt{undefined} on line 2. That value is \textit{not} the value of
+\texttt{guess}. It is the output value of the full \texttt{let} declaration
+statement. Variable declaration is not a transformer. If we were to create a
+fundamental diagram for declaration (Figure
+\ref{fig:intro-declaration-fundamental-diagram}), it would be incomplete. It
+takes a kind of input, the name of a variable, but produces no output. The
+special value \texttt{undefined} is one way JavaScript simulates the concept of
+nothing. The interpreter reports \texttt{undefined} is the value produced by
+declaration---nothing.
 
 \begin{figure}[h]
   \input{book/figures/variables/declaration-fundamental-diagram.tex}
-  \caption{\label{fig:intro-declaration-fundamental-diagram}Variable declaration is not a transformer. Declaration produces no output.}
+\caption{\label{fig:intro-declaration-fundamental-diagram}Variable declaration
+is not a transformer. Declaration produces no output.}
 \end{figure}
 
-The keyword \texttt{let} is special because it makes space in the system memory to store a value. This is a feature that a programming language has to make available to you through the use of special keywords. Without them, you wouldn't be able to create variables beause you wouldn't have a way to manage the computer's memory.
+The keyword \texttt{let} is special because it makes space in the system memory
+to store a value. This is a feature that a programming language has to make
+available to you through the use of special keywords. Without them, you wouldn't
+be able to create variables beause you wouldn't have a way to manage the
+computer's memory.
 
-Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved word}. That means that we cannot use the \emph{identifier} \texttt{let} as a variable name (or to name anything else). Valid identifiers consister of letters, numbers, the dollar sign (\texttt{\$}) and underscore (\texttt{\_}). Identifiers cannot, however, begin with a number. \marginnote{Ran into an error? Fear not. They tell you what they problem is and try to give you a hint to fix it. Errors are love letters the interpreter writes to you. Read them. Cherish them.} Whenever the JavaScript interpreter encounters \texttt{let}, it will check to see if \texttt{let} is being used to create a variable where none existed before. If not, then the interpreter will stop what it's doing and raise an error alerting you to your folly.
+Because \texttt{let} plays a special role in JavaScript, it is a \emph{reserved
+word}. That means that we cannot use the \emph{identifier} \texttt{let} as a
+variable name (or to name anything else). Valid identifiers consister of
+letters, numbers, the dollar sign (\texttt{\$}) and underscore (\texttt{\_}).
+Identifiers cannot, however, begin with a number. \marginnote{Ran into an error?
+Fear not. They tell you what they problem is and try to give you a hint to fix
+it. Errors are love letters the interpreter writes to you. Read them. Cherish
+them.} Whenever the JavaScript interpreter encounters \texttt{let}, it will
+check to see if \texttt{let} is being used to create a variable where none
+existed before. If not, then the interpreter will stop what it's doing and raise
+an error alerting you to your folly.
 
-\begin{lstlisting}[caption={\label{listing:intro-let-syntax-error}Several illegal uses of the keyword \texttt{let}.}]
+\begin{lstlisting}[caption={\label{listing:intro-let-syntax-error}Several
+illegal uses of the keyword \texttt{let}.}]
 > let;
 Uncaught ReferenceError: let is not defined
 > let 9.1
@@ -610,124 +984,217 @@ Uncaught SyntaxError: Unexpected number
 \end{lstlisting}
 
 \begin{question}
-  What is the value of the mutable variable \texttt{time} after executing this line of code? Draw the resulting box diagram.
+What is the value of the mutable variable \texttt{time} after executing this
+line of code? Draw the resulting box diagram.
   \begin{lstlisting}
     let time;
   \end{lstlisting}
 \end{question}
 
 \begin{question}
-  Explain the result after executing the following line of code. What is the problem and how can you fix it?
+Explain the result after executing the following line of code. What is the
+problem and how can you fix it?
   \begin{lstlisting}
     let 8ball;
   \end{lstlisting}
 \end{question}
 
 \begin{question}
-  Explain the result after executing the following line of code. What is the problem and how can you fix it?
+Explain the result after executing the following line of code. What is the
+problem and how can you fix it?
   \begin{lstlisting}
     let let;
   \end{lstlisting}
 \end{question}
 
-In general, try to name your variables full, suggestive words. Prefer \texttt{guess} over \texttt{g}. Don't name your variables things like \texttt{x} or \texttt{variable} or \texttt{data}. Use names that describe that they simulate in the real word. It's said there there are only three hard problems in software engineering:
+In general, try to name your variables full, suggestive words. Prefer
+\texttt{guess} over \texttt{g}. Don't name your variables things like \texttt{x}
+or \texttt{variable} or \texttt{data}. Use names that describe that they
+simulate in the real word. It's said there there are only three hard problems in
+software engineering:
 
 \begin{enumerate}
   \item Choosing good names for variables.
   \item Off-by-one errors.
 \end{enumerate}
 
-As you read the code in this book, ask yourself, ``Could I come up with a better name for that variable?''
+As you read the code in this book, ask yourself, ``Could I come up with a better
+name for that variable?''
 
 \section{Assignment}
-Once the space for a variable has been allocated in memory, it's time to assign it a value. \emph{Assigment} is the process of associating a value with a named variable in memory. The syntax in most programming languages uses a special symbol (\texttt{=}), the assignment operator, to link a variable name on one side with a value on the other side. \marginnote{A statement is an instruction to do something. It is the equivalent to a sentence in spoken language. In JavaScript, statements end with a semi-colon, just as instructions in English end in a period.} For example, to link the previous declared multable variable \texttt{guess} with the value \texttt{2}, we write the following instruction, or \emph{statement}:
+Once the space for a variable has been allocated in memory, it's time to assign
+it a value. \emph{Assigment} is the process of associating a value with a named
+variable in memory. The syntax in most programming languages uses a special
+symbol (\texttt{=}), the assignment operator, to link a variable name on one
+side with a value on the other side. \marginnote{A statement is an instruction
+to do something. It is the equivalent to a sentence in spoken language. In
+JavaScript, statements end with a semi-colon, just as instructions in English
+end in a period.} For example, to link the previous declared multable variable
+\texttt{guess} with the value \texttt{2}, we write the following instruction, or
+\emph{statement}:
 
 \begin{lstlisting}
 guess = 2;
 \end{lstlisting}
 
-This line of code is read ``The variable \texttt{guess} \emph{gets} the value \texttt{2}.'' \marginnote{A better symbol for the assignment operator would be $\gets$. Then we could rewrite the example as \texttt{guess} $\gets$ \texttt{2}, and there would be no confusion with the equality operator. Alas, $\gets$ isn't on standard keyboards. So it'd be hard to type.} Do not confuse the assignment operator with the equals sign. They are \textbf{not} the same. We will learn about equality later. The assignment operator updates values in memory. It does not check for equality between two values.
+This line of code is read ``The variable \texttt{guess} \emph{gets} the value
+\texttt{2}.'' \marginnote{A better symbol for the assignment operator would be
+$\gets$. Then we could rewrite the example as \texttt{guess} $\gets$ \texttt{2},
+and there would be no confusion with the equality operator. Alas, $\gets$ isn't
+on standard keyboards. So it'd be hard to type.} Do not confuse the assignment
+operator with the equals sign. They are \textbf{not} the same. We will learn
+about equality later. The assignment operator updates values in memory. It does
+not check for equality between two values.
 
-To see the effect of assignment let's look at the box diagrams for \texttt{guess} after declaration but before assignment and after assignment.
+To see the effect of assignment let's look at the box diagrams for
+\texttt{guess} after declaration but before assignment and after assignment.
 
 \begin{figure}
   \input{book/figures/variables/assignment.tex}
-  \caption{\label{fig:intro-variable-assignment} The time sequence after two side effects. First declaration creates space in memory for the mutable variable \texttt{guess} via a \texttt{let} statement. Next assignment updates the value of \texttt{guess} to the value \texttt{2} via an assignment statement.}
+\caption{\label{fig:intro-variable-assignment} The time sequence after two side
+effects. First declaration creates space in memory for the mutable variable
+\texttt{guess} via a \texttt{let} statement. Next assignment updates the value
+of \texttt{guess} to the value \texttt{2} via an assignment statement.}
 \end{figure}
 
-This figure looks a bit like a fundamental diagram. It is, however, different in one very, very important way. There are no inputs or outputs. There was a transformation of sorts, but it happened internally, in the computer's memory. The location in memory for \texttt{guess} was updated. The assigment operator does not have a fundamental diagram. It does not transform inputs into outputs. It is a special beast that is useful for its \emph{side effect}. Side effects in programming are changes to the value of a variable or other quantity. Expressions do not produce side effects.
+This figure looks a bit like a fundamental diagram. It is, however, different in
+one very, very important way. There are no inputs or outputs. There was a
+transformation of sorts, but it happened internally, in the computer's memory.
+The location in memory for \texttt{guess} was updated. The assigment operator
+does not have a fundamental diagram. It does not transform inputs into outputs.
+It is a special beast that is useful for its \emph{side effect}. Side effects in
+programming are changes to the value of a variable or other quantity.
+Expressions do not produce side effects.
 
-We've already seen another side effect: declaration is another example of a useful side effect. When we use \texttt{let} to create space for a variable where there was none before, we are explicitly updating changing the state of memory in the computer. Brining a variable into existence is a side effect. We are not calculating a value. There are no inputs or outputs, just a side effect.
+We've already seen another side effect: declaration is another example of a
+useful side effect. When we use \texttt{let} to create space for a variable
+where there was none before, we are explicitly updating changing the state of
+memory in the computer. Brining a variable into existence is a side effect. We
+are not calculating a value. There are no inputs or outputs, just a side effect.
 
-Side effects are not limited to variables. Writing information to a file requires a side effect because it updates the contents of the file. Printing to the screen requires a side effect because it changes the contents of screen. The monitor output is treated like a file. Every time the contents of the screen changes, its contents have been updated. Updating what a user sees on a screen requires side effects.
+Side effects are not limited to variables. Writing information to a file
+requires a side effect because it updates the contents of the file. Printing to
+the screen requires a side effect because it changes the contents of screen. The
+monitor output is treated like a file. Every time the contents of the screen
+changes, its contents have been updated. Updating what a user sees on a screen
+requires side effects.
 
 \begin{center}
-  \marginnote{Using constants instead of variables will help minimize opportunities for side effects in your program.}In general, it is easier to understand and debug programs that use as few side effects as possible.
+\marginnote{Using constants instead of variables will help minimize
+opportunities for side effects in your program.}In general, it is easier to
+understand and debug programs that use as few side effects as possible.
 \end{center}
 
-Assignment statements have two sides---a left-hand side and a right-hand side---and they require two procedures to be performed, on for each side of the assignment operator.
+Assignment statements have two sides---a left-hand side and a right-hand
+side---and they require two procedures to be performed, on for each side of the
+assignment operator.
 
 \begin{itemize}
-  \item[\textit{Evaluation.}] First, the interpreter evaluates the expression on the right-hand side of the assignment statement.
-  \item[\textit{Assignment.}] Second, the interpreter updates the value of the variable on the left-hand side with the value obtained by evaluating the expression on the right-hand side.
+\item[\textit{Evaluation.}] First, the interpreter evaluates the expression on
+the right-hand side of the assignment statement.
+\item[\textit{Assignment.}] Second, the interpreter updates the value of the
+variable on the left-hand side with the value obtained by evaluating the
+expression on the right-hand side.
 \end{itemize}
 
-The first step in an assignment statement isn't assignment. It's our new old friend expression evaluation! Step 1 is optional if the value on the right-hand side is a literal value. Literal values are expressions that evaluate to themselves.
+The first step in an assignment statement isn't assignment. It's our new old
+friend expression evaluation! Step 1 is optional if the value on the right-hand
+side is a literal value. Literal values are expressions that evaluate to
+themselves.
 
-We've already seen that expressions can involve many operators and literal values, like \texttt{(1.5 + (2/1.5)/2}. Expressions can also include variables, as well. When a variable is evaluated, the interpreter substitutes the name of the variable with the value bound to it in memory. Let's walk through a short snippet of code to see that substition in action.
+We've already seen that expressions can involve many operators and literal
+values, like \texttt{(1.5 + (2/1.5)/2}. Expressions can also include variables,
+as well. When a variable is evaluated, the interpreter substitutes the name of
+the variable with the value bound to it in memory. Let's walk through a short
+snippet of code to see that substition in action.
 
-\begin{lstlisting}[caption={\label{listing:intro-reassignment} Proof that assignment is not equality. The updating would be clearer if we had that arrow!  \texttt{guess} $\gets$ \texttt{guess + 1;}}]
+\begin{lstlisting}[caption={\label{listing:intro-reassignment} Proof that
+assignment is not equality. The updating would be clearer if we had that arrow!
+\texttt{guess} $\gets$ \texttt{guess + 1;}}]
 > let guess;
 > guess = 1;
 > guess = guess + 1;
 \end{lstlisting}
 
-The last statement in Listing \ref{listing:intro-reassignment} should look a little funny to you. This line is a reminder that \texttt{=} does not connote equality. It reads ``the new value of the variable \texttt{guesss} is the current value of \texttt{guess} plus one.'' The assignment operator's job is to update values. So let's create a trace of the program to make sure we know what's going on.
+The last statement in Listing \ref{listing:intro-reassignment} should look a
+little funny to you. This line is a reminder that \texttt{=} does not connote
+equality. It reads ``the new value of the variable \texttt{guesss} is the
+current value of \texttt{guess} plus one.'' The assignment operator's job is to
+update values. So let's create a trace of the program to make sure we know
+what's going on.
 
 \begin{table*}
   \small
   \sffamily
   \color{cyan}
   \begin{tabular}{r l | l c|c|c c}
-     & Step & Line & \texttt{guess} & Left-hand value & Right-hand Expression & Right-hand value\\
+& Step & Line & \texttt{guess} & Left-hand value & Right-hand Expression &
+Right-hand value\\
     \hline
-    1 & Declaration & \texttt{let guess;} & \texttt{undefined} & --- & --- & --- \\
-    2 & Evaluation & \texttt{guess = 1;} & \texttt{undefined} & \texttt{undefined} & \texttt{1} & \texttt{1}\\
-    3 & Assignment & \texttt{guess = 1;} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1}\\
-    4 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{guess + 1} &  --- \\
-    5 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{1 + 1} & \texttt{2}\\
-    6 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} & \texttt{2} & \texttt{2}\\
-    7 & Assignment & \texttt{guess = guess + 1;} & \texttt{2} & \texttt{2} & \texttt{2} & \texttt{2}
+1 & Declaration & \texttt{let guess;} & \texttt{undefined} & --- & --- & --- \\2 & Evaluation & \texttt{guess = 1;} & \texttt{undefined} & \texttt{undefined} &
+\texttt{1} & \texttt{1}\\
+3 & Assignment & \texttt{guess = 1;} & \texttt{1} & \texttt{1} & \texttt{1} &
+\texttt{1}\\
+4 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} &
+\texttt{guess + 1} & --- \\
+5 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} &
+\texttt{1 + 1} & \texttt{2}\\
+6 & Evaluation & \texttt{guess = guess + 1;} & \texttt{1} & \texttt{1} &
+\texttt{2} & \texttt{2}\\
+7 & Assignment & \texttt{guess = guess + 1;} & \texttt{2} & \texttt{2} &
+\texttt{2} & \texttt{2}
   \end{tabular}
-  \caption{\label{table:intro-reassignment-trace}A trace of the evaluation and assignment of a variable.}
+\caption{\label{table:intro-reassignment-trace}A trace of the evaluation and
+assignment of a variable.}
 \end{table*}
 
-A trace of Listing \ref{listing:intro-reassignment} is in Table \ref{table:intro-reassignment-trace}. A conventional trace would include the columns labeled Line and \texttt{guess} only. We've added a column to keep track of which action (declaration, evaluation, or assignment) is being performed at each step, and the left-hand and right-hand values involved in assignment at each step.
+A trace of Listing \ref{listing:intro-reassignment} is in Table
+\ref{table:intro-reassignment-trace}. A conventional trace would include the
+columns labeled Line and \texttt{guess} only. We've added a column to keep track
+of which action (declaration, evaluation, or assignment) is being performed at
+each step, and the left-hand and right-hand values involved in assignment at
+each step.
 
 \begin{question}
-  Explain each line in Listing \ref{listing:intro-reassignment} using language that a non-programmer could understand.
+Explain each line in Listing \ref{listing:intro-reassignment} using language
+that a non-programmer could understand.
 \end{question}
 
-\textit{Step 1.} The first line declares a new variable named \texttt{guess}. Initially, the value of \texttt{guess} is \texttt{undefined}.
+\textit{Step 1.} The first line declares a new variable named \texttt{guess}.
+Initially, the value of \texttt{guess} is \texttt{undefined}.
 
-Next we come to an assignment statement. The right-hand side of the assignment statement is \texttt{guess}, and the left-hand side is the expression~\texttt{1}.
+Next we come to an assignment statement. The right-hand side of the assignment
+statement is \texttt{guess}, and the left-hand side is the
+expression~\texttt{1}.
 
-\textit{Step 2.} Since \texttt{1} is a literal value, the expression evaluates to \texttt{1}.
+\textit{Step 2.} Since \texttt{1} is a literal value, the expression evaluates
+to \texttt{1}.
 
-\textit{Step 3.} Then the value of \texttt{guess} is updated from \texttt{undefined} to \texttt{1}.
+\textit{Step 3.} Then the value of \texttt{guess} is updated from
+\texttt{undefined} to \texttt{1}.
 
-The third line of code assigns \texttt{guess} to the value of the expression \texttt{guess~+~1}---to the current value of \texttt{guess} plus one. Again, we must evaluate the expression on the right-hand side of the assignment statement before updating.
+The third line of code assigns \texttt{guess} to the value of the expression
+\texttt{guess~+~1}---to the current value of \texttt{guess} plus one. Again, we
+must evaluate the expression on the right-hand side of the assignment statement
+before updating.
 
-\textit{Step 4.} To evaluate that expression, we first replace \texttt{guess} with the current value of \texttt{guess} in the expression.
+\textit{Step 4.} To evaluate that expression, we first replace \texttt{guess}
+with the current value of \texttt{guess} in the expression.
 
 \textit{Step 5.} That substitution produces the expression \texttt{1 + 1}.
 
-\textit{Step 6.} Since we have two \textsf{Number} type literal values and a \textsf{Number} operator, we can replace the expression with the output of the transformer \texttt{+}, giving us \texttt{2}. Therefore the expression \texttt{guess~+~1} evaluates to the value \texttt{2}.
+\textit{Step 6.} Since we have two \textsf{Number} type literal values and a
+\textsf{Number} operator, we can replace the expression with the output of the
+transformer \texttt{+}, giving us \texttt{2}. Therefore the expression
+\texttt{guess~+~1} evaluates to the value \texttt{2}.
 
-\textit{Step 7.} Now that evaluation is over, we finally update the existing value \texttt{1} of \texttt{guess} with the value \texttt{2}.
+\textit{Step 7.} Now that evaluation is over, we finally update the existing
+value \texttt{1} of \texttt{guess} with the value \texttt{2}.
 
 \begin{question}
-  Trace the following snippet of code. In your trace keep track of the left- and right-hand expressions and values. Use Table \ref{table:intro-reassignment-trace} as a template.
+Trace the following snippet of code. In your trace keep track of the left- and
+right-hand expressions and values. Use Table
+\ref{table:intro-reassignment-trace} as a template.
 
   \marginnote{Do these caluations look familiar?}\begin{lstlisting}
   let guess;
@@ -740,17 +1207,32 @@ The third line of code assigns \texttt{guess} to the value of the expression \te
 \end{question}
 
 \section{State}
-Mutable variables created with \texttt{let} statements can change from one line of code to the next. Because of their ability to change, mutable variables are said to be \emph{stateful}. Quantities that exhibit state if their value depends on their history. \marginnote{This fact bears repeating: Side effects introduce state.} In general, side effects introduce state.
+Mutable variables created with \texttt{let} statements can change from one line
+of code to the next. Because of their ability to change, mutable variables are
+said to be \emph{stateful}. Quantities that exhibit state if their value depends
+on their history. \marginnote{This fact bears repeating: Side effects introduce
+state.} In general, side effects introduce state.
 
-Bank account balances are a common and important example of a stateful quantity. They value of an account balance depends on the history of deposits and withdrawals to the account. In JavaScript we can simulate a balance with a mutable variable. Deposits can be implemented with assignment statements and the addition operator. Likewise we can implement withdrawals with assignment statements and the subtraction operator.
+Bank account balances are a common and important example of a stateful quantity.
+They value of an account balance depends on the history of deposits and
+withdrawals to the account. In JavaScript we can simulate a balance with a
+mutable variable. Deposits can be implemented with assignment statements and the
+addition operator. Likewise we can implement withdrawals with assignment
+statements and the subtraction operator.
 
-Let's begin with an opening balance of \$1,000 and keep track of things with the suggestively named variable \texttt{balance}. We can declare and assignment \texttt{balance} to a initial value in one line of code that combines the special keyword \texttt{let} and the assignment operator. From here on out, we'll initialize variables in one line of code instead of separating out each of the two steps individually.
+Let's begin with an opening balance of \$1,000 and keep track of things with the
+suggestively named variable \texttt{balance}. We can declare and assignment
+\texttt{balance} to a initial value in one line of code that combines the
+special keyword \texttt{let} and the assignment operator. From here on out,
+we'll initialize variables in one line of code instead of separating out each of
+the two steps individually.
 
 \begin{lstlisting}
 let balance = 120.00;
 \end{lstlisting}
 
-Next, let's go shopping! We will withdraw money from the account to buy a few things.
+Next, let's go shopping! We will withdraw money from the account to buy a few
+things.
 
 \begin{lstlisting}
 balance = balance - 12.50; // Lunch
@@ -775,15 +1257,28 @@ balance = balance - 76.10; // Fancy dinner
 
 
 \begin{question}
-  What is the state of \texttt{balance} after lunch? After we deposited a check? What is the final state of balance?
+What is the state of \texttt{balance} after lunch? After we deposited a check?
+What is the final state of balance?
 \end{question}
 
-Each transaction changes the value of \texttt{balance}. While \texttt{balance} is a single variable, it is hard to what its value is without knowing the transactions that have updated it. The order of the transactions matters. If you rearrange the order of the deposits or withdrawals, the balance at each point in time changes. Stateful quantities are very sensitive to the order of assignments. This sensitivity makes programs involving state difficult to analyze. Stateful quantities can be difficult to reason about and are often involved in bugs that are notoriously difficult to debug.
+Each transaction changes the value of \texttt{balance}. While \texttt{balance}
+is a single variable, it is hard to what its value is without knowing the
+transactions that have updated it. The order of the transactions matters. If you
+rearrange the order of the deposits or withdrawals, the balance at each point in
+time changes. Stateful quantities are very sensitive to the order of
+assignments. This sensitivity makes programs involving state difficult to
+analyze. Stateful quantities can be difficult to reason about and are often
+involved in bugs that are notoriously difficult to debug.
 
- Mutable state, however, does make it convenient to model some things that would be very hard to model otherwise, such a bank balances. Programmers have developed ways of organizing code specifically to tame state, some of which we'll see later on. For now, however, we should turn to the alternative: stateless quantities. Enter constants!
+Mutable state, however, does make it convenient to model some things that would
+be very hard to model otherwise, such a bank balances. Programmers have
+developed ways of organizing code specifically to tame state, some of which
+we'll see later on. For now, however, we should turn to the alternative:
+stateless quantities. Enter constants!
 
  \begin{question}
-   What is the bug in the following code snippet? What changes do you need to perform in order to fix the bug?
+What is the bug in the following code snippet? What changes do you need to
+perform in order to fix the bug?
    \begin{lstlisting}
    let balance = 550;
    let balance = balance - 110;
@@ -791,13 +1286,21 @@ Each transaction changes the value of \texttt{balance}. While \texttt{balance} i
  \end{question}
 
 \section{Constants}
-Constants, unlike variables, cannot change their value once they have been assigned. For that reason, JavaScript syntax requires declaration and assignment to happen at the same time. Constants do not begin with the initial value \texttt{undefined} which can be later replaced. They must be initialized to a value upon creation. The special keyword to create a constant in JavaScript is \texttt{const}.
+Constants, unlike variables, cannot change their value once they have been
+assigned. For that reason, JavaScript syntax requires declaration and assignment
+to happen at the same time. Constants do not begin with the initial value
+\texttt{undefined} which can be later replaced. They must be initialized to a
+value upon creation. The special keyword to create a constant in JavaScript is
+\texttt{const}.
 
 \begin{lstlisting}
 const price = 29.95;
 \end{lstlisting}
 
-The box diagram for a constant looks very similar to the box diagram for a variable, except for one very important diffence. Constants are read-only quantities. That is, constants are immutable. Their state is frozen for all time.
+The box diagram for a constant looks very similar to the box diagram for a
+variable, except for one very important diffence. Constants are read-only
+quantities. That is, constants are immutable. Their state is frozen for all
+time.
 
 \begin{figure}[h]
   \sffamily
@@ -809,10 +1312,13 @@ The box diagram for a constant looks very similar to the box diagram for a varia
     yes & \texttt{price} & Number & \texttt{29.95}\\
     \hline
   \end{tabular}
-  \caption{\label{fig:intro-constant} The box diagram for a constant variable named \texttt{price} that has been initialized to the \textsf{Number} value \texttt{29.95}.}
+\caption{\label{fig:intro-constant} The box diagram for a constant variable
+named \texttt{price} that has been initialized to the \textsf{Number} value
+\texttt{29.95}.}
 \end{figure}
 
-If you try to update the value of a constant, the JavaScript interpreter will refuse and warn loudly with an error.
+If you try to update the value of a constant, the JavaScript interpreter will
+refuse and warn loudly with an error.
 
 \begin{lstlisting}
 > const price = 29.95;
@@ -820,18 +1326,27 @@ If you try to update the value of a constant, the JavaScript interpreter will re
 Uncaught TypeError: Assignment to constant variable.
 \end{lstlisting}
 
-The error above is extremely helpful! Do not ignore errors. They exist to help you write bug-free programs. Errors alert you to the fact that the intepreter encountered a bug in your program and even tries to point out exactly where it is so that you can fix it. In this instance, we tried to change a value that we do not think should ever change during the course of a program run. By declaring a constant, we make a promise with the interpreter never to change its value. The interpreter is wonderful because it will hold us to our word, even when we might forget ourselves. Enlist the help of the interpreter:
+The error above is extremely helpful! Do not ignore errors. They exist to help
+you write bug-free programs. Errors alert you to the fact that the intepreter
+encountered a bug in your program and even tries to point out exactly where it
+is so that you can fix it. In this instance, we tried to change a value that we
+do not think should ever change during the course of a program run. By declaring
+a constant, we make a promise with the interpreter never to change its value.
+The interpreter is wonderful because it will hold us to our word, even when we
+might forget ourselves. Enlist the help of the interpreter:
 
 \begin{center}
   Whenever you can, use a constant instead of a variable to store data.
 \end{center}
 
 \begin{question}
-  Over the course of a very long program, how will the box diagram of a constant variable change?
+Over the course of a very long program, how will the box diagram of a constant
+variable change?
 \end{question}
 
 \begin{question}
-  In trace, what relationship will the values in the column for a constant variable always satisfy?
+In trace, what relationship will the values in the column for a constant
+variable always satisfy?
 \end{question}
 
 \begin{question}
@@ -840,15 +1355,40 @@ The error above is extremely helpful! Do not ignore errors. They exist to help y
 
 
 \section{Refactoring}
-Now it's time to revisit Newton's method and clean up our implementation using the tools we've learned from our first friend programming friend, variables. In our original implementation, we used JavaScript like a pocket calculator. The actual code we wrote was a complete jumble of numbers, with a secret rhyme and reason. There was no obvious way to map the numbers to the steps in Newton's method.
+Now it's time to revisit Newton's method and clean up our implementation using
+the tools we've learned from our first friend programming friend, variables. In
+our original implementation, we used JavaScript like a pocket calculator. The
+actual code we wrote was a complete jumble of numbers, with a secret rhyme and
+reason. There was no obvious way to map the numbers to the steps in Newton's
+method.
 
-We had to keep track of the values, and the meanings of the values, over the course of the execution. We, as humans, had to know which step we were on, and what values to supply to each step. Since it's hard for humans to keep track of multiple things at once, this kind of process is extremely error-prone. And Newton's method doesn't even have that many steps or values to it! Imagine what would happen when tackling a more complicated algorithm. We need more structure in our code. We're going to \emph{refactor} our implememtation.
+We had to keep track of the values, and the meanings of the values, over the
+course of the execution. We, as humans, had to know which step we were on, and
+what values to supply to each step. Since it's hard for humans to keep track of
+multiple things at once, this kind of process is extremely error-prone. And
+Newton's method doesn't even have that many steps or values to it! Imagine what
+would happen when tackling a more complicated algorithm. We need more structure
+in our code. We're going to \emph{refactor} our implememtation.
 
-Refactoring is like clean up for code. It is the process of restructuring your code, hopefully, to make it easier to understand, to remove (or prevent) bugs, and to make it easier to add features later on. Refactoring isn't a special process---in large programming projects time isn't usually dedicated to refactoring. But every once in a while, a team may decide to understake a ``large'' refactoring to pay down \emph{technical debt}, the cost of doing things quickly or without knowing the full future vision of the product or because technologies and talents have changed. As codebases grow and mature, the begin to \emph{rot} and produce \emph{code smells}. Refactoring aims to clean up the rot.
-Generally, your refactoring should be done in small, incremental changes that address a particular problem in your codebase. In ours, the first problem to tackle is that there are too many numbers running around and it's hard to tell which one is which. In this round of refactoring, let's associate every number with a suggestive name, inspired by the role it plays in the algorithm.
+Refactoring is like clean up for code. It is the process of restructuring your
+code, hopefully, to make it easier to understand, to remove (or prevent) bugs,
+and to make it easier to add features later on. Refactoring isn't a special
+process---in large programming projects time isn't usually dedicated to
+refactoring. But every once in a while, a team may decide to understake a
+``large'' refactoring to pay down \emph{technical debt}, the cost of doing
+things quickly or without knowing the full future vision of the product or
+because technologies and talents have changed. As codebases grow and mature, the
+begin to \emph{rot} and produce \emph{code smells}. Refactoring aims to clean up
+the rot.
+Generally, your refactoring should be done in small, incremental changes that
+address a particular problem in your codebase. In ours, the first problem to
+tackle is that there are too many numbers running around and it's hard to tell
+which one is which. In this round of refactoring, let's associate every number
+with a suggestive name, inspired by the role it plays in the algorithm.
 
 
-\begin{lstlisting}[caption={Newton's method for calculating square roots, reprinted for your convenience.}]
+\begin{lstlisting}[caption={Newton's method for calculating square roots,
+reprinted for your convenience.}]
 Inputs: n, the square of the number we're trying to calculates
         guess, our current guess for sqrt(n)
 
@@ -859,7 +1399,9 @@ Inputs: n, the square of the number we're trying to calculates
 \end{lstlisting}
 
 \begin{question}
-  What variables will we need to implement Newton's method? Can any of them easily be immutable? Which ones would more conveniently be mutable? Explain your reasoning.
+What variables will we need to implement Newton's method? Can any of them easily
+be immutable? Which ones would more conveniently be mutable? Explain your
+reasoning.
 \end{question}
 
 \begin{lstlisting}[escapeinside=$$]
